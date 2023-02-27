@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity">
+
+    <FrameLayout
+        android:id="@+id/containerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNav"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="selected"
+        android:paddingVertical="10dp"
+        app:itemTextAppearanceActive="@style/BottomNavigationStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavigationStyle"
+        app:itemIconTint="@drawable/btn_selector_color"
+        app:itemTextColor="@drawable/btn_selector_color"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/admin_nav_menu"/>
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Dashboard.DashboardAdmin.DashboardAdminFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/logo_bara"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Halo,"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/main_color_black"
+            android:fontFamily="@font/nexa_book"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin!"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/main_color_black"
+            android:fontFamily="@font/nexa_bold"/>
+
+        <TextView
+            android:id="@+id/formatDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nexa_regular"
+            android:text="Kamis, 20 Oktober 2023"
+            android:textColor="@color/secondary_light_themes"
+            android:textSize="@dimen/_10sdp"
+            tools:ignore="TextSizeCheck" />
+    </LinearLayout>
+
+</FrameLayout>

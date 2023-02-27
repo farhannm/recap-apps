@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="bottom_navigation">
+
+    <item
+        android:id="@+id/admin_nav_dashboard"
+        android:enabled="true"
+        android:title="Dashboard"
+        android:icon="@drawable/dashboard_selector"/>
+
+    <item
+        android:id="@+id/admin_nav_recap"
+        android:enabled="true"
+        android:title="Recap"
+        android:icon="@drawable/recap_selector"/>
+
+    <item
+        android:id="@+id/admin_nav_settings"
+        android:enabled="true"
+        android:title="Settings"
+        android:icon="@drawable/settings_selector"/>
+
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    //Main color
+    <color name="main_color_blue">#5463FF</color>
+    <color name="main_color_black">#0C0C0C</color>
+    <color name="main_color_secondary_blue">#2734D8</color>
+    <color name="bara_themes">#FFC300</color>
+
+    //Item color
+    <color name="primary_light_themes">#FFFFFF</color>
+    <color name="secondary_light_themes">#B3BAD0</color>
+    <color name="card_light">#E9EFF5</color>
+    <color name="card_blue">#6774FF</color>
+    <color name="primary_dark_themes">#161617</color>
+    <color name="secondary_dark_themes">#2B292E</color>
+    <color name="orange">#F98558</color>
+    <color name="sweet_red">#B6535B</color>
+    <color name="green">#16DD7E</color>
+</resources>
