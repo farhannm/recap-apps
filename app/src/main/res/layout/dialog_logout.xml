@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -64,7 +65,8 @@
                 android:fontFamily="@font/nexa_book"
                 android:text="Apakah anda yakin ingin keluar dari akun, jika ya anda harus Masuk kembali."
                 android:textColor="@color/secondary_light_themes"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_11sdp"
+                tools:ignore="TextSizeCheck" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -80,25 +82,27 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnBatal"
                         android:layout_width="75dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_marginEnd="20dp"
-                        android:backgroundTint="@color/gray_900"
+                        android:backgroundTint="@color/white"
                         android:fontFamily="@font/nexa_regular"
                         android:text="Batal"
                         android:textAllCaps="false"
+                        android:textColor="@color/secondary_light_themes"
                         android:textSize="10sp"
-                        android:textColor="@color/secondary_light_themes"/>
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnKeluar"
                         android:layout_width="75dp"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:backgroundTint="@color/sweet_red"
                         android:fontFamily="@font/nexa_regular"
                         android:text="Keluar"
                         android:textAllCaps="false"
+                        android:textColor="@color/white"
                         android:textSize="10sp"
-                        android:textColor="@color/white"/>
+                        tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

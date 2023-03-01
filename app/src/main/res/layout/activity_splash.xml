@@ -10,7 +10,7 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
         android:src="@drawable/logo_bara"/>
 </LinearLayout>

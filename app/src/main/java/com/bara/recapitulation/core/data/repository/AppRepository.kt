@@ -20,7 +20,6 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                     SharedPref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    val role = body?.data?.roles
                     SharedPref.setUser(user)
                     emit(Resource.success(user))
                     logs("Berhasil : " + body.toString())

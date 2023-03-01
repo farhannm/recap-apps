@@ -42,7 +42,7 @@ class AdminActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransacion = fragmentManager.beginTransaction()
-        fragmentTransacion.replace(R.id.containerFragment, fragment)
+        fragmentTransacion.replace(R.id.navHostFragment, fragment)
 
         fragmentTransacion.commit()
     }

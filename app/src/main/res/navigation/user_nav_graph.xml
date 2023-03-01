@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/user_nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_nav_graph"
+    app:startDestination="@id/dashboardUserFragment">
 
+    <fragment
+        android:id="@+id/dashboardUserFragment"
+        android:name="com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserFragment"
+        android:label="fragment_user_dashboard"
+        tools:layout="@layout/fragment_user_dashboard" />
+    <fragment
+        android:id="@+id/recapUserFragment"
+        android:name="com.bara.recapitulation.ui.Recap.RecapUser.RecapUserFragment"
+        android:label="fragment_user_recap"
+        tools:layout="@layout/fragment_user_recap" />
+    <fragment
+        android:id="@+id/settingsUserFragment"
+        android:name="com.bara.recapitulation.ui.Settings.SettingsUser.SettingsUserFragment"
+        android:label="fragment_user_settings"
+        tools:layout="@layout/fragment_user_settings" />
 </navigation>

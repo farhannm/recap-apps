@@ -18,14 +18,26 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Settings.SettingsUser.Profile.ChangePass.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Settings.SettingsUser.Tentang.TentangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Settings.SettingsUser.Bantuan.BantuanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Settings.SettingsUser.Profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
             android:name=".UserActivity"
             android:exported="false" />
-        <activity
-            android:name=".Welcome"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Welcome"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ui.Auth.AuthActivity"
             android:exported="false" />

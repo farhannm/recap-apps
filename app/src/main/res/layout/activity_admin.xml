@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".AdminActivity">
 
-    <FrameLayout
-        android:id="@+id/containerFragment"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navHostFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/admin_nav_graph"
         android:layout_above="@+id/bottomNav"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

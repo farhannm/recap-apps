@@ -19,16 +19,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:text="Halo,"
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/_14ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_book"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Farhan Maulana!"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_20ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
 
@@ -39,7 +39,7 @@
             android:fontFamily="@font/nexa_regular"
             android:text="Kamis, 20 Oktober 2023"
             android:textColor="@color/secondary_light_themes"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_10ssp"
             tools:ignore="TextSizeCheck" />
     </LinearLayout>
 

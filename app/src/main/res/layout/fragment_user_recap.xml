@@ -5,5 +5,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.Recap.RecapUser.RecapUserFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/logo_bara"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Recap"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/main_color_black"
+            android:fontFamily="@font/nexa_bold"/>
+    </LinearLayout>
 
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.bara.recapitulation.ui.Auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bara.recapitulation.AdminActivity
@@ -20,7 +21,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class AuthActivity : AppCompatActivity() {
 
     private val viewModel: AuthViewModel by viewModel()
-
     lateinit var binding: ActivityAuthBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,12 +33,15 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-//        if (SharedPref.isLogin) {
-//            pushActivity(MainActivity::class.java)
-//        }
+        if (SharedPref.isLogin) {
+            pushActivity(AdminActivity::class.java)
+            pushActivity(UserActivity::class.java)
+        }
     }
 
     private fun setData(){
+        SharedPref.isLogin
+
         binding.welcomeDest.setOnClickListener {
             pushActivity(Welcome::class.java)
             finish()
@@ -82,7 +85,7 @@ class AuthActivity : AppCompatActivity() {
                 loading.dialogDismiss()
             }
 
-        }, 1000)
+        }, 500)
     }
 
 
@@ -99,13 +102,14 @@ class AuthActivity : AppCompatActivity() {
 
             when (it.state) {
                 State.SUCCESS -> {
-                    SharedPref.isLogin = true
-                    showToast("Selamat datang " + it.data?.name)
+                    showToast("Selamat datang " + it.data?.nama)
 
-                    if (it.data?.roles == "admin"){
+                    if (it.data?.id_role == 1){
+                        SharedPref.isLogin = true
                         pushActivity(AdminActivity::class.java)
                         finish()
-                    } else if (it.data?.roles == "user") {
+                    } else if (it.data?.id_role == 2) {
+                        SharedPref.isLogin = true
                         pushActivity(UserActivity::class.java)
                         finish()
                     } else {
@@ -121,13 +125,6 @@ class AuthActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun sessionRole(){
-        val email: String = binding.inputEmail.text.toString()
-        val password: String = binding.inputEmail.text.toString()
-
-
     }
 
 }
