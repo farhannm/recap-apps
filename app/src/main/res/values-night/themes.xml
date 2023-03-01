@@ -14,6 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="SearchView" parent="">
+        <item name="android:editTextColor">@color/main_color_black</item>
+        <item name="android:textColorHint">@color/secondary_light_themes</item>
+        <item name="fontFamily">@font/nexa_regular</item>
+    </style>
+
     <style name="BottomNavigationStyle">
         <item name="fontFamily">@font/nexa_regular</item>
     </style>

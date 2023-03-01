@@ -7,6 +7,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -15,8 +16,8 @@ interface ApiService {
         @Body auth: AuthRequest
     ) : Response<AuthResponse>
 
-    @GET
-    suspend fun getData(
-        @Body user: User
+    @GET("user/{id}")
+    suspend fun getUser(
+        @Path("id") int:Int? = null
     ) : Response<AuthResponse>
 }

@@ -2,8 +2,11 @@ package com.bara.recapitulation.ui.CustomDialog
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
+import com.bara.recapitulation.AdminActivity
 import com.bara.recapitulation.R
 import com.bara.recapitulation.ui.Auth.AuthActivity
+import com.bara.recapitulation.util.Pref
 import com.bara.recapitulation.util.SharedPref
 import com.inyongtisto.myhelper.extension.pushActivity
 import kotlinx.android.synthetic.main.dialog_logout.view.*
@@ -64,8 +67,10 @@ class CustomDialog(val mActivity: Activity) {
         }
 
         dialogView.btnKeluar.setOnClickListener {
-            SharedPref.isLogin = false
+            Pref.setDataLogin(mActivity, false)
+            Pref.setDataAs(mActivity, "")
             mActivity.pushActivity(AuthActivity::class.java)
+            mActivity.finish()
         }
     }
 

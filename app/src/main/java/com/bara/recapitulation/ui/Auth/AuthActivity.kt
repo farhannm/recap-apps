@@ -1,17 +1,16 @@
 package com.bara.recapitulation.ui.Auth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bara.recapitulation.AdminActivity
 import com.bara.recapitulation.UserActivity
 import com.bara.recapitulation.Welcome
-import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
 import com.bara.recapitulation.databinding.ActivityAuthBinding
 import com.bara.recapitulation.ui.CustomDialog.CustomDialog
-import com.bara.recapitulation.util.SharedPref
+import com.bara.recapitulation.util.Pref
 import com.inyongtisto.myhelper.extension.isEmpty
 import com.inyongtisto.myhelper.extension.pushActivity
 import com.inyongtisto.myhelper.extension.showToast
@@ -33,15 +32,18 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (SharedPref.isLogin) {
-            pushActivity(AdminActivity::class.java)
-            pushActivity(UserActivity::class.java)
+        if (Pref.getDataLogin(this)) {
+            if (Pref.getDataAs(this).equals("admin")) {
+                pushActivity(AdminActivity::class.java)
+                finish()
+            } else {
+                pushActivity(UserActivity::class.java)
+                finish()
+            }
         }
     }
 
     private fun setData(){
-        SharedPref.isLogin
-
         binding.welcomeDest.setOnClickListener {
             pushActivity(Welcome::class.java)
             finish()
@@ -105,12 +107,14 @@ class AuthActivity : AppCompatActivity() {
                     showToast("Selamat datang " + it.data?.nama)
 
                     if (it.data?.id_role == 1){
-                        SharedPref.isLogin = true
-                        pushActivity(AdminActivity::class.java)
+                        Pref.setDataLogin(this@AuthActivity, true)
+                        Pref.setDataAs(this@AuthActivity, "admin")
+                        startActivity(Intent(this@AuthActivity, AdminActivity::class.java))
                         finish()
                     } else if (it.data?.id_role == 2) {
-                        SharedPref.isLogin = true
-                        pushActivity(UserActivity::class.java)
+                        Pref.setDataLogin(this@AuthActivity, true)
+                        Pref.setDataAs(this@AuthActivity, "user")
+                        startActivity(Intent(this@AuthActivity, UserActivity::class.java))
                         finish()
                     } else {
                         showToast("Pengguna tidak ditemukan.")
