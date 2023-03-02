@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Recap.RecapUser.RecapUserFragment">
@@ -24,6 +25,158 @@
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:searchIcon="@drawable/ic_search"
+            app:queryHint="Search task..."
+            android:textAppearance="@color/main_color_black"
+            android:background="@drawable/rounded_search_view"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bulan ini"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/main_color_black"
+                android:fontFamily="@font/nexa_bold"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtThisMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Februari"
+                    android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/main_color_blue"
+                    android:fontFamily="@font/nexa_bold"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:backgroundTint="@color/sweet_orange">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:src="@drawable/icon_calendar_light"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:fontFamily="@font/nexa_regular"
+                    android:text="Periode"
+                    android:textColor="@color/secondary_light_themes"
+                    android:textSize="@dimen/_8ssp"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/txtPeriode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_bold"
+                    android:text="1 Februari 2023 - 28 Februari 2023"
+                    android:textColor="@color/main_color_black"
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                android:backgroundTint="@color/bara_themes">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:src="@drawable/icon_plant_light"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:fontFamily="@font/nexa_regular"
+                    android:text="Total jam kerja"
+                    android:textColor="@color/secondary_light_themes"
+                    android:textSize="@dimen/_8ssp"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/txtJamKer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_bold"
+                    android:text="102 jam/Kurang"
+                    android:textColor="@color/main_color_black"
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:fontFamily="@font/nexa_bold"
+            android:text="Rekapan bulanan"
+            android:textColor="@color/main_color_black"
+            android:textSize="@dimen/_14ssp"
+            tools:ignore="TextSizeCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecapMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/list_recap_month"/>
     </LinearLayout>
 
 </FrameLayout>

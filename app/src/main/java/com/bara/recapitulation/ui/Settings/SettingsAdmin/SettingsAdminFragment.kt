@@ -1,11 +1,15 @@
 package com.bara.recapitulation.ui.Settings.SettingsAdmin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bara.recapitulation.databinding.FragmentAdminSettingsBinding
+import com.bara.recapitulation.ui.Settings.SettingsAdmin.Bantuan.BantuanActivity
+import com.bara.recapitulation.ui.Settings.SettingsAdmin.Profile.ProfileActivity
+import com.bara.recapitulation.ui.Settings.SettingsAdmin.Tentang.TentangActivity
 
 class SettingsAdminFragment : Fragment() {
 
@@ -22,9 +26,25 @@ class SettingsAdminFragment : Fragment() {
         return view
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        intentView()
+    }
+
+    private fun intentView() {
+        binding.btnProfile.setOnClickListener {
+            startActivity(Intent(activity, ProfileActivity::class.java))
+        }
+
+        binding.btnAbout.setOnClickListener {
+            startActivity(Intent(activity, TentangActivity::class.java))
+        }
+
+        binding.btnHelp.setOnClickListener {
+            startActivity(Intent(activity, BantuanActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {

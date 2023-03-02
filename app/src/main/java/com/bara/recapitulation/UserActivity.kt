@@ -8,10 +8,12 @@ import com.bara.recapitulation.databinding.ActivityUserBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserFragment
 import com.bara.recapitulation.ui.Recap.RecapUser.RecapUserFragment
 import com.bara.recapitulation.ui.Settings.SettingsUser.SettingsUserFragment
+import com.inyongtisto.myhelper.extension.showToast
 
 class UserActivity : AppCompatActivity() {
     lateinit var binding: ActivityUserBinding
     val fm : FragmentManager = supportFragmentManager
+    private var backPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,16 @@ class UserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         intentView()
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+        } else {
+            showToast("Tekan sekali lagi untuk keluar")
+        }
+
+        backPressedTime = System.currentTimeMillis()
     }
 
     private fun intentView(){

@@ -14,27 +14,28 @@
         android:background="@color/main_color_blue"
         android:orientation="vertical">
         
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/welcomeDest"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            app:cardCornerRadius="8dp"
-            android:backgroundTint="@color/card_blue">
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/welcomeDest"-->
+<!--            android:layout_width="@dimen/_30sdp"-->
+<!--            android:layout_height="@dimen/_30sdp"-->
+<!--            android:layout_marginHorizontal="30dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            app:cardCornerRadius="8dp"-->
+<!--            android:backgroundTint="@color/card_blue">-->
 
-            <ImageView
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_10sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_arrow_light"/>
-        </com.google.android.material.card.MaterialCardView>
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/_10sdp"-->
+<!--                android:layout_height="@dimen/_10sdp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@drawable/icon_arrow_light"/>-->
+<!--        </com.google.android.material.card.MaterialCardView>-->
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="40dp"
-            android:src="@drawable/ilustration_data"/>
+            android:layout_marginTop="@dimen/_40sdp"
+            android:src="@drawable/ilustration_data" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,17 +64,23 @@
             android:textSize="@dimen/_8ssp"
             tools:ignore="TextSizeCheck" />
 
-        <EditText
-            android:id="@+id/inputEmail"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/my_input_layout"
-            android:fontFamily="@font/nexa_regular"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:textColor="@color/main_color_black"
-            android:textSize="@dimen/_14ssp"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/my_input_layout"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_14ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,17 +93,25 @@
             android:textSize="@dimen/_8ssp"
             tools:ignore="TextSizeCheck" />
 
-        <EditText
-            android:id="@+id/inputPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/my_input_layout"
-            android:fontFamily="@font/nexa_regular"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:textColor="@color/main_color_black"
-            android:textSize="@dimen/_14ssp"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#DDDDDD">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/my_input_layout"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_14ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.bara.recapitulation.ui.Dashboard.DashboardAdmin
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import  androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bara.recapitulation.databinding.FragmentAdminDashboardBinding
+import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserViewModel
+import kotlinx.android.synthetic.main.activity_welcome.*
 import java.util.*
 
 class DashboardAdminFragment : Fragment() {
@@ -31,6 +34,13 @@ class DashboardAdminFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setData()
+        intentView()
+    }
+
+    private fun intentView() {
+        binding.btnCreateKaryawan.setOnClickListener {
+            startActivity(Intent(context, CreateKaryawanActivity::class.java))
+        }
     }
 
     private fun setData() {

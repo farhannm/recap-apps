@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bara.recapitulation.AdminActivity
 import com.bara.recapitulation.UserActivity
-import com.bara.recapitulation.Welcome
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
 import com.bara.recapitulation.databinding.ActivityAuthBinding
@@ -18,9 +17,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class AuthActivity : AppCompatActivity() {
-
     private val viewModel: AuthViewModel by viewModel()
     lateinit var binding: ActivityAuthBinding
+    private var backPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +27,16 @@ class AuthActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setData()
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+        } else {
+            showToast("Tekan sekali lagi untuk keluar")
+        }
+
+        backPressedTime = System.currentTimeMillis()
     }
 
     override fun onStart() {
@@ -44,10 +53,10 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setData(){
-        binding.welcomeDest.setOnClickListener {
-            pushActivity(Welcome::class.java)
-            finish()
-        }
+//        binding.welcomeDest.setOnClickListener {
+//            pushActivity(Welcome::class.java)
+//            finish()
+//        }
 
         binding.btnLogin.setOnClickListener {
             login()
@@ -87,7 +96,7 @@ class AuthActivity : AppCompatActivity() {
                 loading.dialogDismiss()
             }
 
-        }, 500)
+        }, 800)
     }
 
 

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Recapitulation</string>
     <string name="welcome_text">Semua kebutuhan “SUPER Team” Bara Enterprise.</string>
+
+    <string-array name="tipe_kerja">
+        <item>Proggress weekday</item>
+        <item>Lembur weekday</item>
+        <item>Lembur weekend</item>
+    </string-array>
 </resources>

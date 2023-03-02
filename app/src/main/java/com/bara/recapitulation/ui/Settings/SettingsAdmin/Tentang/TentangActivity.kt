@@ -1,15 +1,15 @@
-package com.bara.recapitulation.ui.Settings.SettingsUser.Bantuan
+package com.bara.recapitulation.ui.Settings.SettingsAdmin.Tentang
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bara.recapitulation.databinding.ActivityUserBantuanBinding
+import com.bara.recapitulation.databinding.ActivityAdminTentangBinding
 
-class BantuanActivity : AppCompatActivity() {
-    lateinit var binding: ActivityUserBantuanBinding
+class TentangActivity : AppCompatActivity() {
+    lateinit var binding: ActivityAdminTentangBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUserBantuanBinding.inflate(layoutInflater)
+        binding = ActivityAdminTentangBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         intentView()

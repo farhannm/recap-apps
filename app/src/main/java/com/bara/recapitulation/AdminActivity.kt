@@ -11,10 +11,12 @@ import com.bara.recapitulation.ui.Recap.RecapAdmin.RecapAdminFragment
 import com.bara.recapitulation.ui.Recap.RecapUser.RecapUserFragment
 import com.bara.recapitulation.ui.Settings.SettingsAdmin.SettingsAdminFragment
 import com.bara.recapitulation.ui.Settings.SettingsUser.SettingsUserFragment
+import com.inyongtisto.myhelper.extension.showToast
 
 class AdminActivity : AppCompatActivity() {
     lateinit var binding: ActivityAdminBinding
     val fm : FragmentManager = supportFragmentManager
+    private var backPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,16 @@ class AdminActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         intentView()
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+        } else {
+            showToast("Tekan sekali lagi untuk keluar")
+        }
+
+        backPressedTime = System.currentTimeMillis()
     }
 
     private fun intentView(){

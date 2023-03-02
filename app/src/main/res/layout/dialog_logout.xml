@@ -45,7 +45,7 @@
                     android:layout_height="1.8dp"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="5dp"
-                    android:background="@drawable/my_line" />
+                    android:background="@drawable/my_line_dark" />
 
                 <TextView
                     android:layout_width="wrap_content"

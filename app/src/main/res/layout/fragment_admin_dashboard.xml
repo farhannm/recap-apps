@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Dashboard.DashboardAdmin.DashboardAdminFragment">
@@ -42,6 +43,87 @@
             android:textColor="@color/secondary_light_themes"
             android:textSize="@dimen/_10sdp"
             tools:ignore="TextSizeCheck" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="@color/main_color_blue">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="15dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nexa_regular"
+                            android:text="BARA Super Team"
+                            android:textColor="@color/secondary_light_themes"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="TextSizeCheck" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/txtAllKaryawan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:fontFamily="@font/nexa_regular"
+                                android:text="Lihat karyawan"
+                                android:textColor="@color/bara_themes"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="TextSizeCheck" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtPeriode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nexa_bold"
+                        android:text="11 working"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_25ssp"
+                        tools:ignore="TextSizeCheck" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_250sdp"
+                    android:src="@drawable/ilustration_sailing"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCreateKaryawan"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:backgroundTint="@color/main_color_secondary_blue"
+                    android:fontFamily="@font/nexa_bold"
+                    android:text="Tambah karyawan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:cornerRadius="5dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 </FrameLayout>

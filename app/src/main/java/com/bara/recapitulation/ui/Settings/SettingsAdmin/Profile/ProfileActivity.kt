@@ -1,18 +1,17 @@
-package com.bara.recapitulation.ui.Settings.SettingsUser.Profile
+package com.bara.recapitulation.ui.Settings.SettingsAdmin.Profile
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bara.recapitulation.databinding.ActivityUserProfileBinding
+import com.bara.recapitulation.databinding.ActivityAdminProfileBinding
 import com.bara.recapitulation.ui.CustomDialog.CustomDialog
-import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ChangePass.ChangePasswordActivity
 
 class ProfileActivity : AppCompatActivity() {
-    lateinit var binding: ActivityUserProfileBinding
+    lateinit var binding: ActivityAdminProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUserProfileBinding.inflate(layoutInflater)
+        binding = ActivityAdminProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         intentView()
@@ -24,10 +23,6 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun intentView() {
-        binding.btnChangePass.setOnClickListener {
-            startActivity(Intent(this, ChangePasswordActivity::class.java))
-        }
-
         binding.settingsDest.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }

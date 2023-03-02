@@ -23,6 +23,10 @@
         <item name="android:textColorHint">@color/secondary_light_themes</item>
         <item name="fontFamily">@font/nexa_regular</item>
     </style>
+    
+    <style name="DialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorAccent">@color/main_color_blue</item>
+    </style>
 
     <style name="roundedImage">
         <item name="cornerFamily">rounded</item>
