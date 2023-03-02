@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bara.recapitulation.databinding.FragmentUserSettingsBinding
-import com.bara.recapitulation.ui.Settings.SettingsAdmin.Bantuan.BantuanActivity
-import com.bara.recapitulation.ui.Settings.SettingsAdmin.Profile.ProfileActivity
-import com.bara.recapitulation.ui.Settings.SettingsAdmin.Tentang.TentangActivity
+import com.bara.recapitulation.ui.Settings.SettingsUser.Bantuan.BantuanActivity
+import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ProfileActivity
+import com.bara.recapitulation.ui.Settings.SettingsUser.Tentang.TentangActivity
 
 class SettingsUserFragment : Fragment() {
 

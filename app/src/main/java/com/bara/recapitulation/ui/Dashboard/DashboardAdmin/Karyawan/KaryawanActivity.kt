@@ -11,5 +11,13 @@ class KaryawanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityKaryawanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        intentView()
+    }
+
+    private fun intentView() {
+        binding.dashboardDest.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }

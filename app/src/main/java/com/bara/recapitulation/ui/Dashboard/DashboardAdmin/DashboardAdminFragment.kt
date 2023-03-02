@@ -10,6 +10,7 @@ import  androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bara.recapitulation.databinding.FragmentAdminDashboardBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
+import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.KaryawanActivity
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserViewModel
 import kotlinx.android.synthetic.main.activity_welcome.*
 import java.util.*
@@ -40,6 +41,10 @@ class DashboardAdminFragment : Fragment() {
     private fun intentView() {
         binding.btnCreateKaryawan.setOnClickListener {
             startActivity(Intent(context, CreateKaryawanActivity::class.java))
+        }
+
+        binding.txtAllKaryawan.setOnClickListener {
+            startActivity(Intent(context, KaryawanActivity::class.java))
         }
     }
 

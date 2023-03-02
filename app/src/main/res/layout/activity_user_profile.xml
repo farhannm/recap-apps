@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.Settings.SettingsAdmin.Profile.ProfileActivity">
+    tools:context=".ui.Settings.SettingsUser.Profile.ProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

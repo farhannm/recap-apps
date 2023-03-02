@@ -1,11 +1,13 @@
 package com.bara.recapitulation.ui.Recap.RecapAdmin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bara.recapitulation.databinding.FragmentAdminRecapBinding
+import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
 
 class RecapAdminFragment : Fragment() {
 
@@ -25,6 +27,13 @@ class RecapAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        intentView()
+    }
+
+    private fun intentView() {
+        binding.btnCreateRecap.setOnClickListener {
+            startActivity(Intent(context, CreateKaryawanActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {
