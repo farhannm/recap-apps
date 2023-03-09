@@ -36,25 +36,34 @@
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            app:shapeAppearanceOverlay="@style/roundedImage"
+        <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_marginTop="@dimen/_50sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
+            app:cardCornerRadius="@dimen/_50sdp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/icon_profile"/>
+            android:layout_marginBottom="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ilustration_deals"/>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/edtImageProfile"
+            android:id="@+id/uploadImageProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_30sdp"
             android:layout_gravity="center_horizontal"
-            android:text="Edit picture or avatar"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:clickable="true"
+            android:fontFamily="@font/nexa_regular"
+            android:text="Upload gambar"
+            android:textColor="@color/blue"
             android:textSize="@dimen/_10ssp"
-            android:textColor="@color/secondary_light_themes"
-            android:fontFamily="@font/nexa_regular"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/profileName"
@@ -147,26 +156,44 @@
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:clickable="true"
                 android:orientation="horizontal"
-                android:layout_alignParentBottom="true">
+                tools:ignore="TouchTargetSizeCheck">
 
                 <ImageView
                     android:layout_width="@dimen/_15sdp"
                     android:layout_height="@dimen/_15sdp"
                     android:layout_alignParentBottom="true"
-                    android:src="@drawable/icon_logout"/>
+                    android:src="@drawable/icon_logout" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/nexa_regular"
                     android:text="Logout"
-                    android:textSize="@dimen/_10ssp"
                     android:textColor="@color/sweet_red"
-                    android:fontFamily="@font/nexa_regular"/>
+                    android:textSize="@dimen/_10ssp" />
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/btnSaveChanges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:clickable="true"
+                android:fontFamily="@font/nexa_regular"
+                android:text="Simpan"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
     </LinearLayout>
 

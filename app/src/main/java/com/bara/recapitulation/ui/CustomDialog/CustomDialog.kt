@@ -2,18 +2,17 @@ package com.bara.recapitulation.ui.CustomDialog
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Intent
-import com.bara.recapitulation.AdminActivity
 import com.bara.recapitulation.R
 import com.bara.recapitulation.ui.Auth.AuthActivity
 import com.bara.recapitulation.util.Pref
-import com.bara.recapitulation.util.SharedPref
 import com.inyongtisto.myhelper.extension.pushActivity
 import kotlinx.android.synthetic.main.dialog_logout.view.*
+import kotlinx.android.synthetic.main.dialog_logout.view.btnBatal
+import kotlinx.android.synthetic.main.dialog_profile_image.view.*
 
 class CustomDialog(val mActivity: Activity) {
-
     private lateinit var dialog: AlertDialog
+
 
     fun dialogSuccess(){
         val inflater  = mActivity.layoutInflater
@@ -21,7 +20,7 @@ class CustomDialog(val mActivity: Activity) {
 
         val builder = AlertDialog.Builder(mActivity)
         builder.setView(dialogView)
-        builder.setCancelable(false)
+        builder.setCancelable(true)
         dialog = builder.create()
         dialog = builder.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -33,7 +32,7 @@ class CustomDialog(val mActivity: Activity) {
 
         val builder = AlertDialog.Builder(mActivity)
         builder.setView(dialogView)
-        builder.setCancelable(false)
+        builder.setCancelable(true)
         dialog = builder.create()
         dialog = builder.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -71,6 +70,29 @@ class CustomDialog(val mActivity: Activity) {
             Pref.setDataAs(mActivity, "")
             mActivity.pushActivity(AuthActivity::class.java)
             mActivity.finish()
+        }
+    }
+
+    fun dialogProfileImage(){
+        val inflater  = mActivity.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_profile_image, null)
+
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setView(dialogView)
+        builder.setCancelable(true)
+        dialog = builder.create()
+        dialog = builder.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        dialogView.btnBatal.setOnClickListener(){
+            dialog.dismiss()
+        }
+
+        dialogView.uploadImageProfile.setOnClickListener {
+        }
+
+        dialogView.btnSimpanGambar.setOnClickListener {
+
         }
     }
 

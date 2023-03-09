@@ -1,30 +1,16 @@
-package com.bara.recapitulation.ui.Auth
+package com.bara.recapitulation.ui.Settings.SettingsUser.Profile
 
 import android.app.Activity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.bara.recapitulation.core.data.repository.AppRepository
-import com.bara.recapitulation.core.data.source.model.User
-import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
-import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
 import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
 import com.bara.recapitulation.ui.CustomDialog.CustomDialog
+import okhttp3.MultipartBody
 
-class AuthViewModel(val repo: AppRepository): ViewModel(){
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "Halo aku Farhan."
-    }
-    val text: LiveData<String> = _text
-
-    fun ubahData(){
-        _text.postValue("Halo aku Paan.")
-    }
-
-    fun login(data: AuthRequest) = repo.login(data).asLiveData()
-//    fun register(data: RegisterRequest) = repo.register(data).asLiveData()
+class ProfileViewModel(val repo: AppRepository): ViewModel(){
+    fun updateUser(data: UpdateUserRequest) = repo.updateUser(data).asLiveData()
+    fun uploadUser(token: String? = null, id: Int? = null, fileImage: MultipartBody.Part? = null) = repo.uploadUser(token, id, fileImage).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = CustomDialog(mActivity = myActivity)
@@ -61,4 +47,10 @@ class AuthViewModel(val repo: AppRepository): ViewModel(){
 
         }, 800)
     }
+
+    fun dialogLogout(myActivity: Activity){
+        val logout = CustomDialog(mActivity = myActivity)
+        logout.dialogLogout()
+    }
+
 }

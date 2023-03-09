@@ -18,8 +18,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun dialogLogout(){
-        val logout = CustomDialog(this)
-        logout.dialogLogout()
+
     }
 
     private fun intentView() {

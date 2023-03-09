@@ -18,6 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Recap.RecapAdmin.Recap.CreateRecapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.Dashboard.DashboardAdmin.Karyawan.DetailKaryawanActivity"
             android:exported="false" />
         <activity

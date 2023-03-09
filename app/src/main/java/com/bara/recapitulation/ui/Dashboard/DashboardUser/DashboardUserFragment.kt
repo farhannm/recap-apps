@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bara.recapitulation.databinding.FragmentUserDashboardBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.Task.CreateTaskActivity
+import com.bara.recapitulation.util.SharedPref
 import java.text.SimpleDateFormat
 
 class DashboardUserFragment : Fragment() {
@@ -33,20 +34,31 @@ class DashboardUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setData()
-        intentView()
+        clickListener()
     }
 
-    private fun intentView() {
+    override fun onResume() {
+        initData()
+        super.onResume()
+    }
+
+    private fun clickListener() {
         binding.btnAddTask.setOnClickListener {
             startActivity(Intent(context, CreateTaskActivity::class.java))
         }
+
+        initData()
     }
 
-    private fun setData(){
-        dashboardViewModel.getDate.observe(viewLifecycleOwner, Observer {
-            binding.formatDateTime.text = it
-        })
+    private fun initData() {
+        val user = SharedPref.getUser()
+        if (user != null) {
+            binding.txtUsername.setText(user.nama)
+            dashboardViewModel.getDate.observe(viewLifecycleOwner, Observer {
+                binding.formatDateTime.text = it
+            })
+        }
+
     }
 
     override fun onDestroyView() {

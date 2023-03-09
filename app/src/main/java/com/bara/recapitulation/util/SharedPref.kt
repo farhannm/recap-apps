@@ -14,4 +14,9 @@ object SharedPref : KotprefModel() {
         user = data.toJson()
     }
 
+    fun getUser() : User? {
+        if (user.isEmpty()) return null
+        return user.toModel(User::class.java)
+    }
+
 }

@@ -10,7 +10,7 @@ class DashboardUserViewModel : ViewModel() {
 
         val date = System.currentTimeMillis()
 
-        val sdf = SimpleDateFormat("MMM, dd MM yyyy h:mm a", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd MMMM, yyyy h:mm a", Locale.getDefault())
         val dateString: String = sdf.format(date)
 
         private val _dateFormat = MutableLiveData<String>().apply {

@@ -8,6 +8,7 @@ import android.preference.PreferenceManager
 object Pref {
     private val DATA_LOGIN = "status_login"
     private val DATA_AS = "as"
+    private val TOKEN = "token"
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)
@@ -31,6 +32,16 @@ object Pref {
 
     fun getDataLogin(context: Context): Boolean {
         return getSharedPreferences(context).getBoolean(DATA_LOGIN, false)
+    }
+
+    fun setToken(context: Context, token: String?){
+        val editor = getSharedPreferences(context).edit()
+        editor.putString(TOKEN, token)
+        editor.apply()
+    }
+
+    fun getToken(context: Context) : String? {
+        return getSharedPreferences(context).getString(TOKEN, "")
     }
 
     fun clearData(context: Context) {

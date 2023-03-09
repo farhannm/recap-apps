@@ -3,11 +3,17 @@ package com.bara.recapitulation.ui.Recap.RecapUser
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
-class NRecapUserViewModel : ViewModel() {
+class RecapUserViewModel : ViewModel() {
+    val date = System.currentTimeMillis()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is recap Fragment"
+    val sdf = SimpleDateFormat("MMMM", Locale.getDefault())
+    val dateString: String = sdf.format(date)
+
+    private val _dateFormat = MutableLiveData<String>().apply {
+        value = dateString
     }
-    val text: LiveData<String> = _text
+    val getDate: LiveData<String> = _dateFormat
 }

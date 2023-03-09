@@ -5,17 +5,63 @@ import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.RemoteDataSource
 import com.bara.recapitulation.core.data.source.remote.network.Resource
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
+import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
+import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
 import com.bara.recapitulation.util.SharedPref
 import com.inyongtisto.myhelper.extension.getErrorBody
 import com.inyongtisto.myhelper.extension.logs
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flow
+import okhttp3.MultipartBody
 
 class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
 
-    fun login(data: AuthRequest) = flow {
-        emit(Resource.loading(null))
+    fun login(data: AuthRequest) = channelFlow {
+        send(Resource.loading(null))
         try {
             remote.login(data).let {
+                if (it.isSuccessful) {
+                    SharedPref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    SharedPref.setUser(user)
+                    send(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    send(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                    logs("Error : " + "keterangan error")
+                }
+            }
+        } catch (e: Exception) {
+            send(Resource.failed(e.message ?: "Terjadi kesalahan!", null))
+            logs("Error : " + e.message)
+        }
+    }
+
+//    fun register(data: RegisterRequest) = flow {
+//        emit(Resource.loading(null))
+//        try {
+//            remote.register(data).let {
+//                if (it.isSuccessful) {
+//                    SharedPref.isLogin = true
+//                    val body = it.body()
+//                    val user = body?.data
+//                    SharedPref.setUser(user)
+//                    emit(Resource.success(user))
+//                    logs("Berhasil : " + body.toString())
+//                } else {
+//                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+//                }
+//            }
+//        } catch (e: Exception) {
+//            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+//        }
+//    }
+
+    fun updateUser(data: UpdateUserRequest) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.updateUser(data).let {
                 if (it.isSuccessful) {
                     SharedPref.isLogin = true
                     val body = it.body()
@@ -25,15 +71,31 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                     logs("Berhasil : " + body.toString())
                 } else {
                     emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
-                    logs("Error : " + "keterangan error")
                 }
             }
         } catch (e: Exception) {
             emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
-            logs("Error : " + e.message)
         }
     }
 
-
+    fun uploadUser(token: String?, id: Int? = null, fileImage: MultipartBody.Part? = null) = channelFlow {
+        send(Resource.loading(null))
+        try {
+            remote.uploadUser(token, id, fileImage).let {
+                if (it.isSuccessful) {
+                    SharedPref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    SharedPref.setUser(user)
+                    send(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    send(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            send(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
 
 }

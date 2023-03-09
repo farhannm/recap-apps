@@ -19,7 +19,6 @@ class CreateTaskActivity : AppCompatActivity() {
         binding = ActivityCreateTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        myCalendar()
         intentView()
     }
 
@@ -40,6 +39,8 @@ class CreateTaskActivity : AppCompatActivity() {
         binding.dashboardDest.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+
+        myCalendar()
     }
 
     private fun myCalendar() {

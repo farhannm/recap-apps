@@ -1,5 +1,6 @@
 package com.bara.recapitulation.core.data.source.remote.network
 
+import com.bara.recapitulation.BuildConfig
 import com.bara.recapitulation.util.Constant
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

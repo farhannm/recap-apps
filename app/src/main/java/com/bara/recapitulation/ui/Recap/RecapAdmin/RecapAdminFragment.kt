@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bara.recapitulation.databinding.FragmentAdminRecapBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.CreateRecapActivity
 
 class RecapAdminFragment : Fragment() {
 
@@ -32,7 +33,7 @@ class RecapAdminFragment : Fragment() {
 
     private fun intentView() {
         binding.btnCreateRecap.setOnClickListener {
-            startActivity(Intent(context, CreateKaryawanActivity::class.java))
+            startActivity(Intent(context, CreateRecapActivity::class.java))
         }
     }
 

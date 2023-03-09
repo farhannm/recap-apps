@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Recap.RecapAdmin.Recap.CreateRecapActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="35dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dashboardDest"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/card_light">
+
+            <ImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_arrow_dark"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="Data per bulan"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/main_color_black"
+            android:fontFamily="@font/nexa_bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nexa_book"
+                android:text="Bulan"
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="TextSizeCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputBulan"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/my_input_layout"
+                    android:fontFamily="@font/nexa_regular"
+                    android:padding="10dp"
+                    android:textColor="@color/main_color_black"
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nexa_book"
+                android:text="Periode"
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="TextSizeCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnDatePickerStart"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:cardCornerRadius="8dp"
+                    android:backgroundTint="@color/card_light">
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_fire_start"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/txtStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Start"
+                    android:textColorHint="@color/secondary_light_themes"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/main_color_black"
+                    android:fontFamily="@font/nexa_bold"/>
+
+                <View
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:background="@drawable/my_line_grey"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnDatePickerEnd"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:cardCornerRadius="8dp"
+                    android:backgroundTint="@color/card_light">
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_fire_end"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/txtEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="End"
+                    android:textColorHint="@color/secondary_light_themes"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/main_color_black"
+                    android:fontFamily="@font/nexa_bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nexa_book"
+            android:text="Total jam kerja (jam)"
+            android:textColor="@color/main_color_black"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="TextSizeCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputTotalJam"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/my_input_layout"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/nexa_book"
+            android:text="Total jam kerja (jam)"
+            android:textColor="@color/main_color_black"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="TextSizeCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputToleransi"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/my_input_layout"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCreateRecap"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentBottom="true"
+                android:backgroundTint="@color/main_color_blue"
+                android:fontFamily="@font/nexa_regular"
+                android:text="Tambah"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:cornerRadius="10dp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
