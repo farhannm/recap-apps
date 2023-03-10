@@ -9,7 +9,6 @@ import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
 import com.bara.recapitulation.databinding.ActivityAuthBinding
 import com.bara.recapitulation.util.Pref
-import com.bara.recapitulation.util.TokenManager
 import com.inyongtisto.myhelper.extension.isEmpty
 import com.inyongtisto.myhelper.extension.pushActivity
 import com.inyongtisto.myhelper.extension.showToast

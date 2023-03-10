@@ -23,14 +23,14 @@ interface ApiService {
         @Body auth: RegisterRequest
     ) : Response<AuthResponse>
 
-    @PUT("user/{id}")
+    @PUT("api/user/{id}")
     suspend fun updateUser(
         @Path("id") int: Int? = null,
         @Part data: UpdateUserRequest
     ) : Response<UpdateUserResponse>
 
     @Multipart
-    @POST("upload-user/{id}")
+    @POST("api/upload-user/{id}")
     suspend fun uploadUser(
         @Header("Authorization") api_token : String?,
         @Path("id") int: Int? = null,

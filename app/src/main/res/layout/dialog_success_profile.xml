@@ -9,7 +9,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="230dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         app:cardCornerRadius="30dp">
@@ -26,14 +26,14 @@
                 android:layout_gravity="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/failed" />
+                app:lottie_rawRes="@raw/success" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/nexa_bold"
-                android:text="Ooops!"
+                android:text="Woohoo!"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/main_color_black"
                 android:textSize="@dimen/_16sdp" />
@@ -44,14 +44,12 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nexa_book"
-                android:text="Email atau Password mungkin salah."
+                android:text="Upload foto profile berhasil!"
                 android:textAlignment="center"
                 android:textColor="@color/secondary_light_themes"
                 android:textSize="@dimen/_10sdp"
                 tools:ignore="TextSizeCheck" />
         </LinearLayout>
-
-
 
 
     </androidx.cardview.widget.CardView>

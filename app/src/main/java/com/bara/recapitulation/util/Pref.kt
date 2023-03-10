@@ -3,12 +3,29 @@ package com.bara.recapitulation.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.bara.recapitulation.core.data.source.model.User
+import com.chibatching.kotpref.KotprefModel
+import com.inyongtisto.myhelper.extension.toJson
+import com.inyongtisto.myhelper.extension.toModel
 
 
-object Pref {
+object Pref : KotprefModel(){
     private val DATA_LOGIN = "status_login"
     private val DATA_AS = "as"
     private val TOKEN = "token"
+
+    var isLogin by booleanPref(false)
+    var user by stringPref()
+
+    fun setUser(data: User?){
+        user = data.toJson()
+    }
+
+    fun getUser() : User? {
+        if (user.isEmpty()) return null
+        return user.toModel(User::class.java)
+    }
+
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)

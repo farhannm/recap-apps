@@ -7,6 +7,7 @@ import com.bara.recapitulation.core.data.source.remote.network.Resource
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
 import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
 import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
+import com.bara.recapitulation.util.Pref
 import com.bara.recapitulation.util.SharedPref
 import com.inyongtisto.myhelper.extension.getErrorBody
 import com.inyongtisto.myhelper.extension.logs
@@ -21,10 +22,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         try {
             remote.login(data).let {
                 if (it.isSuccessful) {
-                    SharedPref.isLogin = true
+                    Pref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    SharedPref.setUser(user)
+                    Pref.setUser(user)
                     send(Resource.success(user))
                     logs("Berhasil : " + body.toString())
                 } else {
@@ -63,10 +64,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         try {
             remote.updateUser(data).let {
                 if (it.isSuccessful) {
-                    SharedPref.isLogin = true
+                    Pref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    SharedPref.setUser(user)
+                    Pref.setUser(user)
                     emit(Resource.success(user))
                     logs("Berhasil : " + body.toString())
                 } else {
@@ -83,10 +84,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         try {
             remote.uploadUser(token, id, fileImage).let {
                 if (it.isSuccessful) {
-                    SharedPref.isLogin = true
+                    Pref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    SharedPref.setUser(user)
+                    Pref.setUser(user)
                     send(Resource.success(user))
                     logs("Berhasil : " + body.toString())
                 } else {

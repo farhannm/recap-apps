@@ -6,11 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.bara.recapitulation.core.data.repository.AppRepository
-import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
-import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
-import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
-import com.bara.recapitulation.ui.CustomDialog.CustomDialog
+import com.bara.recapitulation.ui.CustomDialog.CustomDialogActivity
 
 class AuthViewModel(val repo: AppRepository): ViewModel(){
 
@@ -27,7 +24,7 @@ class AuthViewModel(val repo: AppRepository): ViewModel(){
 //    fun register(data: RegisterRequest) = repo.register(data).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
-        val loading = CustomDialog(mActivity = myActivity)
+        val loading = CustomDialogActivity(mActivity = myActivity)
         loading.dialogLoading()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
@@ -39,7 +36,7 @@ class AuthViewModel(val repo: AppRepository): ViewModel(){
     }
 
     fun dialogSuccess(myActivity: Activity){
-        val success = CustomDialog(mActivity = myActivity)
+        val success = CustomDialogActivity(mActivity = myActivity)
         success.dialogSuccess()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
@@ -51,7 +48,7 @@ class AuthViewModel(val repo: AppRepository): ViewModel(){
     }
 
     fun dialogFailed(myActivity: Activity){
-        val failed = CustomDialog(mActivity = myActivity)
+        val failed = CustomDialogActivity(mActivity = myActivity)
         failed.dialogFailed()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {

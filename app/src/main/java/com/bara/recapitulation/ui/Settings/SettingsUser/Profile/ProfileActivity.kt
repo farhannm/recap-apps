@@ -10,7 +10,6 @@ import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
 import com.bara.recapitulation.databinding.ActivityUserProfileBinding
 import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ChangePass.ChangePasswordActivity
 import com.bara.recapitulation.util.Pref
-import com.bara.recapitulation.util.SharedPref
 import com.github.drjacky.imagepicker.ImagePicker
 import com.inyongtisto.myhelper.extension.*
 import com.squareup.picasso.Picasso
@@ -28,12 +27,11 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setData()
         clickListener()
     }
 
     override fun onResume() {
-        setData()
+        initData()
         super.onResume()
     }
 
@@ -43,15 +41,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.settingsDest.setOnClickListener {
-            onSupportNavigateUp()
-        }
-
-        binding.btnSaveChanges.setOnClickListener {
-            if (fileImage != null) {
-                uploadUser()
-            } else {
-                showToast("Tidak ada perubahan.")
-            }
+            onBackPressedDispatcher.onBackPressed()
         }
 
         binding.btnLogout.setOnClickListener{
@@ -63,11 +53,9 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun setData(){
-        val user = SharedPref.getUser()
+    private fun initData(){
+        val user = Pref.getUser()
         if (user != null) {
-
-            Pref.getToken(this)
 
             binding.apply {
                 profileName.text = user.nama
@@ -82,12 +70,11 @@ class ProfileActivity : AppCompatActivity() {
     private fun picImage() {
         ImagePicker.with(this)
             .crop()
-            .maxResultSize(1080, 1080, true)
+            .maxResultSize(3080, 3080, true)
             .createIntentFromDialog { launcher.launch(it) }
     }
 
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
                 val uri = it.data?.data!!
                 fileImage = File(uri.path!!)
@@ -96,43 +83,45 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-//    private fun updateUser(){
-//        val idUser = SharedPref.getUser()?.id
-//
-//        val body = UpdateUserRequest(
-//            idUser.int(),
-//            nama = binding.profileName.text.toString(),
-//            email = binding.profileEmail.text.toString(),
-//            status = binding.profileRole.text.toString()
-//
-//        )
-//
-//        viewModel.updateUser(body).observe(this) {
-//
-//            when (it.state) {
-//                State.SUCCESS -> {
-//                    viewModel.dialogSuccess(this)
-//                }
-//                State.FAILED -> {
-//                    viewModel.dialogFailed(this)
-//                }
-//                State.LOADING -> {
-//                    viewModel.dialogLoading(this)
-//                }
-//            }
-//        }
-//    }
+    private fun updateUser(){
+        val idUser = Pref.getUser()?.id
+
+        val body = UpdateUserRequest(
+            idUser.int(),
+            nama = binding.profileName.text.toString(),
+            email = binding.profileEmail.text.toString(),
+            status = binding.profileRole.text.toString()
+
+        )
+
+        viewModel.updateUser(body).observe(this) {
+
+            when (it.state) {
+                State.SUCCESS -> {
+                    viewModel.dialogSuccess(this)
+                    onBackPressed()
+                }
+                State.FAILED -> {
+                    viewModel.dialogFailed(this)
+                }
+                State.LOADING -> {
+                    viewModel.dialogLoading(this)
+                }
+            }
+        }
+    }
 
     private fun uploadUser(){
-        val idUser = SharedPref.getUser()?.id
+        val idUser = Pref.getUser()?.id
         val file = fileImage.toMultipartBody()
-        val userToken = SharedPref.getUser()?.api_token
+        val userToken = Pref.getUser()?.api_token
 
         viewModel.uploadUser(userToken, idUser, file).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {
                     Pref.getToken(this)
+                    initData()
                     viewModel.dialogSuccess(this)
                 }
                 State.FAILED -> {
@@ -145,9 +134,9 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
+    override fun onDestroy() {
+        super.onDestroy()
     }
+
 
 }

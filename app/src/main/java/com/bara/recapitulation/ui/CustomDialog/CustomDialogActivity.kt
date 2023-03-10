@@ -8,15 +8,14 @@ import com.bara.recapitulation.util.Pref
 import com.inyongtisto.myhelper.extension.pushActivity
 import kotlinx.android.synthetic.main.dialog_logout.view.*
 import kotlinx.android.synthetic.main.dialog_logout.view.btnBatal
-import kotlinx.android.synthetic.main.dialog_profile_image.view.*
 
-class CustomDialog(val mActivity: Activity) {
+class CustomDialogActivity(val mActivity: Activity) {
     private lateinit var dialog: AlertDialog
 
 
     fun dialogSuccess(){
         val inflater  = mActivity.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_success, null)
+        val dialogView = inflater.inflate(R.layout.dialog_success_profile, null)
 
         val builder = AlertDialog.Builder(mActivity)
         builder.setView(dialogView)
@@ -73,28 +72,6 @@ class CustomDialog(val mActivity: Activity) {
         }
     }
 
-    fun dialogProfileImage(){
-        val inflater  = mActivity.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_profile_image, null)
-
-        val builder = AlertDialog.Builder(mActivity)
-        builder.setView(dialogView)
-        builder.setCancelable(true)
-        dialog = builder.create()
-        dialog = builder.show()
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-
-        dialogView.btnBatal.setOnClickListener(){
-            dialog.dismiss()
-        }
-
-        dialogView.uploadImageProfile.setOnClickListener {
-        }
-
-        dialogView.btnSimpanGambar.setOnClickListener {
-
-        }
-    }
 
     fun dialogDismiss(){
         dialog.dismiss()

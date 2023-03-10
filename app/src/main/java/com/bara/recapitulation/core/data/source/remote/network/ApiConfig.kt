@@ -1,6 +1,5 @@
 package com.bara.recapitulation.core.data.source.remote.network
 
-import com.bara.recapitulation.BuildConfig
 import com.bara.recapitulation.util.Constant
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -11,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfig {
 
-    private const val BASE_URL = Constant.BASE_URL + "api/"
+    private const val BASE_URL = Constant.BASE_URL
 
     private val client: Retrofit
         get() {

@@ -32,6 +32,8 @@ class SettingsUserFragment : Fragment() {
         intentView()
     }
 
+
+
     private fun intentView() {
         binding.btnProfile.setOnClickListener {
             startActivity(Intent(activity, ProfileActivity::class.java))

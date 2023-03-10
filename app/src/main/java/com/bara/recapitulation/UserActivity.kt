@@ -23,6 +23,11 @@ class UserActivity : AppCompatActivity() {
         intentView()
     }
 
+    override fun onResume() {
+        intentView()
+        super.onResume()
+    }
+
     override fun onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
