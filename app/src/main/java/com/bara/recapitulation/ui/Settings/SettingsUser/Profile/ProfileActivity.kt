@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bara.recapitulation.core.data.source.remote.network.State
-import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
 import com.bara.recapitulation.databinding.ActivityUserProfileBinding
 import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ChangePass.ChangePasswordActivity
 import com.bara.recapitulation.util.Pref
@@ -27,15 +26,15 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        clickListener()
+        mainButton()
     }
 
     override fun onResume() {
-        initData()
+        setData()
         super.onResume()
     }
 
-    private fun clickListener(){
+    private fun mainButton(){
         binding.btnChangePass.setOnClickListener {
             startActivity(Intent(this, ChangePasswordActivity::class.java))
         }
@@ -53,7 +52,7 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun initData(){
+    private fun setData(){
         val user = Pref.getUser()
         if (user != null) {
 
@@ -83,33 +82,33 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-    private fun updateUser(){
-        val idUser = Pref.getUser()?.id
-
-        val body = UpdateUserRequest(
-            idUser.int(),
-            nama = binding.profileName.text.toString(),
-            email = binding.profileEmail.text.toString(),
-            status = binding.profileRole.text.toString()
-
-        )
-
-        viewModel.updateUser(body).observe(this) {
-
-            when (it.state) {
-                State.SUCCESS -> {
-                    viewModel.dialogSuccess(this)
-                    onBackPressed()
-                }
-                State.FAILED -> {
-                    viewModel.dialogFailed(this)
-                }
-                State.LOADING -> {
-                    viewModel.dialogLoading(this)
-                }
-            }
-        }
-    }
+//    private fun updateUser(){
+//        val idUser = Pref.getUser()?.id
+//
+//        val body = UpdateUserRequest(
+//            idUser.int(),
+//            nama = binding.profileName.text.toString(),
+//            email = binding.profileEmail.text.toString(),
+//            status = binding.profileRole.text.toString()
+//
+//        )
+//
+//        viewModel.updateUser(body).observe(this) {
+//
+//            when (it.state) {
+//                State.SUCCESS -> {
+//                    viewModel.dialogSuccess(this)
+//                    onBackPressed()
+//                }
+//                State.FAILED -> {
+//                    viewModel.dialogFailed(this)
+//                }
+//                State.LOADING -> {
+//                    viewModel.dialogLoading(this)
+//                }
+//            }
+//        }
+//    }
 
     private fun uploadUser(){
         val idUser = Pref.getUser()?.id
@@ -121,7 +120,7 @@ class ProfileActivity : AppCompatActivity() {
             when (it.state) {
                 State.SUCCESS -> {
                     Pref.getToken(this)
-                    initData()
+                    setData()
                     viewModel.dialogSuccess(this)
                 }
                 State.FAILED -> {

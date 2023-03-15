@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.bara.recapitulation.core.data.source.model.User
+import com.bara.recapitulation.core.data.source.remote.response.AuthResponse
+import com.bara.recapitulation.core.data.source.remote.response.UserResponse
 import com.chibatching.kotpref.KotprefModel
 import com.inyongtisto.myhelper.extension.toJson
 import com.inyongtisto.myhelper.extension.toModel
@@ -17,7 +19,11 @@ object Pref : KotprefModel(){
     var isLogin by booleanPref(false)
     var user by stringPref()
 
-    fun setUser(data: User?){
+    fun setUserAuth(data: AuthResponse?){
+        user = data.toJson()
+    }
+
+    fun setUser(data: UserResponse?){
         user = data.toJson()
     }
 

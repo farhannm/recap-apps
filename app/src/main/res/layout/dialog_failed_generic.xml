@@ -44,7 +44,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nexa_book"
-                android:text="Upload foto gagal."
+                android:text="Terjadi kelasahan."
                 android:textAlignment="center"
                 android:textColor="@color/secondary_light_themes"
                 android:textSize="@dimen/_10sdp"

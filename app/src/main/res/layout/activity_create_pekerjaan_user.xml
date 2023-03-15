@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Dashboard.DashboardUser.Task.TaskActivity">
+    tools:context=".ui.Dashboard.DashboardUser.Pekerjaan.CreatePekerjaanUserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Task"
+            android:text="Task Baru"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
@@ -175,44 +175,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveTask"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_alignParentBottom="true">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDeleteTask"
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:backgroundTint="@color/card_light"
-                    android:fontFamily="@font/nexa_regular"
-                    android:text="Delete"
-                    android:textAllCaps="false"
-                    android:textColor="@color/sweet_red"
-                    android:textSize="14sp"
-                    app:cornerRadius="8dp"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="@dimen/_13sdp"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSaveTask"
-                    android:layout_width="@dimen/_120sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:backgroundTint="@color/main_color_blue"
-                    android:fontFamily="@font/nexa_regular"
-                    android:text="Save"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:cornerRadius="8dp"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
+                android:layout_height="@dimen/_40sdp"
+                android:layout_alignParentBottom="true"
+                android:backgroundTint="@color/main_color_blue"
+                android:fontFamily="@font/nexa_regular"
+                android:text="Create new task"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:cornerRadius="10dp"
+                tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
     </LinearLayout>
 

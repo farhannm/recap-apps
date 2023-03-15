@@ -23,9 +23,13 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
 
         binding.profileDest.setOnClickListener {
-            pushActivity(ProfileActivity::class.java)
-            finish()
+            onSupportNavigateUp()
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }

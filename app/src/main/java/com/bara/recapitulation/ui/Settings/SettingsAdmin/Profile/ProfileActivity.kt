@@ -3,8 +3,11 @@ package com.bara.recapitulation.ui.Settings.SettingsAdmin.Profile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bara.recapitulation.databinding.ActivityAdminProfileBinding
+import com.bara.recapitulation.util.Pref
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileActivity : AppCompatActivity() {
+    private val viewModel: ProfileViewModel by viewModel()
     lateinit var binding: ActivityAdminProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,20 +15,30 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityAdminProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intentView()
+        mainButton()
+        setData()
     }
 
-    private fun dialogLogout(){
+    private fun setData(){
+        val user = Pref.getUser()
+        if (user != null) {
 
+            binding.apply {
+                profileName.text = user.nama
+                profileEmail.text = user.email
+                profileRole.text = user.status
+
+            }
+        }
     }
 
-    private fun intentView() {
+    private fun mainButton() {
         binding.settingsDest.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
         binding.btnLogout.setOnClickListener{
-            dialogLogout()
+            viewModel.dialogLogout(this)
         }
     }
 }

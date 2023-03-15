@@ -8,10 +8,9 @@ import com.bara.recapitulation.UserActivity
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
 import com.bara.recapitulation.databinding.ActivityAuthBinding
+import com.bara.recapitulation.ui.CustomDialog.MyDialog
 import com.bara.recapitulation.util.Pref
-import com.inyongtisto.myhelper.extension.isEmpty
-import com.inyongtisto.myhelper.extension.pushActivity
-import com.inyongtisto.myhelper.extension.showToast
+import com.inyongtisto.myhelper.extension.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -97,5 +96,6 @@ class AuthActivity : AppCompatActivity() {
             }
         }
     }
+
 
 }

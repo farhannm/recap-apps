@@ -1,4 +1,4 @@
-package com.bara.recapitulation.ui.Dashboard.DashboardUser.Task
+package com.bara.recapitulation.ui.Dashboard.DashboardUser.Pekerjaan
 
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
@@ -6,17 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import com.bara.recapitulation.R
-import com.bara.recapitulation.databinding.ActivityAuthBinding
-import com.bara.recapitulation.databinding.ActivityCreateTaskBinding
+import com.bara.recapitulation.databinding.ActivityCreatePekerjaanUserBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreateTaskActivity : AppCompatActivity() {
-    lateinit var binding: ActivityCreateTaskBinding
+class CreatePekerjaanUserActivity : AppCompatActivity() {
+    lateinit var binding: ActivityCreatePekerjaanUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCreateTaskBinding.inflate(layoutInflater)
+        binding = ActivityCreatePekerjaanUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         intentView()
@@ -55,7 +54,7 @@ class CreateTaskActivity : AppCompatActivity() {
 
         binding.btnDatePicker.setOnClickListener {
 
-            DatePickerDialog(this, R.style.DialogTheme,datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+            DatePickerDialog(this,datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
     }

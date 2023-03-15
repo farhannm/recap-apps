@@ -1,14 +1,11 @@
 package com.bara.recapitulation.core.data.repository
 
 import com.bara.recapitulation.core.data.source.local.LocalDataSource
-import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.RemoteDataSource
 import com.bara.recapitulation.core.data.source.remote.network.Resource
 import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
-import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
-import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
+import com.bara.recapitulation.core.data.source.remote.request.UserRequest
 import com.bara.recapitulation.util.Pref
-import com.bara.recapitulation.util.SharedPref
 import com.inyongtisto.myhelper.extension.getErrorBody
 import com.inyongtisto.myhelper.extension.logs
 import kotlinx.coroutines.flow.channelFlow
@@ -25,7 +22,7 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                     Pref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    Pref.setUser(user)
+                    Pref.setUserAuth(user)
                     send(Resource.success(user))
                     logs("Berhasil : " + body.toString())
                 } else {
@@ -59,7 +56,7 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
 //        }
 //    }
 
-    fun updateUser(data: UpdateUserRequest) = flow {
+    fun updateUser(data: UserRequest) = flow {
         emit(Resource.loading(null))
         try {
             remote.updateUser(data).let {

@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="30dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -165,7 +166,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:fontFamily="@font/nexa_bold"
             android:text="Rekapan bulanan"
             android:textColor="@color/main_color_black"
@@ -173,10 +175,13 @@
             tools:ignore="TextSizeCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecapMonth"
+            android:id="@+id/rvDetailPekerjaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/list_recap_month"/>
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_pekerjaan"/>
     </LinearLayout>
 
 </FrameLayout>

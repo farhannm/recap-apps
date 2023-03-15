@@ -3,7 +3,9 @@ package com.bara.recapitulation.ui.Dashboard.DashboardUser
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bara.recapitulation.ui.CustomDialog.CustomDialogActivity
+import com.bara.recapitulation.core.data.source.local.DummyData
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
+import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -19,15 +21,11 @@ class DashboardUserViewModel : ViewModel() {
         }
         val getDate: LiveData<String> = _dateFormat
 
-//        fun dialogSuccess(myFragment: DashboardUserFragment){
-//                val success = CustomDialogActivity(myFragment.requireActivity())
-//                success.dialogSuccess()
-//                val handler = android.os.Handler()
-//                handler.postDelayed(object : Runnable {
-//                        override fun run() {
-//                                success.dialogDismiss()
-//                        }
-//
-//                }, 2000)
-//        }
+        val listDetailPekerjaan : LiveData<List<DetailPekerjaan>> = MutableLiveData<List<DetailPekerjaan>>().apply {
+                value = DummyData.listDetailPekerjaan
+        }
+
+        val listPekerjaan : LiveData<List<Pekerjaan>> = MutableLiveData<List<Pekerjaan>>().apply {
+                value = DummyData.listPekerjaan
+        }
 }

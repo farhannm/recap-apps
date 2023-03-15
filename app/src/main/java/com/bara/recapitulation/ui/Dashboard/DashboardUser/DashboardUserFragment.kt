@@ -8,19 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bara.recapitulation.AdminActivity
-import com.bara.recapitulation.UserActivity
 import com.bara.recapitulation.databinding.FragmentUserDashboardBinding
-import com.bara.recapitulation.ui.Dashboard.DashboardUser.Task.CreateTaskActivity
+import com.bara.recapitulation.ui.Dashboard.DashboardUser.Pekerjaan.CreatePekerjaanUserActivity
+import com.bara.recapitulation.ui.Dashboard.adapter.DetailPekerjaanAdapter
 import com.bara.recapitulation.util.Pref
-import com.inyongtisto.myhelper.extension.pushActivity
 
 class DashboardUserFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardUserViewModel
-
     private var _binding: FragmentUserDashboardBinding? = null
     private val binding get() = _binding!!
+    private val adapterDetailPekerjaan = DetailPekerjaanAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,29 +33,37 @@ class DashboardUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupAdapter()
         clickListener()
     }
 
     override fun onResume() {
-        initData()
+        setData()
         super.onResume()
+    }
+
+    private fun setupAdapter(){
+        binding.rvDetailPekerjaan.adapter = adapterDetailPekerjaan
     }
 
     private fun clickListener() {
         binding.btnAddTask.setOnClickListener {
-            startActivity(Intent(context, CreateTaskActivity::class.java))
+            startActivity(Intent(context, CreatePekerjaanUserActivity::class.java))
         }
     }
 
-    private fun initData() {
+    private fun setData() {
         val user = Pref.getUser()
         if (user != null) {
             binding.txtUsername.text = user.nama
             dashboardViewModel.getDate.observe(viewLifecycleOwner, Observer {
                 binding.formatDateTime.text = it
             })
-        }
 
+            dashboardViewModel.listDetailPekerjaan.observe(requireActivity(), Observer{
+                adapterDetailPekerjaan.addItems(it)
+            })
+        }
     }
 
     override fun onDestroyView() {

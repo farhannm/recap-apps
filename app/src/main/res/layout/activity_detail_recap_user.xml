@@ -265,7 +265,7 @@
                 android:id="@+id/rvRecapUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/list_user_task"/>
+                tools:listitem="@layout/list_detail_pekerjaan"/>
         </LinearLayout>
     </LinearLayout>
 

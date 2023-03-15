@@ -36,10 +36,10 @@
             android:name=".ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Dashboard.DashboardUser.Task.TaskActivity"
+            android:name=".ui.Dashboard.DashboardUser.Pekerjaan.DetailPekerjaanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Dashboard.DashboardUser.Task.CreateTaskActivity"
+            android:name=".ui.Dashboard.DashboardUser.Pekerjaan.CreatePekerjaanUserActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Settings.SettingsUser.Profile.ChangePass.ChangePasswordActivity"

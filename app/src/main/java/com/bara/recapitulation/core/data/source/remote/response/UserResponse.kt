@@ -1,6 +1,6 @@
-package com.bara.recapitulation.core.data.source.model
+package com.bara.recapitulation.core.data.source.remote.response
 
-data class User(
+data class UserResponse(
     val alamat: String? = null,
     val created_at: Any? = null,
     val deleted_at: Any? = null,

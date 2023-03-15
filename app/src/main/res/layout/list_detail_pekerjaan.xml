@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="340dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="15dp"
@@ -21,34 +21,34 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_gravity="center_vertical"
-                app:cardCornerRadius="@dimen/_5sdp"
-                android:backgroundTint="@color/card_light_blue">
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:cardCornerRadius="@dimen/_100sdp"
+                android:backgroundTint="@color/white"
+                android:layout_margin="@dimen/_3sdp">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_10sdp"
-                    android:src="@drawable/icon_planet"/>
+                    android:src="@drawable/icon_bulb"/>
 
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/txtCardMonth"
+                    android:id="@+id/txtJudulTask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_2sdp"
                     android:fontFamily="@font/nexa_bold"
-                    android:text="April"
+                    android:text="Bug Fixing"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_13ssp"/>
 
@@ -57,46 +57,33 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:src="@drawable/icon_fire_start"/>
-
                     <TextView
-                        android:id="@+id/txtStart"
+                        android:id="@+id/txtTipePekerjaan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nexa_regular"
-                        android:text="1 April 2023"
+                        android:text="Progress Weekday"
                         android:textColor="@color/secondary_light_themes"
                         android:textSize="@dimen/_10ssp" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:src="@drawable/icon_fire_end"/>
+                    <View
+                        android:layout_width="@dimen/_8sdp"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/my_line_secondary_bg"/>
 
                     <TextView
-                        android:id="@+id/txtEnd"
+                        android:id="@+id/txtLamaJam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nexa_regular"
-                        android:text="31 April 2023"
+                        android:text="8 jam"
                         android:textColor="@color/secondary_light_themes"
                         android:textSize="@dimen/_10ssp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-
 
 </com.google.android.material.card.MaterialCardView>

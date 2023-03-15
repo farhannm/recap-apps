@@ -1,10 +1,10 @@
 package com.bara.recapitulation.core.data.source.remote.request
 
 data class RegisterRequest (
-    val nama: String,
-    val email: String,
-    val password: String,
-    val telp: String,
-    val alamat: String,
-    val status: String
+    val nama: String? = null,
+    val email: String? = null,
+    val password: String? = null,
+    val telp: String? = null,
+    val alamat: String? = null,
+    val status: String? = null
 )

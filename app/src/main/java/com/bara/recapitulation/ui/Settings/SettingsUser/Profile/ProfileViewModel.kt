@@ -4,16 +4,16 @@ import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.bara.recapitulation.core.data.repository.AppRepository
-import com.bara.recapitulation.core.data.source.remote.request.UpdateUserRequest
-import com.bara.recapitulation.ui.CustomDialog.CustomDialogActivity
+import com.bara.recapitulation.core.data.source.remote.request.UserRequest
+import com.bara.recapitulation.ui.CustomDialog.MyDialog
 import okhttp3.MultipartBody
 
 class ProfileViewModel(val repo: AppRepository): ViewModel(){
-    fun updateUser(data: UpdateUserRequest) = repo.updateUser(data).asLiveData()
+    fun updateUser(data: UserRequest) = repo.updateUser(data).asLiveData()
     fun uploadUser(token: String? = null, id: Int? = null, fileImage: MultipartBody.Part? = null) = repo.uploadUser(token, id, fileImage).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
-        val loading = CustomDialogActivity(mActivity = myActivity)
+        val loading = MyDialog(mActivity = myActivity)
         loading.dialogLoading()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
@@ -25,31 +25,31 @@ class ProfileViewModel(val repo: AppRepository): ViewModel(){
     }
 
     fun dialogSuccess(myActivity: Activity){
-        val success = CustomDialogActivity(mActivity = myActivity)
-        success.dialogSuccess()
+        val success = MyDialog(mActivity = myActivity)
+        success.dialogSuccessProfile()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
                 success.dialogDismiss()
             }
 
-        }, 3000)
+        }, 3500)
     }
 
     fun dialogFailed(myActivity: Activity){
-        val failed = CustomDialogActivity(mActivity = myActivity)
-        failed.dialogFailed()
+        val failed = MyDialog(mActivity = myActivity)
+        failed.dialogFailedGeneric()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
                 failed.dialogDismiss()
             }
 
-        }, 1000)
+        }, 3500)
     }
 
     fun dialogLogout(myActivity: Activity){
-        val logout = CustomDialogActivity(mActivity = myActivity)
+        val logout = MyDialog(mActivity = myActivity)
         logout.dialogLogout()
     }
 

@@ -1,6 +1,7 @@
 package com.bara.recapitulation.core.data.source.remote.network
 
 import com.bara.recapitulation.util.Constant
+import com.bara.recapitulation.util.Constants
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,19 +13,21 @@ object ApiConfig {
 
     private const val BASE_URL = Constant.BASE_URL
 
-    private val client: Retrofit
-        get() {
+    private val client:Retrofit
+        get(){
             val gson = GsonBuilder()
                 .setLenient()
                 .create()
+
+            val timeout = 40L
 
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client: OkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60,TimeUnit.SECONDS)
                 .build()
 
             return Retrofit.Builder()
