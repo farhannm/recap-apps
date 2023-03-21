@@ -7,9 +7,10 @@ import com.bara.recapitulation.core.data.source.model.User
 
 object DummyData {
     val listUser = listOf(
-        User(id = 1, id_role = 2, nama = "Farhan Maulana", email = "farhan@gmail.com", status = "Internship", alamat = "Osaka, Japan", telp = "092939129321"),
-        User(id = 2, id_role = 2, nama = "Dafni Lanahtadya", email = "dafni@gmail.com", status = "Mine", alamat = "Padasuka, Indonesia", telp = "03490241421"),
-        User(id = 3, id_role = 2, nama = "Eren Yeager", email = "eren@gmail.com", status = "Main Char", alamat = "Paradise Island", telp = "none")
+        User(id = 1, id_role = 2, nama = "Farhan Maulana", email = "farhan@gmail.com", jabatan = "Internship", alamat = "Osaka, Japan", telp = "092939129321"),
+        User(id = 3, id_role = 2, nama = "Eren Yeager", email = "eren@gmail.com", jabatan = "Main Char", alamat = "Paradise Island", telp = "none"),
+        User(id = 4, id_role = 2, nama = "Karim Basu", email = "karim.basu@gmail.com", jabatan = "Senior", alamat = "Manager", telp = "03490241421"),
+        User(id = 5, id_role = 2, nama = "Nazriel Irham", email = "ariel@gmail.com", jabatan = "Vocal", alamat = "Citeureup", telp = "01110241421"),
     )
 
     val listPekerjaan = listOf(

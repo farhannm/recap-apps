@@ -11,7 +11,7 @@ data class User(
     val api_token: String? = null,
     val nama: String? = null,
     val password: String? = null,
-    val status: String? = null,
+    val jabatan: String? = null,
     val telp: String? = null,
     val updated_at: Any? = null
 )

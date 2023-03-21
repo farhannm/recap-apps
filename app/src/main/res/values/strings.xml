@@ -3,8 +3,35 @@
     <string name="welcome_text">Semua kebutuhan “SUPER Team” Bara Enterprise.</string>
 
     <string-array name="tipe_kerja">
+        <item>Tipe pekerjaan</item>
         <item>Proggress weekday</item>
         <item>Lembur weekday</item>
         <item>Lembur weekend</item>
+    </string-array>
+
+    <string-array name="jabatan">
+        <item>Chief Executive Officer</item>
+        <item>Chief Operation Officer</item>
+        <item>Project Manager</item>
+        <item>Secretary</item>
+        <item>Marketing Manager</item>
+        <item>Public Relation</item>
+        <item>Content Creator</item>
+        <item>Internship</item>
+    </string-array>
+
+    <string-array name="bulan">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
     </string-array>
 </resources>

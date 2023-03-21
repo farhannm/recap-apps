@@ -1,17 +1,15 @@
-package com.bara.recapitulation.ui.Auth
+package com.bara.recapitulation.ui.Recap.RecapAdmin.Recap
 
 import android.app.Activity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.bara.recapitulation.core.data.repository.AppRepository
-import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
-import com.bara.recapitulation.core.data.source.remote.request.UserRequest
+import com.bara.recapitulation.core.data.source.remote.request.PkRequest
+import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
 import com.bara.recapitulation.ui.CustomDialog.MyDialog
 
-class AuthViewModel(val repo: AppRepository): ViewModel(){
-    fun login(data: AuthRequest) = repo.login(data).asLiveData()
+class CreatePekerjaanRecapViewModel(val repo: AppRepository): ViewModel(){
+    fun createPekerjaan(token: String? = null, data: PkRequest) = repo.createPekerjaan(token, data).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)
@@ -27,25 +25,31 @@ class AuthViewModel(val repo: AppRepository): ViewModel(){
 
     fun dialogSuccess(myActivity: Activity){
         val success = MyDialog(mActivity = myActivity)
-        success.dialogSuccessGeneric()
+        success.dialogSuccessProfile()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
                 success.dialogDismiss()
             }
 
-        }, 800)
+        }, 2000)
     }
 
     fun dialogFailed(myActivity: Activity){
         val failed = MyDialog(mActivity = myActivity)
-        failed.dialogFailedAuth()
+        failed.dialogFailedGeneric()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
                 failed.dialogDismiss()
             }
 
-        }, 1800)
+        }, 3500)
     }
+
+    fun dialogLogout(myActivity: Activity){
+        val logout = MyDialog(mActivity = myActivity)
+        logout.dialogLogout()
+    }
+
 }

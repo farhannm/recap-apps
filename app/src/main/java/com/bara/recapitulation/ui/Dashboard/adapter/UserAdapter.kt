@@ -4,30 +4,30 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bara.recapitulation.core.data.source.model.Pekerjaan
-import com.bara.recapitulation.databinding.ListPekerjaanBinding
+import com.bara.recapitulation.core.data.source.model.User
+import com.bara.recapitulation.databinding.ListKaryawanBinding
+
 @SuppressLint("NotifyDataSetChanged")
-class PekerjaanAdapter : RecyclerView.Adapter<PekerjaanAdapter.ViewHolder>(){
+class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
-    private var data = ArrayList<Pekerjaan>()
+    private var data = ArrayList<User>()
 
-    inner class ViewHolder(private val itemBinding : ListPekerjaanBinding) : RecyclerView.ViewHolder(itemBinding.root){
-        fun bind(item : Pekerjaan, position: Int){
+    inner class ViewHolder(private val itemBinding : ListKaryawanBinding) : RecyclerView.ViewHolder(itemBinding.root){
+        fun bind(item : User, position: Int){
             itemBinding.apply {
-                txtBulan.text = item.bulan
-                txtStart.text = item.start
-                txtEnd.text = item.end
+                txtKaryawanName.text = item.nama
+                txtRoleKaryawan.text = item.jabatan
             }
         }
     }
 
-    fun addItems(items : List<Pekerjaan>){
+    fun addItems(items : List<User>){
         data.addAll(items)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return  ViewHolder(ListPekerjaanBinding.inflate(
+        return  ViewHolder(ListKaryawanBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false))

@@ -3,8 +3,7 @@ package com.bara.recapitulation.core.data.repository
 import com.bara.recapitulation.core.data.source.local.LocalDataSource
 import com.bara.recapitulation.core.data.source.remote.RemoteDataSource
 import com.bara.recapitulation.core.data.source.remote.network.Resource
-import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
-import com.bara.recapitulation.core.data.source.remote.request.UserRequest
+import com.bara.recapitulation.core.data.source.remote.request.*
 import com.bara.recapitulation.util.Pref
 import com.inyongtisto.myhelper.extension.getErrorBody
 import com.inyongtisto.myhelper.extension.logs
@@ -36,25 +35,63 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-//    fun register(data: RegisterRequest) = flow {
-//        emit(Resource.loading(null))
-//        try {
-//            remote.register(data).let {
-//                if (it.isSuccessful) {
-//                    SharedPref.isLogin = true
-//                    val body = it.body()
-//                    val user = body?.data
-//                    SharedPref.setUser(user)
-//                    emit(Resource.success(user))
-//                    logs("Berhasil : " + body.toString())
-//                } else {
-//                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
-//                }
-//            }
-//        } catch (e: Exception) {
-//            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
-//        }
-//    }
+    fun register(token: String?, data: RegisterRequest) = channelFlow {
+        send(Resource.loading(null))
+        try {
+            remote.register(token, data).let {
+                if (it.isSuccessful) {
+                    Pref.isLogin = true
+                    val body = it.body()
+                    send(Resource.success(data))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    send(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            send(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun createPekerjaan(token: String?, data: PkRequest) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.createPekerjaan(token, data).let {
+                if (it.isSuccessful) {
+                    Pref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    Pref.setUserPk(user)
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun createDetailPk(data: DetailPkRequest) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.createDetailPk(data).let {
+                if (it.isSuccessful) {
+                    Pref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    Pref.setUserDetailPk(user)
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
 
     fun updateUser(data: UserRequest) = flow {
         emit(Resource.loading(null))

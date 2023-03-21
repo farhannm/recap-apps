@@ -27,9 +27,10 @@
             android:fontFamily="@font/nexa_book"/>
 
         <TextView
+            android:id="@+id/dashboardName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Admin!"
+            android:text="Admin Bara!"
             android:textSize="@dimen/_20sdp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>

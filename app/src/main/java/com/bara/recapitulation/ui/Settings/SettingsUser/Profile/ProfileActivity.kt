@@ -12,6 +12,7 @@ import com.bara.recapitulation.util.Pref
 import com.github.drjacky.imagepicker.ImagePicker
 import com.inyongtisto.myhelper.extension.*
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_admin_profile.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
@@ -55,11 +56,10 @@ class ProfileActivity : AppCompatActivity() {
     private fun setData(){
         val user = Pref.getUser()
         if (user != null) {
-
             binding.apply {
                 profileName.text = user.nama
                 profileEmail.text = user.email
-                profileRole.text = user.status
+                profileJabatan.text = user.jabatan
 
                 Picasso.get().load(user.image).into(binding.profileImage)
             }

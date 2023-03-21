@@ -67,9 +67,7 @@
             android:exported="false" />
         <activity
             android:name=".UserActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".Welcome" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".ui.Auth.AuthActivity"
             android:exported="false" />

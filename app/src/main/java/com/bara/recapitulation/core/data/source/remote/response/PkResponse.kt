@@ -1,7 +1,6 @@
 package com.bara.recapitulation.core.data.source.remote.response
 
 data class PkResponse(
-    val api_token: Any? = null,
     val bulan: String? = null,
     val created_at: Any? = null,
     val deleted_at: Any? = null,

@@ -7,6 +7,121 @@
     android:orientation="vertical"
     tools:context=".ui.Settings.SettingsUser.Profile.ProfileActivity">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/MyCardView"
+        android:backgroundTint="@color/main_color_blue">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="30dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/settingsDest"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                app:cardCornerRadius="8dp"
+                android:backgroundTint="@color/card_blue">
+
+                <ImageView
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_arrow_light"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textSize="@dimen/_20ssp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/nexa_bold"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/uploadImageProfile"
+                        android:layout_width="@dimen/_55sdp"
+                        android:backgroundTint="@color/card_blue"
+                        android:layout_alignParentEnd="true"
+                        android:layout_height="@dimen/_20sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:fontFamily="@font/nexa_regular"
+                            android:text="Upload gambar"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_6ssp"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:cardCornerRadius="@dimen/_20sdp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/_20sdp">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ilustration_deals"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/profileJabatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Internship"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@color/bara_themes"
+                android:fontFamily="@font/nexa_regular"/>
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Farhan Maulana"
+                android:textSize="@dimen/_16ssp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nexa_bold"/>
+
+            <TextView
+                android:id="@+id/profileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="farhannote41@gmail.com"
+                android:textSize="@dimen/_8ssp"
+                android:textColor="@color/secondary_light_themes"
+                android:fontFamily="@font/nexa_regular"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,95 +129,11 @@
         android:layout_margin="30dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/settingsDest"
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            app:cardCornerRadius="8dp"
-            android:backgroundTint="@color/card_light">
-
-            <ImageView
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_10sdp"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_arrow_dark"/>
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Profile"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/main_color_black"
-            android:fontFamily="@font/nexa_bold"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
-            android:layout_marginTop="@dimen/_50sdp"
-            app:cardCornerRadius="@dimen/_50sdp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/_20sdp">
-
-            <ImageView
-                android:id="@+id/profileImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ilustration_deals"/>
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/uploadImageProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/_30sdp"
-            android:clickable="true"
-            android:fontFamily="@font/nexa_regular"
-            android:text="Upload gambar"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/_10ssp"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:id="@+id/profileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Farhan Maulana"
-            android:textSize="@dimen/_15ssp"
-            android:textColor="@color/main_color_black"
-            android:fontFamily="@font/nexa_bold"/>
-
-        <TextView
-            android:id="@+id/profileRole"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:text="Internship"
-            android:textSize="@dimen/_11ssp"
-            android:textColor="@color/bara_themes"
-            android:fontFamily="@font/nexa_regular"/>
-
-        <TextView
-            android:id="@+id/profileEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="farhannote41@gmail.com"
-            android:textSize="@dimen/_11ssp"
-            android:textColor="@color/secondary_light_themes"
-            android:fontFamily="@font/nexa_regular"/>
-
-        <com.google.android.material.card.MaterialCardView
             android:id="@+id/btnChangePass"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:backgroundTint="@color/card_light"
-            app:cardCornerRadius="10dp">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_marginTop="@dimen/_10sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,15 +141,15 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/_45sdp"
-                    android:layout_height="@dimen/_45sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     app:cardCornerRadius="10dp"
                     android:backgroundTint="@color/card_light_blue">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_15sdp"
+                        android:layout_margin="@dimen/_12sdp"
                         android:src="@drawable/icon_lock"/>
                 </androidx.cardview.widget.CardView>
 
@@ -135,14 +166,15 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_gravity="center_vertical">
 
                     <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
                         android:layout_alignParentEnd="true"
-                        android:src="@drawable/icon_chevron"/>
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:rotation="180"
+                        android:src="@drawable/icon_arrow_lightblue" />
                 </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

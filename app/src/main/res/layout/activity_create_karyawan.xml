@@ -53,26 +53,32 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Email"
                 android:textColor="@color/main_color_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeColor="@color/main_color_blue"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputEmailKaryawan"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/my_input_layout"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_regular"
                     android:inputType="textEmailAddress"
-                    android:padding="10dp"
+                    android:padding="8dp"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_12ssp"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
@@ -82,25 +88,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Password"
                 android:textColor="@color/main_color_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeColor="@color/main_color_blue"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputPasswordKaryawan"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/my_input_layout"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_regular"
-                    android:padding="10dp"
+                    android:padding="8dp"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_12ssp"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
@@ -126,25 +138,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Nama"
                 android:textColor="@color/main_color_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeColor="@color/main_color_blue"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputNamaKaryawan"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/my_input_layout"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_regular"
-                    android:padding="10dp"
+                    android:padding="8dp"
                     android:inputType="textPersonName"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_12ssp"
@@ -155,25 +173,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Role"
                 android:textColor="@color/main_color_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeColor="@color/main_color_blue"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputRoleKaryawan"
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/inputAutoCompleteJabatan"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/my_input_layout"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_regular"
-                    android:padding="10dp"
+                    android:inputType="none"
+                    android:text="Jabatan"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_12ssp"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
@@ -183,25 +208,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Phone"
                 android:textColor="@color/main_color_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeColor="@color/main_color_blue"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputPhoneNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/my_input_layout"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_regular"
-                    android:padding="10dp"
+                    android:padding="8dp"
                     android:inputType="number"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_12ssp"
@@ -212,23 +243,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Alamat"
                 android:textColor="@color/main_color_black"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
+                app:boxStrokeWidth="1.5dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxStrokeColor="@color/main_color_blue"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputAlamat"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="@drawable/my_input_layout"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/nexa_regular"
                     android:padding="10dp"
                     android:textColor="@color/main_color_black"

@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.response.AuthResponse
+import com.bara.recapitulation.core.data.source.remote.response.DetailPkResponse
+import com.bara.recapitulation.core.data.source.remote.response.PkResponse
 import com.bara.recapitulation.core.data.source.remote.response.UserResponse
 import com.chibatching.kotpref.KotprefModel
 import com.inyongtisto.myhelper.extension.toJson
@@ -23,6 +25,14 @@ object Pref : KotprefModel(){
         user = data.toJson()
     }
 
+    fun setUserPk(data: PkResponse?){
+        user = data.toJson()
+    }
+
+    fun setUserDetailPk(data: DetailPkResponse?){
+        user = data.toJson()
+    }
+
     fun setUser(data: UserResponse?){
         user = data.toJson()
     }
@@ -31,7 +41,6 @@ object Pref : KotprefModel(){
         if (user.isEmpty()) return null
         return user.toModel(User::class.java)
     }
-
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context)

@@ -34,7 +34,7 @@ class DashboardUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
-        clickListener()
+        mainButton()
     }
 
     override fun onResume() {
@@ -46,7 +46,7 @@ class DashboardUserFragment : Fragment() {
         binding.rvDetailPekerjaan.adapter = adapterDetailPekerjaan
     }
 
-    private fun clickListener() {
+    private fun mainButton() {
         binding.btnAddTask.setOnClickListener {
             startActivity(Intent(context, CreatePekerjaanUserActivity::class.java))
         }

@@ -6,20 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bara.recapitulation.databinding.FragmentAdminRecapBinding
-import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
+import com.bara.recapitulation.ui.Dashboard.adapter.PekerjaanAdapter
 import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.CreateRecapActivity
 
 class RecapAdminFragment : Fragment() {
-
+    private lateinit var viewModel: RecapAdminViewModel
     private var _binding: FragmentAdminRecapBinding? = null
     private val binding get() = _binding!!
+    private val adapterPekerjaan = PekerjaanAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        viewModel = ViewModelProvider(this).get(RecapAdminViewModel::class.java)
         _binding = FragmentAdminRecapBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -28,10 +31,19 @@ class RecapAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        intentView()
+        setData()
+        mainButton()
     }
 
-    private fun intentView() {
+    private fun setData() {
+        binding.rvRecapPekerjaan.adapter = adapterPekerjaan
+
+        viewModel.listPekerjaan.observe(viewLifecycleOwner, Observer{
+            adapterPekerjaan.addItems(it)
+        })
+    }
+
+    private fun mainButton() {
         binding.btnCreateRecap.setOnClickListener {
             startActivity(Intent(context, CreateRecapActivity::class.java))
         }

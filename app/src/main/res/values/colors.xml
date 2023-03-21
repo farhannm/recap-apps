@@ -26,4 +26,5 @@
     <color name="sweet_orange">#F98558</color>
     <color name="sweet_red">#B6535B</color>
     <color name="green">#16DD7E</color>
+    <color name="outlined_input">#DDDD</color>
 </resources>

@@ -35,6 +35,32 @@
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/taskImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ilustration_deals"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/uploadImageTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_gravity="center_horizontal"
+            android:text="Upload foto"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/main_color_blue"
+            android:fontFamily="@font/nexa_bold"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +76,7 @@
                 android:fontFamily="@font/nexa_regular"/>
 
             <EditText
-                android:id="@+id/txtJudulTask"
+                android:id="@+id/inputJudulTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_bold"
@@ -68,7 +94,7 @@
                 android:fontFamily="@font/nexa_regular"/>
 
             <EditText
-                android:id="@+id/txtJamKerja"
+                android:id="@+id/inputJamKerja"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -92,10 +118,9 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtTanggal"
+                    android:id="@+id/inputTanggal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Tanggal"
                     android:textColorHint="@color/secondary_light_themes"
                     android:layout_gravity="center_vertical"
                     android:textSize="@dimen/_12ssp"
@@ -133,7 +158,7 @@
                 android:fontFamily="@font/nexa_regular"/>
 
             <EditText
-                android:id="@+id/txtDeskripsiTask"
+                android:id="@+id/inputDeskripsiTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_bold"
@@ -157,7 +182,7 @@
                 android:layout_marginTop="@dimen/_10sdp">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/txtAutoCompleteType"
+                    android:id="@+id/inputAutoCompleteType"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/my_input_layout"
@@ -166,7 +191,7 @@
                     android:text="Proggress weekday"
                     android:padding="10dp"
                     android:textColor="@color/main_color_black"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_10ssp"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -176,7 +201,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveTask"
+                android:id="@+id/btnCreateTask"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_alignParentBottom="true"

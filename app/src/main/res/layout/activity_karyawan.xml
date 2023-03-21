@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="35dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/dashboardDest"
@@ -45,9 +46,11 @@
             android:background="@drawable/rounded_search_view"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecapMonth"
+            android:id="@+id/rvUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_karyawan"/>
     </LinearLayout>
 

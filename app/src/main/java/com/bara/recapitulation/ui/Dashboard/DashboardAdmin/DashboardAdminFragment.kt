@@ -12,6 +12,7 @@ import com.bara.recapitulation.databinding.FragmentAdminDashboardBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.KaryawanActivity
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserViewModel
+import com.bara.recapitulation.util.Pref
 import kotlinx.android.synthetic.main.activity_welcome.*
 import java.util.*
 
@@ -34,7 +35,7 @@ class DashboardAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setData()
+        getData()
         intentView()
     }
 
@@ -48,7 +49,12 @@ class DashboardAdminFragment : Fragment() {
         }
     }
 
-    private fun setData() {
+    private fun getData() {
+//        val user = Pref.getUser()
+//        if (user != null) {
+//            binding.dashboardName.text = user.nama
+//        }
+
         dashboardViewModel.getDate.observe(viewLifecycleOwner, Observer {
             binding.formatDateTime.text = it
         })

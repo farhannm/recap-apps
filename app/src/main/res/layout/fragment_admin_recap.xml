@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="30dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -100,7 +101,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="@font/nexa_bold"
             android:text="Rekapan per Bulan"
             android:textColor="@color/main_color_black"
@@ -108,9 +109,10 @@
             tools:ignore="TextSizeCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTask"
+            android:id="@+id/rvRecapPekerjaan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_pekerjaan_admin"/>
     </LinearLayout>
 </FrameLayout>

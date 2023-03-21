@@ -1,19 +1,17 @@
 package com.bara.recapitulation.core.data.source.remote.response
 
-import com.bara.recapitulation.core.data.source.model.User
-
-data class AuthResponse (
-    val alamat: String? = null,
-    val created_at: Any? = null,
-    val deleted_at: Any? = null,
-    val email: String? = null,
-    val id: Int? = null,
-    val id_role: Int? = null,
-    val image: String? = null,
-    val api_token: String? = null,
-    val nama: String? = null,
-    val password: String? = null,
-    val status: String? = null,
-    val telp: String? = null,
-    val updated_at: Any? = null
+data class AuthResponse(
+    val alamat: String?,
+    val api_token: String?,
+    val created_at: String?,
+    val deleted_at: Any?,
+    val email: String?,
+    val id: Int?,
+    val id_role: Int?,
+    val image: Any?,
+    val jabatan: String?,
+    val nama: String?,
+    val password: String?,
+    val telp: String?,
+    val updated_at: String?
 )

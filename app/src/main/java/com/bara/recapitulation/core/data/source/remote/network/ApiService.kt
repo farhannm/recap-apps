@@ -14,10 +14,11 @@ interface ApiService {
         @Body auth: AuthRequest
     ) : Response<BaseResponse<AuthResponse>>
 
-    @POST("register")
+    @POST("api/register")
     suspend fun createUser(
+        @Header("Authorization") api_token : String?,
         @Body auth: RegisterRequest
-    ) : Response<BaseResponse<AuthResponse>>
+    ) : Response<RegisterResponse>
 
     //User
     @GET("api/user")
@@ -73,6 +74,7 @@ interface ApiService {
 
     @POST("api/pekerjaan")
     suspend fun createPekerjaan(
+        @Header("Authorization") api_token : String?,
         @Body pekerjaan: PkRequest
     ) : Response<BaseResponse<PkResponse>>
 
