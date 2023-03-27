@@ -4,8 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.bara.recapitulation.R
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.databinding.ListKaryawanBinding
+import com.squareup.picasso.Picasso
+import java.io.File
 
 @SuppressLint("NotifyDataSetChanged")
 class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
@@ -13,8 +17,21 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
     private var data = ArrayList<User>()
 
     inner class ViewHolder(private val itemBinding : ListKaryawanBinding) : RecyclerView.ViewHolder(itemBinding.root){
+
         fun bind(item : User, position: Int){
             itemBinding.apply {
+
+                val imageLink = item.image
+
+                if (imageLink != null) {
+                    userProfileImage.load(imageLink) {
+                        crossfade(true)
+                        crossfade(1000)
+                    }
+                } else {
+                    userProfileImage.load(R.drawable.icon_profile)
+                }
+
                 txtKaryawanName.text = item.nama
                 txtJabatanKaryawan.text = item.jabatan
             }

@@ -83,4 +83,7 @@ dependencies {
 
     //3rd Preferences
     implementation 'com.chibatching.kotpref:kotpref:2.13.1'
+
+    //Image loader
+    implementation("io.coil-kt:coil:1.1.1")
 }
