@@ -5,6 +5,7 @@ data class DetailPkResponse(
     val desc_pekerjaan: String? = null,
     val id: Int? = null,
     val id_pekerjaan: Int? = null,
+    val bukti_pekerjaan: String? =null,
     val jam_kerja: Int? = null,
     val nama_pekerjaan: String? = null,
     val tgl_kerja: String? = null,

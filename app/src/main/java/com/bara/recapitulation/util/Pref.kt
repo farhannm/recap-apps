@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.bara.recapitulation.core.data.source.model.User
-import com.bara.recapitulation.core.data.source.remote.response.AuthResponse
-import com.bara.recapitulation.core.data.source.remote.response.DetailPkResponse
-import com.bara.recapitulation.core.data.source.remote.response.PkResponse
-import com.bara.recapitulation.core.data.source.remote.response.UserResponse
+import com.bara.recapitulation.core.data.source.remote.response.*
 import com.chibatching.kotpref.KotprefModel
 import com.inyongtisto.myhelper.extension.toJson
 import com.inyongtisto.myhelper.extension.toModel
@@ -20,6 +17,8 @@ object Pref : KotprefModel(){
 
     var isLogin by booleanPref(false)
     var user by stringPref()
+    var token by stringPref("token")
+    var jumlah_karyawan by stringPref("0")
 
     fun setUserAuth(data: AuthResponse?){
         user = data.toJson()

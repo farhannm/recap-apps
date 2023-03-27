@@ -56,7 +56,6 @@ class CreateKaryawanActivity : AppCompatActivity() {
             || binding.inputPhoneNumber.isEmpty()
             || binding.inputAlamat.isEmpty() ) return
 
-        val userToken = Pref.getUser()?.api_token
         val body = RegisterRequest(
             binding.inputEmailKaryawan.text.toString(),
             binding.inputPasswordKaryawan.text.toString(),
@@ -67,7 +66,7 @@ class CreateKaryawanActivity : AppCompatActivity() {
         )
 
 
-        viewModel.createUser(userToken, body).observe(this) {
+        viewModel.createUser(body).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {

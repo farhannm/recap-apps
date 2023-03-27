@@ -66,10 +66,8 @@ class AuthActivity : AppCompatActivity() {
         )
 
         viewModel.login(body).observe(this) {
-
             when (it.state) {
                 State.SUCCESS -> {
-                    Pref.setToken(this, it.data?.api_token)
                     showToast("Selamat datang " + it.data?.nama)
 
                     if (it.data?.id_role == 1){

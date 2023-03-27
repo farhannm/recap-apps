@@ -1,9 +1,8 @@
 package com.bara.recapitulation.core.data.source.remote.response
 
 
-data class BaseResponse<T>(
+data class BaseSingleResponse<T>(
     val code: Int?,
     val message: String?,
-    val token: String?,
     val data: T?,
 )

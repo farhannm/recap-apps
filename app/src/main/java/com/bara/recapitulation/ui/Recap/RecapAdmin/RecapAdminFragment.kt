@@ -11,9 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bara.recapitulation.databinding.FragmentAdminRecapBinding
 import com.bara.recapitulation.ui.Dashboard.adapter.PekerjaanAdapter
 import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.CreateRecapActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecapAdminFragment : Fragment() {
-    private lateinit var viewModel: RecapAdminViewModel
+    private val viewModel: RecapAdminViewModel by viewModel()
     private var _binding: FragmentAdminRecapBinding? = null
     private val binding get() = _binding!!
     private val adapterPekerjaan = PekerjaanAdapter()
@@ -22,7 +23,6 @@ class RecapAdminFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(RecapAdminViewModel::class.java)
         _binding = FragmentAdminRecapBinding.inflate(inflater, container, false)
         val view = binding.root
         return view

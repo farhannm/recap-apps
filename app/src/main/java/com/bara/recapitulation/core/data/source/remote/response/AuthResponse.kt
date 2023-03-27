@@ -2,7 +2,6 @@ package com.bara.recapitulation.core.data.source.remote.response
 
 data class AuthResponse(
     val alamat: String?,
-    val api_token: String?,
     val created_at: String?,
     val deleted_at: Any?,
     val email: String?,

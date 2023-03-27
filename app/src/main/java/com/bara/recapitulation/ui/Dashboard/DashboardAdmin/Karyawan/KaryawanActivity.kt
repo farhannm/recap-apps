@@ -4,20 +4,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bara.recapitulation.core.data.source.model.User
+import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.databinding.ActivityKaryawanBinding
 import com.bara.recapitulation.ui.Dashboard.adapter.UserAdapter
+import com.inyongtisto.myhelper.extension.toGone
+import com.inyongtisto.myhelper.extension.toVisible
+import kotlinx.android.synthetic.main.empty_list_user.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class KaryawanActivity : AppCompatActivity() {
-    private lateinit var viewModel: KaryawanViewModel
+    private val viewModel: KaryawanViewModel by viewModel()
     lateinit var binding: ActivityKaryawanBinding
     private val adapterUser = UserAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(KaryawanViewModel::class.java)
         binding = ActivityKaryawanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getData()
         setData()
         mainButton()
     }
@@ -25,9 +31,31 @@ class KaryawanActivity : AppCompatActivity() {
     private fun setData() {
         binding.rvUser.adapter = adapterUser
 
-        viewModel.listUser.observe(this, Observer{
-            adapterUser.addItems(it)
-        })
+//        viewModel.listUser.observe(this, Observer{
+//            adapterUser.addItems(it)
+//        })
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun getData(){
+        viewModel.getUser().observe(this){
+            when(it.state){
+                State.LOADING -> {
+                }
+                State.SUCCESS -> {
+                    emptyStateLayout.toGone()
+                    val user = it.data ?: emptyList()
+                    adapterUser.addItems(user)
+
+                    if (user.isEmpty()){
+                        emptyStateLayout.toVisible()
+                    }
+                }
+                State.FAILED -> {
+                    emptyStateLayout.toVisible()
+                }
+            }
+        }
     }
 
     private fun mainButton() {

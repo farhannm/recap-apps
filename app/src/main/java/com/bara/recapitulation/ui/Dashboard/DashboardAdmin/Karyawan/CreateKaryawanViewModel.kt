@@ -8,7 +8,7 @@ import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
 import com.bara.recapitulation.ui.CustomDialog.MyDialog
 
 class CreateKaryawanViewModel(val repo: AppRepository): ViewModel(){
-    fun createUser(token: String? = null, data: RegisterRequest) = repo.register(token, data).asLiveData()
+    fun createUser(data: RegisterRequest) = repo.register(data).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)

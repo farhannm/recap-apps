@@ -21,7 +21,8 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                     Pref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    Pref.setUserAuth(user)
+                    Pref.setUser(user)
+                    Pref.token = user?.token ?: "Token expired"
                     send(Resource.success(user))
                     logs("Berhasil : " + body.toString())
                 } else {
@@ -35,10 +36,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun register(token: String?, data: RegisterRequest) = channelFlow {
+    fun register(data: RegisterRequest) = channelFlow {
         send(Resource.loading(null))
         try {
-            remote.register(token, data).let {
+            remote.register(data).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
@@ -53,10 +54,28 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun createPekerjaan(token: String?, data: PkRequest) = flow {
+    fun getUser() = flow {
         emit(Resource.loading(null))
         try {
-            remote.createPekerjaan(token, data).let {
+            remote.index().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun createPekerjaan(data: PkRequest) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.createPekerjaan(data).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
@@ -73,10 +92,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun createDetailPk(data: DetailPkRequest) = flow {
+    fun createDetailPk(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = flow {
         emit(Resource.loading(null))
         try {
-            remote.createDetailPk(data).let {
+            remote.createDetailPk(data, fileImage).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
@@ -113,10 +132,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun uploadUser(token: String?, id: Int? = null, fileImage: MultipartBody.Part? = null) = channelFlow {
+    fun uploadUser(id: Int? = null, fileImage: MultipartBody.Part? = null) = channelFlow {
         send(Resource.loading(null))
         try {
-            remote.uploadUser(token, id, fileImage).let {
+            remote.uploadUser(id, fileImage).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()

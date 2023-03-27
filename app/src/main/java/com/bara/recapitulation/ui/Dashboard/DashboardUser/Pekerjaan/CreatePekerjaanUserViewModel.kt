@@ -10,7 +10,7 @@ import com.bara.recapitulation.ui.CustomDialog.MyDialog
 import okhttp3.MultipartBody
 
 class CreatePekerjaanUserViewModel(val repo: AppRepository): ViewModel(){
-//    fun createPekerjaanUser(token: String? = null, data: DetailPkRequest) = repo.createPekerjaanUser(token, data).asLiveData()
+    fun createPekerjaanUser(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = repo.createDetailPk(data, fileImage).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)
@@ -33,7 +33,7 @@ class CreatePekerjaanUserViewModel(val repo: AppRepository): ViewModel(){
                 success.dialogDismiss()
             }
 
-        }, 3500)
+        }, 2500)
     }
 
     fun dialogFailed(myActivity: Activity){

@@ -45,6 +45,10 @@
             android:textAppearance="@color/main_color_black"
             android:background="@drawable/rounded_search_view"/>
 
+        <include
+            layout="@layout/empty_list_user"
+            android:visibility="gone"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUser"
             android:layout_width="match_parent"

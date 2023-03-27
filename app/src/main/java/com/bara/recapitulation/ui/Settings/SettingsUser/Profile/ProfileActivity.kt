@@ -113,13 +113,11 @@ class ProfileActivity : AppCompatActivity() {
     private fun uploadUser(){
         val idUser = Pref.getUser()?.id
         val file = fileImage.toMultipartBody()
-        val userToken = Pref.getUser()?.api_token
 
-        viewModel.uploadUser(userToken, idUser, file).observe(this) {
+        viewModel.uploadUser(idUser, file).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {
-                    Pref.getToken(this)
                     setData()
                     viewModel.dialogSuccess(this)
                 }

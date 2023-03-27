@@ -63,7 +63,6 @@ class CreateRecapActivity : AppCompatActivity() {
             || binding.inputTotalJam.isEmpty()
             || binding.inputToleransi.isEmpty()) return
 
-        val userToken = Pref.getUser()?.api_token
         val body = PkRequest(
             binding.inputAutoCompleteBulan.text.toString(),
             binding.txtStart.text.toString(),
@@ -72,12 +71,10 @@ class CreateRecapActivity : AppCompatActivity() {
             binding.inputToleransi.text.toString()
         )
 
-        print("Current tokens $userToken")
 
-        viewModel.createPekerjaan(userToken, body).observe(this) {
+        viewModel.createPekerjaan(body).observe(this) {
             when (it.state) {
                 State.SUCCESS -> {
-                    Pref.getToken(this)
                     viewModel.dialogSuccess(this)
                     val handler = android.os.Handler()
                     handler.postDelayed(object : Runnable {

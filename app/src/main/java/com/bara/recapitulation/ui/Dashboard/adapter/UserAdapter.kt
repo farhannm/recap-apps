@@ -16,12 +16,13 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
         fun bind(item : User, position: Int){
             itemBinding.apply {
                 txtKaryawanName.text = item.nama
-                txtRoleKaryawan.text = item.jabatan
+                txtJabatanKaryawan.text = item.jabatan
             }
         }
     }
 
     fun addItems(items : List<User>){
+        data.clear()
         data.addAll(items)
         notifyDataSetChanged()
     }

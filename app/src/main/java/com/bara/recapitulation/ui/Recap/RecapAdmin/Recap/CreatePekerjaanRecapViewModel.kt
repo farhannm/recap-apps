@@ -9,7 +9,7 @@ import com.bara.recapitulation.core.data.source.remote.request.RegisterRequest
 import com.bara.recapitulation.ui.CustomDialog.MyDialog
 
 class CreatePekerjaanRecapViewModel(val repo: AppRepository): ViewModel(){
-    fun createPekerjaan(token: String? = null, data: PkRequest) = repo.createPekerjaan(token, data).asLiveData()
+    fun createPekerjaan(data: PkRequest) = repo.createPekerjaan(data).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)
