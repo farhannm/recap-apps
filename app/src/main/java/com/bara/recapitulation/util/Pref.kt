@@ -3,6 +3,7 @@ package com.bara.recapitulation.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.response.*
 import com.chibatching.kotpref.KotprefModel
@@ -17,6 +18,7 @@ object Pref : KotprefModel(){
 
     var isLogin by booleanPref(false)
     var user by stringPref()
+    val data by stringPref()
     var token by stringPref("token")
     var jumlah_karyawan by stringPref("0")
 
@@ -39,6 +41,11 @@ object Pref : KotprefModel(){
     fun getUser() : User? {
         if (user.isEmpty()) return null
         return user.toModel(User::class.java)
+    }
+
+    fun getPekerjaan() : Pekerjaan? {
+        if (data.isEmpty()) return null
+        return data.toModel(Pekerjaan::class.java)
     }
 
     private fun getSharedPreferences(context: Context): SharedPreferences {

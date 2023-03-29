@@ -8,8 +8,8 @@ data class Pekerjaan(
     val end: String? = null,
     val id: Int? = null,
     val id_user: Int? = null,
-    val jam_toleransi: Int? = null,
+    val jam_toleransi: String? = null,
     val start: String? = null,
-    val total_jam: Int? = null,
+    val total_jam: String? = null,
     val updated_at: Any? = null
 )

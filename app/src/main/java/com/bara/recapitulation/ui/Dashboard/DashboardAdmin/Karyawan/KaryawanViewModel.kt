@@ -11,7 +11,11 @@ import com.bara.recapitulation.core.data.source.model.User
 class KaryawanViewModel(private val repo: AppRepository) : ViewModel() {
     fun getUser() = repo.getUser().asLiveData()
 
+    fun searchUser(nama: String) = repo.searchUser(nama).asLiveData()
+
     val listUser : LiveData<List<User>> = MutableLiveData<List<User>>().apply {
         value = DummyData.listUser
     }
+
+
 }

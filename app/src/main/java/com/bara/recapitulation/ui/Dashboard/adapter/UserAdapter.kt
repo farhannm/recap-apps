@@ -1,13 +1,17 @@
 package com.bara.recapitulation.ui.Dashboard.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.SearchView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.bara.recapitulation.R
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.databinding.ListKaryawanBinding
+import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.KaryawanActivity
 import com.squareup.picasso.Picasso
 import java.io.File
 
@@ -20,7 +24,6 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
         fun bind(item : User, position: Int){
             itemBinding.apply {
-
                 val imageLink = item.image
 
                 if (imageLink != null) {
@@ -57,6 +60,9 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position], position)
+        holder.itemView.setOnClickListener {
+
+        }
     }
 
 }

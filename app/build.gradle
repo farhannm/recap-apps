@@ -86,4 +86,7 @@ dependencies {
 
     //Image loader
     implementation("io.coil-kt:coil:1.1.1")
+
+    //Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

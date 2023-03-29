@@ -12,6 +12,8 @@ import com.bara.recapitulation.core.data.source.remote.request.AuthRequest
 
 class RecapAdminViewModel(val repo: AppRepository) : ViewModel() {
 
+    fun getPekerjaan() = repo.getPekerjaan().asLiveData()
+
     val listPekerjaan : LiveData<List<Pekerjaan>> = MutableLiveData<List<Pekerjaan>>().apply {
         value = DummyData.listPekerjaan
     }

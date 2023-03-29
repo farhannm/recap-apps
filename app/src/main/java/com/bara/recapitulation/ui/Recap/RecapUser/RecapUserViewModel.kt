@@ -3,13 +3,17 @@ package com.bara.recapitulation.ui.Recap.RecapUser
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.bara.recapitulation.core.data.repository.AppRepository
 import com.bara.recapitulation.core.data.source.local.DummyData
 import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RecapUserViewModel : ViewModel() {
+class RecapUserViewModel(private val repo: AppRepository) : ViewModel() {
+    fun getPekerjaan() = repo.getPekerjaan().asLiveData()
+
     val date = System.currentTimeMillis()
 
     val sdf = SimpleDateFormat("MMMM", Locale.getDefault())

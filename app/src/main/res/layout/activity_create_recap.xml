@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
-            android:text="Data per bulan"
+            android:text="Data pekerjaan"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>

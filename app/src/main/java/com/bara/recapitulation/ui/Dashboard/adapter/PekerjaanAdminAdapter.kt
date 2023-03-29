@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.databinding.ListPekerjaanBinding
 @SuppressLint("NotifyDataSetChanged")
-class PekerjaanAdapter : RecyclerView.Adapter<PekerjaanAdapter.ViewHolder>(){
+class PekerjaanAdminAdapter : RecyclerView.Adapter<PekerjaanAdminAdapter.ViewHolder>(){
 
     private var data = ArrayList<Pekerjaan>()
 

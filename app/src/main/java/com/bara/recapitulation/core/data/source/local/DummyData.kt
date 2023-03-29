@@ -14,9 +14,9 @@ object DummyData {
     )
 
     val listPekerjaan = listOf(
-        Pekerjaan(id = 1, id_user = 1, bulan = "Januari", total_jam = 157, jam_toleransi = 20, start = "2023-01-01 00:00:00", end = "2023-01-31 00:00:00"),
-        Pekerjaan(id = 2, id_user = 1, bulan = "Februari", total_jam = 160, jam_toleransi = 23, start = "2023-02-01 00:00:00", end = "2023-02-28 00:00:00"),
-        Pekerjaan(id = 3, id_user = 1, bulan = "Maret", total_jam = 163, jam_toleransi = 22, start = "2023-03-01 00:00:00", end = "2023-03-31 00:00:00"),
+        Pekerjaan(id = 1, id_user = 1, bulan = "Januari", total_jam = "157", jam_toleransi = "20", start = "2023-01-01 00:00:00", end = "2023-01-31 00:00:00"),
+        Pekerjaan(id = 2, id_user = 1, bulan = "Februari", total_jam = "160", jam_toleransi = "23", start = "2023-02-01 00:00:00", end = "2023-02-28 00:00:00"),
+        Pekerjaan(id = 3, id_user = 1, bulan = "Maret", total_jam = "163", jam_toleransi = "22", start = "2023-03-01 00:00:00", end = "2023-03-31 00:00:00"),
     )
 
     val listDetailPekerjaan = listOf(

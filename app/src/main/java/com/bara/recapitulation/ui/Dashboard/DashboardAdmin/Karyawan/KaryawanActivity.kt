@@ -2,6 +2,7 @@ package com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bara.recapitulation.core.data.source.model.User
@@ -10,7 +11,8 @@ import com.bara.recapitulation.databinding.ActivityKaryawanBinding
 import com.bara.recapitulation.ui.Dashboard.adapter.UserAdapter
 import com.inyongtisto.myhelper.extension.toGone
 import com.inyongtisto.myhelper.extension.toVisible
-import kotlinx.android.synthetic.main.empty_list_user.*
+import kotlinx.android.synthetic.main.activity_karyawan.*
+import kotlinx.android.synthetic.main.empty_list_state.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class KaryawanActivity : AppCompatActivity() {
@@ -31,6 +33,20 @@ class KaryawanActivity : AppCompatActivity() {
     private fun setData() {
         binding.rvUser.adapter = adapterUser
 
+        binding.searchKaryawan.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    viewModel.searchUser(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+
 //        viewModel.listUser.observe(this, Observer{
 //            adapterUser.addItems(it)
 //        })
@@ -41,14 +57,22 @@ class KaryawanActivity : AppCompatActivity() {
         viewModel.getUser().observe(this){
             when(it.state){
                 State.LOADING -> {
+                    binding.rvUser.toGone()
+                    binding.shimmerContainer.toVisible()
+                    binding.shimmerContainer.startShimmer()
                 }
                 State.SUCCESS -> {
                     emptyStateLayout.toGone()
                     val user = it.data ?: emptyList()
-                    adapterUser.addItems(user)
 
                     if (user.isEmpty()){
                         emptyStateLayout.toVisible()
+                    } else {
+                        binding.shimmerContainer.stopShimmer()
+                        binding.shimmerContainer.toGone()
+                        binding.rvUser.toVisible()
+
+                        adapterUser.addItems(user)
                     }
                 }
                 State.FAILED -> {

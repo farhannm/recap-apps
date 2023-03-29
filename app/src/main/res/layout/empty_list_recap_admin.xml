@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/emptyStateRecapAdminLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="30dp"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        app:lottie_rawRes="@raw/empty"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tidak ada data pekerjaan."
+        android:fontFamily="@font/nexa_regular"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/secondary_light_themes"/>
+
+</LinearLayout>

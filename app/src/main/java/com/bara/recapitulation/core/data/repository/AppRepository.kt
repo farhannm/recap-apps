@@ -57,7 +57,25 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
     fun getUser() = flow {
         emit(Resource.loading(null))
         try {
-            remote.index().let {
+            remote.getUser().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun searchUser(nama: String?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.searchUser(nama).let {
                 if (it.isSuccessful) {
                     val body = it.body()
                     val user = body?.data
@@ -82,6 +100,42 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                     val user = body?.data
                     Pref.setUserPk(user)
                     emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getPekerjaan() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getPekerjaan().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val data = body?.data
+                    emit(Resource.success(data))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getPekerjaanMonth() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getPekerjaanMonth().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val data = body?.data
+                    emit(Resource.success(data))
                     logs("Berhasil : " + body.toString())
                 } else {
                     emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))

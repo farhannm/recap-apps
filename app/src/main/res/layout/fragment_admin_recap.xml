@@ -89,7 +89,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:backgroundTint="@color/main_color_secondary_blue"
                     android:fontFamily="@font/nexa_bold"
-                    android:text="Tambah data per bulan"
+                    android:text="Tambah data pekerjaan"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -107,6 +107,29 @@
             android:textColor="@color/main_color_black"
             android:textSize="@dimen/_14ssp"
             tools:ignore="TextSizeCheck" />
+        
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/list_item_shimmer"/>
+                <include layout="@layout/list_item_shimmer"/>
+                <include layout="@layout/list_item_shimmer"/>
+                <include layout="@layout/list_item_shimmer"/>
+                <include layout="@layout/list_item_shimmer"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <include
+            layout="@layout/empty_list_recap_admin"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecapPekerjaan"
@@ -116,3 +139,4 @@
             tools:listitem="@layout/list_pekerjaan_admin"/>
     </LinearLayout>
 </FrameLayout>
+

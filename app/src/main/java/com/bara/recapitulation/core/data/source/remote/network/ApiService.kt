@@ -1,5 +1,6 @@
 package com.bara.recapitulation.core.data.source.remote.network
 
+import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.request.*
 import com.bara.recapitulation.core.data.source.remote.response.*
@@ -32,8 +33,7 @@ interface ApiService {
 
     @GET("api/search-user/nama")
     suspend fun searchUser(
-        @Path("nama") nama: String? = null,
-        @Part data: UserRequest
+        @Query("nama") nama: String?,
     ) : Response<BaseSingleResponse<UserResponse>>
 
     @POST("api/user/{id}")
@@ -57,7 +57,12 @@ interface ApiService {
 
     //Pekerjaan
     @GET("api/pekerjaan")
-    suspend fun getAllPekerjaan() : Response<BaseSingleResponse<PkResponse>>
+    suspend fun getPekerjaan(): Response<BaseListResponse<Pekerjaan>>
+
+    @GET("api/pekerjaan-current-month")
+    suspend fun getPekerjaanMonth(): Response<BaseSingleResponse<Pekerjaan>>
+
+    @GET("")
 
     @GET("api/pekerjaan/{idUser}")
     suspend fun getPekerjaanUser(
