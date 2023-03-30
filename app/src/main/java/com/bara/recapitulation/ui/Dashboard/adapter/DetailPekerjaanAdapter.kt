@@ -17,12 +17,13 @@ class DetailPekerjaanAdapter : RecyclerView.Adapter<DetailPekerjaanAdapter.ViewH
             itemBinding.apply {
                 txtJudulTask.text = item.nama_pekerjaan
                 txtTipePekerjaan.text = item.tipe
-                txtLamaJam.text = item.jam_kerja.toString()
+                txtLamaJam.text = item.jam_kerja
             }
         }
     }
 
     fun addItems(items : List<DetailPekerjaan>){
+        data.clear()
         data.addAll(items)
         notifyDataSetChanged()
     }

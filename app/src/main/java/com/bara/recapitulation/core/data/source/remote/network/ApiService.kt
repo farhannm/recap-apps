@@ -1,5 +1,6 @@
 package com.bara.recapitulation.core.data.source.remote.network
 
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.request.*
@@ -24,6 +25,11 @@ interface ApiService {
     //User
     @GET("api/user")
     suspend fun getUser(): Response<BaseListResponse<User>>
+
+    @GET("api/user-current-month/{id}")
+    suspend fun getUserCurrentMonth(
+        @Path("id") id: Int? = null
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
 
     @GET("api/user/{id}")
     suspend fun getUserId(
@@ -62,8 +68,6 @@ interface ApiService {
     @GET("api/pekerjaan-current-month")
     suspend fun getPekerjaanMonth(): Response<BaseSingleResponse<Pekerjaan>>
 
-    @GET("")
-
     @GET("api/pekerjaan/{idUser}")
     suspend fun getPekerjaanUser(
         @Path("idUser") int: Int? = null,
@@ -96,6 +100,11 @@ interface ApiService {
     //Detail Pekerjaan
     @GET("api/detailpk")
     suspend fun getAllDetailPk() : Response<BaseSingleResponse<DetailPkResponse>>
+
+    @GET("api/user-today-task/{id}")
+    suspend fun getUserTodayTask(
+        @Path("id") int: Int? = null
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
 
     @GET("api/pekerjaan/{id}")
     suspend fun getDetailPkUser(

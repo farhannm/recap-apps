@@ -9,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiConfig {
-
     private const val BASE_URL = "http://172.16.98.253:8000/"
+//    private const val BASE_URL = Constant.BASE_URL
 
     private val client:Retrofit
         get(){

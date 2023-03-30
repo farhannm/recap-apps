@@ -114,7 +114,7 @@ class ProfileActivity : AppCompatActivity() {
         val idUser = Pref.getUser()?.id
         val file = fileImage.toMultipartBody()
 
-        viewModel.uploadUser(idUser, file).observe(this) {
+        viewModel.uploadUser(file).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {

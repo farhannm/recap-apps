@@ -21,12 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:labelVisibilityMode="selected"
-        android:paddingVertical="10dp"
+        app:elevation="@dimen/_200sdp"
+        android:paddingVertical="@dimen/_8sdp"
         app:itemTextAppearanceActive="@style/BottomNavigationStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationStyle"
         app:itemIconTint="@drawable/btn_selector_color"
         app:itemTextColor="@drawable/btn_selector_color"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/white"
         app:menu="@menu/user_nav_menu"/>
 
 </RelativeLayout>

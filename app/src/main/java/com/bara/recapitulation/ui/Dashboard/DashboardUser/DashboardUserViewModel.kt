@@ -13,6 +13,8 @@ import java.util.Locale
 
 class DashboardUserViewModel(private val repo: AppRepository) : ViewModel() {
         fun getPekerjaanMonth() = repo.getPekerjaanMonth().asLiveData()
+        fun getUserCurrentMonth() = repo.getUserCurrentMonth().asLiveData()
+        fun getUserTodayTask() = repo.getUserTodayTask().asLiveData()
 
         val date = System.currentTimeMillis()
 

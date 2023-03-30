@@ -9,12 +9,18 @@
     android:gravity="center"
     android:layout_gravity="center">
 
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:layout_width="@dimen/_150sdp"-->
+<!--            android:layout_height="@dimen/_150sdp"-->
+<!--            app:lottie_rawRes="@raw/astronaut"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:lottie_loop="true"/>-->
+
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_150sdp"
-            app:lottie_rawRes="@raw/astronaut"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/ilustration_empty"/>
+
 
         <TextView
             android:layout_width="wrap_content"

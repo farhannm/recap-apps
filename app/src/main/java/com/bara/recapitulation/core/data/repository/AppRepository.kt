@@ -72,6 +72,24 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
+    fun getUserCurrentMonth() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getUserCurrentMonth().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
     fun searchUser(nama: String?) = flow {
         emit(Resource.loading(null))
         try {
@@ -146,6 +164,24 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
+    fun getUserTodayTask() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getUserTodayTask().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
     fun createDetailPk(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = flow {
         emit(Resource.loading(null))
         try {
@@ -186,10 +222,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun uploadUser(id: Int? = null, fileImage: MultipartBody.Part? = null) = channelFlow {
+    fun uploadUser(fileImage: MultipartBody.Part? = null) = channelFlow {
         send(Resource.loading(null))
         try {
-            remote.uploadUser(id, fileImage).let {
+            remote.uploadUser(fileImage).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()

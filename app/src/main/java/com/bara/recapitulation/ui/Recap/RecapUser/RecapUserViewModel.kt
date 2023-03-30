@@ -13,6 +13,8 @@ import java.util.*
 
 class RecapUserViewModel(private val repo: AppRepository) : ViewModel() {
     fun getPekerjaan() = repo.getPekerjaan().asLiveData()
+    fun getPekerjaanMonth() = repo.getPekerjaanMonth().asLiveData()
+    fun getUserCurrentMonth() = repo.getUserCurrentMonth().asLiveData()
 
     val date = System.currentTimeMillis()
 

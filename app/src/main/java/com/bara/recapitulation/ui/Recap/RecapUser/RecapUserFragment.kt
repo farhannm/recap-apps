@@ -1,5 +1,6 @@
 package com.bara.recapitulation.ui.Recap.RecapUser
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.bara.recapitulation.databinding.FragmentUserRecapBinding
 import com.bara.recapitulation.ui.Dashboard.adapter.PekerjaanAdapter
 import com.bara.recapitulation.ui.Dashboard.adapter.PekerjaanAdminAdapter
 import com.bara.recapitulation.ui.Recap.RecapAdmin.RecapAdminViewModel
+import com.inyongtisto.myhelper.extension.isNull
+import com.inyongtisto.myhelper.extension.loge
 import com.inyongtisto.myhelper.extension.toGone
 import com.inyongtisto.myhelper.extension.toVisible
 import kotlinx.android.synthetic.main.empty_list_recap_admin.*
@@ -50,6 +53,7 @@ class RecapUserFragment : Fragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Suppress("UNCHECKED_CAST")
     private fun getData(){
         viewModel.getPekerjaan().observe(viewLifecycleOwner){
@@ -76,6 +80,42 @@ class RecapUserFragment : Fragment() {
                 State.FAILED -> {
                     emptyStateLayout.toVisible()
 
+                }
+            }
+        }
+
+        viewModel.getPekerjaanMonth().observe(viewLifecycleOwner){
+            when(it.state){
+                State.LOADING -> {
+                }
+                State.SUCCESS -> {
+                    val value = it.data ?: isNull()
+
+                    if (value.isNull()) {
+                        loge("Data is empty")
+                    } else {
+                        binding.txtPeriode.text = "${it.data?.start} - ${it.data?.end}"
+                    }
+                }
+                State.FAILED -> {
+                }
+            }
+        }
+
+        viewModel.getUserCurrentMonth().observe(viewLifecycleOwner){
+            when(it.state){
+                State.LOADING -> {
+                }
+                State.SUCCESS -> {
+                    val value = it.data ?: isNull()
+
+                    if (value.isNull()) {
+                        loge("Data is empty")
+                    } else {
+                        binding.txtPeriode.text = "${it.data?.jam_kerja}"
+                    }
+                }
+                State.FAILED -> {
                 }
             }
         }
