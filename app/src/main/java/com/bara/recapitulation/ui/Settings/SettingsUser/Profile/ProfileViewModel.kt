@@ -10,7 +10,7 @@ import okhttp3.MultipartBody
 
 class ProfileViewModel(val repo: AppRepository): ViewModel(){
     fun updateUser(data: UserRequest) = repo.updateUser(data).asLiveData()
-    fun uploadUser(id: Int? = null, fileImage: MultipartBody.Part? = null) = repo.uploadUser(id, fileImage).asLiveData()
+    fun uploadUser(fileImage: MultipartBody.Part? = null) = repo.uploadUser(fileImage).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)

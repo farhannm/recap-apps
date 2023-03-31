@@ -10,7 +10,6 @@ import com.inyongtisto.myhelper.extension.pushActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileActivity : AppCompatActivity() {
-    private val viewModel: ProfileViewModel by viewModel()
     lateinit var binding: ActivityAdminProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +34,5 @@ class ProfileActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.btnLogout.setOnClickListener{
-            viewModel.dialogLogout(this)
-        }
     }
 }

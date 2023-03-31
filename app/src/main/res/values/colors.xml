@@ -19,6 +19,7 @@
     <color name="primary_light_themes">#FFFFFF</color>
     <color name="secondary_light_themes">#B3BAD0</color>
     <color name="card_light">#F5FAFF</color>
+    <color name="card_light_red">#F7D0DC</color>
     <color name="card_light_blue">#D0D7F7</color>
     <color name="card_blue">#6774FF</color>
     <color name="primary_dark_themes">#161617</color>

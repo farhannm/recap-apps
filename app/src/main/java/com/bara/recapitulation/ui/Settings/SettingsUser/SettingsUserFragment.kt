@@ -7,14 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bara.recapitulation.databinding.FragmentUserSettingsBinding
+import com.bara.recapitulation.ui.Settings.SettingsAdmin.Profile.ProfileViewModel
 import com.bara.recapitulation.ui.Settings.SettingsUser.Bantuan.BantuanActivity
 import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ProfileActivity
 import com.bara.recapitulation.ui.Settings.SettingsUser.Tentang.TentangActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsUserFragment : Fragment() {
 
     private var _binding: FragmentUserSettingsBinding? = null
     private val binding get() = _binding!!
+    private val viewModel : ProfileViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +48,10 @@ class SettingsUserFragment : Fragment() {
 
         binding.btnHelp.setOnClickListener {
             startActivity(Intent(activity, BantuanActivity::class.java))
+        }
+
+        binding.btnLogout.setOnClickListener{
+            viewModel.dialogLogout(requireActivity())
         }
     }
 

@@ -93,49 +93,4 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="30dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            app:cardCornerRadius="10dp"
-            android:backgroundTint="@color/card_light"
-            android:layout_marginTop="@dimen/_10sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    app:cardCornerRadius="10dp"
-                    android:backgroundTint="@color/pink_50">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_12sdp"
-                        android:src="@drawable/icon_logout"/>
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_gravity="center"
-                    android:text="Logout"
-                    android:textSize="@dimen/_14ssp"
-                    android:textColor="@color/main_color_black"
-                    android:fontFamily="@font/nexa_regular"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-
 </LinearLayout>

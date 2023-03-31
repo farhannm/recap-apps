@@ -4,7 +4,7 @@
 
     <string-array name="tipe_kerja">
         <item>Tipe pekerjaan</item>
-        <item>Proggress weekday</item>
+        <item>Progress weekday</item>
         <item>Lembur weekday</item>
         <item>Lembur weekend</item>
     </string-array>

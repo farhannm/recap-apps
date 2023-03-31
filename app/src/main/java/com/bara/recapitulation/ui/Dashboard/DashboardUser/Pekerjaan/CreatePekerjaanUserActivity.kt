@@ -8,9 +8,12 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bara.recapitulation.R
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.request.DetailPkRequest
 import com.bara.recapitulation.databinding.ActivityCreatePekerjaanUserBinding
+import com.bara.recapitulation.util.getIdPekerjaan
+import com.bara.recapitulation.util.getUserId
 import com.github.drjacky.imagepicker.ImagePicker
 import com.inyongtisto.myhelper.extension.isEmpty
 import com.inyongtisto.myhelper.extension.isNull
@@ -26,12 +29,15 @@ class CreatePekerjaanUserActivity : AppCompatActivity() {
     private val viewModel: CreatePekerjaanUserViewModel by viewModel()
     lateinit var binding: ActivityCreatePekerjaanUserBinding
     private var fileImage: File? = null
+//    val idPekerjaan = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreatePekerjaanUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        var idPekerjaan = intent.getStringExtra("id_pekerjaan")
         mainButton()
     }
 
@@ -59,6 +65,7 @@ class CreatePekerjaanUserActivity : AppCompatActivity() {
 
         binding.btnCreateTask.setOnClickListener {
             createPekerjaan()
+
         }
 
         myCalendar()
@@ -104,27 +111,26 @@ class CreatePekerjaanUserActivity : AppCompatActivity() {
     }
 
     private fun createPekerjaan() {
-        if (binding.inputJudulTask.isEmpty()
+        if (binding.inputAutoCompleteTipe.text.toString().equals("Tipe pekerjaan")
+            || binding.inputJudulTask.isEmpty()
             || binding.inputJamKerja.isEmpty()
             || binding.inputTanggal.isEmpty()
             || binding.inputDeskripsiTask.isEmpty()) return
 
-//        if (binding.inputAutoCompleteTipe.text.equals("Tipe")) return toastError("Pilih tipe pekerjaan.")
-//        if (binding.taskImage.isNull()) {
-//            toastError("Foto tidak boleh kosong")
-//        }
+        val reqData = DetailPekerjaan(
+            id_user = getUserId(),
+            id_pekerjaan = intent.getStringExtra("id_pekerjaan"),
+            tipe = binding.inputAutoCompleteTipe.text.toString(),
+            nama_pekerjaan = binding.inputJudulTask.text.toString(),
+            jam_kerja = binding.inputJamKerja.text.toString(),
+            tgl_kerja = binding.inputTanggal.text.toString(),
+            desc_pekerjaan = binding.inputDeskripsiTask.text.toString(),
 
-        val body = DetailPkRequest(
-            binding.inputAutoCompleteTipe.text.toString(),
-            binding.inputJudulTask.text.toString(),
-            binding.inputJamKerja.text.toString(),
-            binding.inputTanggal.text.toString(),
-            binding.inputDeskripsiTask.text.toString()
-        )
+            )
 
-        val file = fileImage.toMultipartBody()
+//        val file = fileImage.toMultipartBody()
 
-        viewModel.createPekerjaanUser(body, file).observe(this) {
+        viewModel.createPekerjaanUser(reqData).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {

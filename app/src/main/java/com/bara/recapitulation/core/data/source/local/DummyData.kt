@@ -20,8 +20,8 @@ object DummyData {
     )
 
     val listDetailPekerjaan = listOf(
-        DetailPekerjaan(id = 1, id_pekerjaan = 1, tipe = "Proggress weekday", nama_pekerjaan = "Fetch Api", jam_kerja = "8 jam", tgl_kerja = "2023-02-01", desc_pekerjaan = "Implementasi dari API yang telah dibuat."),
-        DetailPekerjaan(id = 2, id_pekerjaan = 1, tipe = "Lembur weekend", nama_pekerjaan = "Fetch Api#2", jam_kerja = "8 jam", tgl_kerja = "2023-02-02", desc_pekerjaan = "Get current user token."),
-        DetailPekerjaan(id = 3, id_pekerjaan = 1, tipe = "Lembur weekday", nama_pekerjaan = "Bug Fixing ", jam_kerja = "3 jam", tgl_kerja = "2023-02-04", desc_pekerjaan = "Fix the errror and bugs."),
+        DetailPekerjaan(id = 1, id_pekerjaan = "1", tipe = "Proggress weekday", nama_pekerjaan = "Fetch Api", jam_kerja = "8 jam", tgl_kerja = "2023-02-01", desc_pekerjaan = "Implementasi dari API yang telah dibuat."),
+        DetailPekerjaan(id = 2, id_pekerjaan = "1", tipe = "Lembur weekend", nama_pekerjaan = "Fetch Api#2", jam_kerja = "8 jam", tgl_kerja = "2023-02-02", desc_pekerjaan = "Get current user token."),
+        DetailPekerjaan(id = 3, id_pekerjaan = "1", tipe = "Lembur weekday", nama_pekerjaan = "Bug Fixing ", jam_kerja = "3 jam", tgl_kerja = "2023-02-04", desc_pekerjaan = "Fix the errror and bugs."),
     )
 }

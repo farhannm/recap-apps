@@ -1,6 +1,7 @@
 package com.bara.recapitulation.core.data.repository
 
 import com.bara.recapitulation.core.data.source.local.LocalDataSource
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.remote.RemoteDataSource
 import com.bara.recapitulation.core.data.source.remote.network.Resource
 import com.bara.recapitulation.core.data.source.remote.request.*
@@ -58,6 +59,24 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         emit(Resource.loading(null))
         try {
             remote.getUser().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getUserCurrentMonth() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getUserCurrentMonth().let {
                 if (it.isSuccessful) {
                     val body = it.body()
                     val user = body?.data
@@ -135,6 +154,7 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                 if (it.isSuccessful) {
                     val body = it.body()
                     val data = body?.data
+                    Pref.setPekerjaan(data)
                     emit(Resource.success(data))
                     logs("Berhasil : " + body.toString())
                 } else {
@@ -146,10 +166,28 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun createDetailPk(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = flow {
+    fun getUserTodayTask() = flow {
         emit(Resource.loading(null))
         try {
-            remote.createDetailPk(data, fileImage).let {
+            remote.getUserTodayTask().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun createDetailPk(data: DetailPekerjaan) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.createDetailPekerjaan(data).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
@@ -169,7 +207,7 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
     fun updateUser(data: UserRequest) = flow {
         emit(Resource.loading(null))
         try {
-            remote.updateUser(data).let {
+            remote.changePass(data).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
@@ -186,10 +224,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun uploadUser(id: Int? = null, fileImage: MultipartBody.Part? = null) = channelFlow {
+    fun uploadUser(fileImage: MultipartBody.Part? = null) = channelFlow {
         send(Resource.loading(null))
         try {
-            remote.uploadUser(id, fileImage).let {
+            remote.uploadUser(fileImage).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()

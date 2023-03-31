@@ -179,53 +179,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
-
-            <LinearLayout
-                android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:clickable="true"
-                android:orientation="horizontal"
-                tools:ignore="TouchTargetSizeCheck">
-
-                <ImageView
-                    android:layout_width="@dimen/_15sdp"
-                    android:layout_height="@dimen/_15sdp"
-                    android:layout_alignParentBottom="true"
-                    android:src="@drawable/icon_logout" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:fontFamily="@font/nexa_regular"
-                    android:text="Logout"
-                    android:textColor="@color/sweet_red"
-                    android:textSize="@dimen/_10ssp" />
-
-            </LinearLayout>
-
-<!--            <TextView-->
-<!--                android:id="@+id/btnSaveChanges"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:clickable="true"-->
-<!--                android:fontFamily="@font/nexa_regular"-->
-<!--                android:text="Simpan"-->
-<!--                android:textColor="@color/green"-->
-<!--                android:textSize="@dimen/_10ssp"-->
-<!--                tools:ignore="TouchTargetSizeCheck" />-->
-        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

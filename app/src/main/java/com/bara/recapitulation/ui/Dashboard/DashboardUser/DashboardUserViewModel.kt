@@ -13,6 +13,8 @@ import java.util.Locale
 
 class DashboardUserViewModel(private val repo: AppRepository) : ViewModel() {
         fun getPekerjaanMonth() = repo.getPekerjaanMonth().asLiveData()
+        fun getUserCurrentMonth() = repo.getUserCurrentMonth().asLiveData()
+        fun getUserTodayTask() = repo.getUserTodayTask().asLiveData()
 
         val date = System.currentTimeMillis()
 
@@ -20,7 +22,7 @@ class DashboardUserViewModel(private val repo: AppRepository) : ViewModel() {
         val dateString: String = sdf.format(date)
 
         private val _dateFormat = MutableLiveData<String>().apply {
-            value = dateString
+                value = dateString
         }
         val getDate: LiveData<String> = _dateFormat
 

@@ -1,5 +1,6 @@
 package com.bara.recapitulation.core.data.source.remote.network
 
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.request.*
@@ -25,6 +26,11 @@ interface ApiService {
     @GET("api/user")
     suspend fun getUser(): Response<BaseListResponse<User>>
 
+    @GET("api/user-current-month/{id}")
+    suspend fun getUserCurrentMonth(
+        @Path("id") id: Int? = null
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
+
     @GET("api/user/{id}")
     suspend fun getUserId(
         @Path("id") int: Int? = null,
@@ -36,10 +42,10 @@ interface ApiService {
         @Query("nama") nama: String?,
     ) : Response<BaseSingleResponse<UserResponse>>
 
-    @POST("api/user/{id}")
-    suspend fun updateUser(
+    @PUT("api/user/{id}")
+    suspend fun changePass(
         @Path("id") int: Int? = null,
-        @Part data: UserRequest
+        @Body data: UserRequest
     ) : Response<BaseSingleResponse<UserResponse>>
 
     @Multipart
@@ -61,8 +67,6 @@ interface ApiService {
 
     @GET("api/pekerjaan-current-month")
     suspend fun getPekerjaanMonth(): Response<BaseSingleResponse<Pekerjaan>>
-
-    @GET("")
 
     @GET("api/pekerjaan/{idUser}")
     suspend fun getPekerjaanUser(
@@ -97,6 +101,11 @@ interface ApiService {
     @GET("api/detailpk")
     suspend fun getAllDetailPk() : Response<BaseSingleResponse<DetailPkResponse>>
 
+    @GET("api/user-today-task/{id}")
+    suspend fun getUserTodayTask(
+        @Path("id") int: Int? = null
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
+
     @GET("api/pekerjaan/{id}")
     suspend fun getDetailPkUser(
         @Path("id") int: Int? = null,
@@ -109,11 +118,16 @@ interface ApiService {
         @Part data: DetailPkRequest
     ) : Response<BaseSingleResponse<DetailPkResponse>>
 
+//    @POST("api/detailpk")
+//    suspend fun  createDetailPekerjaan(
+//        @Body detail_pk : DetailPkRequest,
+//        @Part bukti: MultipartBody.Part? = null
+//    ) : Response<BaseSingleResponse<DetailPkResponse>>
+
     @POST("api/detailpk")
-    suspend fun  createDetailPekerjaan(
-        @Body detail_pk : DetailPkRequest,
-        @Part bukti: MultipartBody.Part? = null
-    ) : Response<BaseSingleResponse<DetailPkResponse>>
+    suspend fun createDetailPekerjaan(
+        @Body pekerjaan: DetailPekerjaan
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
 
     @PUT("api/detailpk/{id}")
     suspend fun updateDetailPk(

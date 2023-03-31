@@ -44,10 +44,6 @@ class ProfileActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.btnLogout.setOnClickListener{
-            viewModel.dialogLogout(this)
-        }
-
         binding.uploadImageProfile.setOnClickListener {
             picImage()
         }
@@ -74,13 +70,13 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == Activity.RESULT_OK) {
-                val uri = it.data?.data!!
-                fileImage = File(uri.path!!)
-                Picasso.get().load(fileImage!!).into(binding.profileImage)
-                uploadUser()
-            }
+        if (it.resultCode == Activity.RESULT_OK) {
+            val uri = it.data?.data!!
+            fileImage = File(uri.path!!)
+            Picasso.get().load(fileImage!!).into(binding.profileImage)
+            uploadUser()
         }
+    }
 
 //    private fun updateUser(){
 //        val idUser = Pref.getUser()?.id
@@ -114,7 +110,7 @@ class ProfileActivity : AppCompatActivity() {
         val idUser = Pref.getUser()?.id
         val file = fileImage.toMultipartBody()
 
-        viewModel.uploadUser(idUser, file).observe(this) {
+        viewModel.uploadUser(file).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {

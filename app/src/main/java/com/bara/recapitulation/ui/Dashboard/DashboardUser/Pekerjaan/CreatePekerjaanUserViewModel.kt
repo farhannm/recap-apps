@@ -4,13 +4,16 @@ import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.bara.recapitulation.core.data.repository.AppRepository
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.remote.request.DetailPkRequest
+import com.bara.recapitulation.core.data.source.remote.request.PkRequest
 import com.bara.recapitulation.core.data.source.remote.request.UserRequest
 import com.bara.recapitulation.ui.CustomDialog.MyDialog
 import okhttp3.MultipartBody
 
 class CreatePekerjaanUserViewModel(val repo: AppRepository): ViewModel(){
-    fun createPekerjaanUser(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = repo.createDetailPk(data, fileImage).asLiveData()
+//    fun createPekerjaanUser(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = repo.createDetailPk(data, fileImage).asLiveData()
+    fun createPekerjaanUser(data: DetailPekerjaan) = repo.createDetailPk(data).asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)

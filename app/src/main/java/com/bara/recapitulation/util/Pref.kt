@@ -3,6 +3,7 @@ package com.bara.recapitulation.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.response.*
@@ -18,19 +19,16 @@ object Pref : KotprefModel(){
 
     var isLogin by booleanPref(false)
     var user by stringPref()
+    var pekerjaan by stringPref()
     val data by stringPref()
     var token by stringPref("token")
     var jumlah_karyawan by stringPref("0")
-
-    fun setUserAuth(data: AuthResponse?){
-        user = data.toJson()
-    }
 
     fun setUserPk(data: PkResponse?){
         user = data.toJson()
     }
 
-    fun setUserDetailPk(data: DetailPkResponse?){
+    fun setUserDetailPk(data: DetailPekerjaan?){
         user = data.toJson()
     }
 
@@ -43,9 +41,22 @@ object Pref : KotprefModel(){
         return user.toModel(User::class.java)
     }
 
+    fun setPekerjaan(data: Pekerjaan?){
+        pekerjaan = data.toJson()
+    }
+
     fun getPekerjaan() : Pekerjaan? {
         if (data.isEmpty()) return null
         return data.toModel(Pekerjaan::class.java)
+    }
+
+    fun setEntire(data: DetailPekerjaan?){
+        user = data.toJson()
+    }
+
+    fun getEntire() : DetailPekerjaan? {
+        if (data.isEmpty()) return null
+        return data.toModel(DetailPekerjaan::class.java)
     }
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
@@ -89,3 +100,6 @@ object Pref : KotprefModel(){
         editor.apply()
     }
 }
+
+fun getUserId() = Pref.getUser()?.id
+fun getIdPekerjaan() = Pref.getPekerjaan()?.id

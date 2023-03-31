@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfig {
 
-    private const val BASE_URL = "http://172.16.98.253:8000/"
+    private const val BASE_URL = "http://192.168.1.7:8000/"
 
     private val client:Retrofit
         get(){

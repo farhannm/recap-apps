@@ -1,7 +1,7 @@
 package com.bara.recapitulation.core.data.source.remote.request
 
 data class UserRequest (
-    val id: Int? = null,
+    val id: Int?,
     val nama: String? = null,
     val email: String? = null,
     val password: String? = null,
