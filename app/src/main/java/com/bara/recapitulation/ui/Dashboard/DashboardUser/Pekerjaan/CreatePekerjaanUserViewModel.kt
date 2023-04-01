@@ -10,7 +10,9 @@ import com.bara.recapitulation.ui.CustomDialog.MyDialog
 import okhttp3.MultipartBody
 
 class CreatePekerjaanUserViewModel(val repo: AppRepository): ViewModel(){
-    fun createPekerjaanUser(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = repo.createDetailPk(data, fileImage).asLiveData()
+    fun createPekerjaanUser(data: DetailPkRequest) = repo.createDetailPk(data).asLiveData()
+
+    fun getPekerjaanMonth() = repo.getPekerjaanMonth().asLiveData()
 
     fun dialogLoading(myActivity: Activity){
         val loading = MyDialog(mActivity = myActivity)

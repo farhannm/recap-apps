@@ -5,6 +5,7 @@ data class DetailPekerjaan(
     val created_at: String? = null,
     val desc_pekerjaan: String? = null,
     val id: Int? = null,
+    val hari_ini: String? = null,
     val id_pekerjaan: Int? = null,
     val id_user: Int? = null,
     val jam_kerja: String? = null,

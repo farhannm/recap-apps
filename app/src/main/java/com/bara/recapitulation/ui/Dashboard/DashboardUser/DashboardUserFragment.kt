@@ -14,6 +14,7 @@ import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.network.State.*
 import com.bara.recapitulation.databinding.FragmentUserDashboardBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.Pekerjaan.CreatePekerjaanUserActivity
+import com.bara.recapitulation.ui.Dashboard.DashboardUser.TodayTask.TodayTaskActivity
 import com.bara.recapitulation.ui.Dashboard.adapter.DetailPekerjaanAdapter
 import com.bara.recapitulation.ui.Recap.RecapAdmin.RecapAdminViewModel
 import com.bara.recapitulation.util.Pref
@@ -26,7 +27,6 @@ class DashboardUserFragment : Fragment() {
     private val viewModel: DashboardUserViewModel by viewModel()
     private var _binding: FragmentUserDashboardBinding? = null
     private val binding get() = _binding!!
-    private val adapterDetailPekerjaan = DetailPekerjaanAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,18 +41,28 @@ class DashboardUserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setData()
-        getData()
         mainButton()
     }
 
     override fun onResume() {
+        getData()
         setData()
         super.onResume()
     }
 
     private fun mainButton() {
         binding.btnAddTask.setOnClickListener {
-            startActivity(Intent(context, CreatePekerjaanUserActivity::class.java))
+//            startActivity(Intent(context, CreatePekerjaanUserActivity::class.java))
+
+            var idPk = binding.txtIdPekerjaan.text
+
+            val intent = Intent(requireContext(), CreatePekerjaanUserActivity::class.java)
+            intent.putExtra("id_pekerjaan", idPk)
+            startActivity(intent)
+        }
+
+        binding.btnTaskToday.setOnClickListener {
+            startActivity(Intent(context, TodayTaskActivity::class.java))
         }
     }
 
@@ -74,6 +84,7 @@ class DashboardUserFragment : Fragment() {
         viewModel.getPekerjaanMonth().observe(viewLifecycleOwner){
             when(it.state){
                 LOADING -> {
+
                 }
                 SUCCESS -> {
                     val value = it.data ?: isNull()
@@ -85,6 +96,7 @@ class DashboardUserFragment : Fragment() {
                             txtPeriode.text = "${it.data?.start} - ${it.data?.end}"
                             txtToleransi.text = "${it.data?.jam_toleransi} jam"
                             txtJamker.text = "${it.data?.total_jam} jam"
+                            txtIdPekerjaan.text = it.data?.id.toString()
                         }
                     }
                 }
@@ -96,51 +108,39 @@ class DashboardUserFragment : Fragment() {
         viewModel.getUserCurrentMonth().observe(viewLifecycleOwner){
             when(it.state) {
                 LOADING -> {
+                    binding.txtTotalJam.setText("0 jam")
                 }
                 SUCCESS -> {
                     val value = it.data?: isNull()
 
                     if (value.isNull()) {
-                        loge("Data is empty")
+                        binding.txtTotalJam.setText("0 jam")
                     } else {
                         binding.txtTotalJam.text = "${it.data?.jam_kerja} jam"
                     }
                 }
                 FAILED -> {
+                    binding.txtTotalJam.setText("0 jam")
                 }
             }
         }
 
-        viewModel.getUserTodayTask().observe(viewLifecycleOwner){
-            when(it.state){
-                LOADING -> {
-                    binding.detailPekerjaanPlaceholder.toGone()
-                    binding.shimmerContainer.toVisible()
-                    binding.shimmerContainer.startShimmer()
-                }
-                SUCCESS -> {
-                    emptyStateLayout.toGone()
-                    val user = it.data ?: isNull()
+        viewModel.getUserCountTodayTask().observe(viewLifecycleOwner){
+            when(it.state) {
+                State.LOADING -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
+                State.SUCCESS -> {
+                    val data = it.data ?: isNull()
 
-                    if (user.isNull()){
-                        emptyStateLayout.toVisible()
+                    if (data.isNull()) {
+                        binding.txtTodayTask.setText("Tidak ada task hari ini")
                     } else {
-                        binding.shimmerContainer.stopShimmer()
-                        binding.shimmerContainer.toGone()
-                        binding.detailPekerjaanPlaceholder.toVisible()
-
-                        binding.apply {
-                            txtJudulTask.text = it.data?.nama_pekerjaan
-                            txtTipePekerjaan.text = it.data?.tipe
-                            txtLamaJam.text = "${ it.data?.jam_kerja } jam"
-                        }
+                        binding.txtTodayTask.text = "${it.data?.hari_ini} task hari ini"
                     }
                 }
-                FAILED -> {
-                    emptyStateLayout.toVisible()
-                }
+                State.FAILED -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
             }
         }
+
     }
 
     override fun onDestroyView() {

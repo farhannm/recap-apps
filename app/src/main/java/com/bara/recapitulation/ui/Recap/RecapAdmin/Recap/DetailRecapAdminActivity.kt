@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bara.recapitulation.databinding.ActivityDetailRecapUserBinding
 
-class DetailRecapUserActivity : AppCompatActivity() {
+class DetailRecapAdminActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailRecapUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

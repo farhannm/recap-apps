@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bara.recapitulation">
+    package="com.bara.recapitulation" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,9 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Recapitulation"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapUserActivity"
+            android:name=".ui.Dashboard.DashboardUser.TodayTask.TodayTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Recap.RecapUser.Recap.DetailRecapUserActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapActivity"
@@ -73,7 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".Splash"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

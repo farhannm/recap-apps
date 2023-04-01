@@ -1,5 +1,6 @@
 package com.bara.recapitulation.ui.Dashboard.DashboardAdmin
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,12 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import  androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.databinding.FragmentAdminDashboardBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanActivity
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.KaryawanActivity
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserViewModel
 import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ProfileViewModel
 import com.bara.recapitulation.util.Pref
+import com.inyongtisto.myhelper.extension.isNull
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_welcome.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -57,14 +60,22 @@ class DashboardAdminFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setData() {
-        val user = Pref.getUser()
-        if (user != null) {
-            binding.apply {
-                "${user.jumlah_karyawan} working".also { txtJumlahKaryawan.text = it }
+        viewModel.getCountKaryawan().observe(viewLifecycleOwner){
+            when(it.state) {
+                State.LOADING -> { binding.txtJumlahKaryawan.setText("Tidak ada karyawan") }
+                State.SUCCESS -> {
+                    val data = it.data ?: isNull()
+
+                    if (data.isNull()) {
+                        binding.txtJumlahKaryawan.setText("Tidak ada karyawan")
+                    } else {
+                        binding.txtJumlahKaryawan.text = "${it.data?.jumlah_karyawan} working"
+                    }
+                }
+                State.FAILED -> { binding.txtJumlahKaryawan.setText("Tidak ada karyawan") }
             }
-        } else {
-            binding.txtJumlahKaryawan.text = "0"
         }
 
         viewModel.getDate.observe(viewLifecycleOwner, Observer {

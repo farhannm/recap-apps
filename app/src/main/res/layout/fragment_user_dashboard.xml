@@ -57,8 +57,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="15dp"
+                android:layout_marginVertical="20dp"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_regular"
+                    android:text="BARA Super Team"
+                    android:textColor="@color/secondary_light_themes"
+                    android:textSize="@dimen/_10ssp"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/txtTodayTask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:fontFamily="@font/nexa_bold"
+                    android:text="Tidak task hari ini"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_20ssp"
+                    tools:ignore="TextSizeCheck" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nexa_bold"
-                        android:text="1 Februari 2023 - 28 Februari 2023"
+                        android:text="..."
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10ssp"
                         tools:ignore="TextSizeCheck" />
@@ -225,153 +246,136 @@
                             android:textSize="@dimen/_8ssp"
                             tools:ignore="TextSizeCheck" />
 
-                        <TextView
-                            android:id="@+id/txtTotalJam"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/nexa_bold"
-                            android:text="0 jam"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp"
-                            tools:ignore="TextSizeCheck" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnAddTask"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:backgroundTint="@color/main_color_secondary_blue"
-                    android:fontFamily="@font/nexa_bold"
-                    android:text="Add task"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10ssp"
-                    app:cornerRadius="5dp"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:fontFamily="@font/nexa_bold"
-            android:text="Proggress"
-            android:textColor="@color/main_color_black"
-            android:textSize="@dimen/_14ssp"
-            tools:ignore="TextSizeCheck" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <include layout="@layout/list_item_shimmer"/>
-
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <include
-            layout="@layout/empty_list_state"
-            android:visibility="gone"/>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/detailPekerjaanPlaceholder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="15dp"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="5dp"
-            android:backgroundTint="@color/card_light"
-            android:layout_gravity="center_horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="20dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
-                        app:cardCornerRadius="@dimen/_100sdp"
-                        android:backgroundTint="@color/white"
-                        android:layout_margin="@dimen/_3sdp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_margin="@dimen/_10sdp"
-                            android:src="@drawable/icon_bulb"/>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:orientation="vertical"
-                        android:layout_gravity="center_vertical">
-
-                        <TextView
-                            android:id="@+id/txtJudulTask"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_2sdp"
-                            android:fontFamily="@font/nexa_bold"
-                            android:text="Bug Fixing"
-                            android:textColor="@color/main_color_black"
-                            android:textSize="@dimen/_13ssp"/>
-
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/txtTipePekerjaan"
+                                android:id="@+id/txtTotalJam"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/nexa_regular"
-                                android:text="Progress Weekday"
-                                android:textColor="@color/secondary_light_themes"
-                                android:textSize="@dimen/_10ssp" />
-
-                            <View
-                                android:layout_width="@dimen/_8sdp"
-                                android:layout_height="@dimen/_1sdp"
-                                android:layout_marginHorizontal="@dimen/_8sdp"
-                                android:layout_gravity="center_vertical"
-                                android:background="@drawable/my_line_secondary_bg"/>
+                                android:fontFamily="@font/nexa_bold"
+                                android:text="0 jam"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="TextSizeCheck" />
 
                             <TextView
-                                android:id="@+id/txtLamaJam"
+                                android:id="@+id/txtIdPekerjaan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/nexa_regular"
-                                android:text="8 jam"
-                                android:textColor="@color/secondary_light_themes"
-                                android:textSize="@dimen/_10ssp" />
+                                android:fontFamily="@font/nexa_bold"
+                                android:text="1"
+                                android:textColor="@color/main_color_blue"
+                                android:textSize="@dimen/_1ssp"
+                                tools:ignore="TextSizeCheck" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnAddTask"
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="@dimen/_100sdp"
+                        android:backgroundTint="@color/main_color_secondary_blue"
+                        android:layout_marginTop="@dimen/_15sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Add task"
+                            android:drawablePadding="5dp"
+                            android:drawableEnd="@drawable/icon_add"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/nexa_bold"/>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnTaskToday"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_height="@dimen/_40sdp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="@dimen/_100sdp"
+                            android:backgroundTint="@color/gray_700"
+                            android:layout_marginTop="@dimen/_15sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Hari ini"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/main_color_blue"
+                                android:fontFamily="@font/nexa_bold"/>
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:id="@+id/btnTaskToday"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_50sdp"-->
+<!--            app:cardCornerRadius="20dp"-->
+<!--            android:backgroundTint="@color/card_light"-->
+<!--            android:layout_marginTop="@dimen/_20sdp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="Task hari ini"-->
+<!--                android:textSize="@dimen/_13ssp"-->
+<!--                android:textColor="@color/sweet_red"-->
+<!--                android:fontFamily="@font/nexa_bold"/>-->
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_20sdp"-->
+<!--            android:layout_marginBottom="@dimen/_10sdp"-->
+<!--            android:fontFamily="@font/nexa_bold"-->
+<!--            android:text="Proggress"-->
+<!--            android:textColor="@color/main_color_black"-->
+<!--            android:textSize="@dimen/_14ssp"-->
+<!--            tools:ignore="TextSizeCheck" />-->
+
+<!--        <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--            android:id="@+id/shimmerContainer"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <include layout="@layout/list_item_shimmer"/>-->
+
+<!--            </LinearLayout>-->
+<!--        </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+<!--        <include-->
+<!--            layout="@layout/empty_list_state"-->
+<!--            android:visibility="gone"/>-->
 
 <!--        <androidx.recyclerview.widget.RecyclerView-->
 <!--            android:id="@+id/rvDetailPekerjaan"-->

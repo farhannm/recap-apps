@@ -47,10 +47,6 @@ class RecapUserFragment : Fragment() {
     private fun setData(){
         binding.rvPekerjaanUser.adapter = adapterPekerjaan
 
-        viewModel.getDate.observe(viewLifecycleOwner, Observer {
-            binding.txtThisMonth.text = it
-        })
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -84,41 +80,6 @@ class RecapUserFragment : Fragment() {
             }
         }
 
-        viewModel.getPekerjaanMonth().observe(viewLifecycleOwner){
-            when(it.state){
-                State.LOADING -> {
-                }
-                State.SUCCESS -> {
-                    val value = it.data ?: isNull()
-
-                    if (value.isNull()) {
-                        loge("Data is empty")
-                    } else {
-                        binding.txtPeriode.text = "${it.data?.start} - ${it.data?.end}"
-                    }
-                }
-                State.FAILED -> {
-                }
-            }
-        }
-
-        viewModel.getUserCurrentMonth().observe(viewLifecycleOwner){
-            when(it.state){
-                State.LOADING -> {
-                }
-                State.SUCCESS -> {
-                    val value = it.data ?: isNull()
-
-                    if (value.isNull()) {
-                        loge("Data is empty")
-                    } else {
-                        binding.txtPeriode.text = "${it.data?.jam_kerja}"
-                    }
-                }
-                State.FAILED -> {
-                }
-            }
-        }
     }
 
     override fun onDestroyView() {

@@ -102,7 +102,7 @@
                         android:fontFamily="@font/nexa_bold"
                         android:text="11 working"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_25ssp"
+                        android:textSize="@dimen/_20ssp"
                         tools:ignore="TextSizeCheck" />
                 </LinearLayout>
 

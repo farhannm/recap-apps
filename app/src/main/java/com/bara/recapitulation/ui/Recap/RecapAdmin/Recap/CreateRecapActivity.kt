@@ -30,8 +30,9 @@ class CreateRecapActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        super.onResume()
+        mainButton()
         myDropdown()
+        super.onResume()
     }
 
 

@@ -13,11 +13,12 @@ class DetailPekerjaanAdapter : RecyclerView.Adapter<DetailPekerjaanAdapter.ViewH
     private var data = ArrayList<DetailPekerjaan>()
 
     inner class ViewHolder(private val itemBinding : ListDetailPekerjaanBinding) : RecyclerView.ViewHolder(itemBinding.root){
+        @SuppressLint("SetTextI18n")
         fun bind(item : DetailPekerjaan, position: Int){
             itemBinding.apply {
                 txtJudulTask.text = item.nama_pekerjaan
                 txtTipePekerjaan.text = item.tipe
-                txtLamaJam.text = item.jam_kerja
+                txtLamaJam.text = "${item.jam_kerja} jam"
             }
         }
     }

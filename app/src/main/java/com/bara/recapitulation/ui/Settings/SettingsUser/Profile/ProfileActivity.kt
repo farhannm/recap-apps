@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import coil.load
+import com.bara.recapitulation.R
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.databinding.ActivityUserProfileBinding
 import com.bara.recapitulation.ui.Settings.SettingsUser.Profile.ChangePass.ChangePasswordActivity
@@ -27,6 +30,7 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityUserProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setData()
         mainButton()
     }
 
@@ -61,9 +65,39 @@ class ProfileActivity : AppCompatActivity() {
                 profileEmail.text = user.email
                 profileJabatan.text = user.jabatan
 
-                Picasso.get().load(user.image).into(binding.profileImage)
+                val imageProfile = user.image
+
+                if (imageProfile != null) {
+                    profileImage.load(imageProfile) {
+                        crossfade(true)
+                        crossfade(1000)
+                    }
+                } else {
+                    profileImage.load(R.drawable.ilustration_deals)
+                }
             }
         }
+
+//        viewModel.getCurrentUser().observe(this, Observer{
+//            when(it.state) {
+//                State.LOADING -> {
+//                }
+//                State.SUCCESS -> {
+//                    val user = it.data ?: isNull()
+//
+//                    binding.apply {
+//                        profileName.text = it.data?.nama
+//                        profileEmail.text = it.data?.email
+//                        profileJabatan.text = it.data?.jabatan
+//
+//                        Picasso.get().load(it.data?.image).into(binding.profileImage)
+//                    }
+//                }
+//                State.FAILED -> {
+//
+//                }
+//            }
+//        })
     }
 
     private fun picImage() {
@@ -82,36 +116,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-//    private fun updateUser(){
-//        val idUser = Pref.getUser()?.id
-//
-//        val body = UpdateUserRequest(
-//            idUser.int(),
-//            nama = binding.profileName.text.toString(),
-//            email = binding.profileEmail.text.toString(),
-//            status = binding.profileRole.text.toString()
-//
-//        )
-//
-//        viewModel.updateUser(body).observe(this) {
-//
-//            when (it.state) {
-//                State.SUCCESS -> {
-//                    viewModel.dialogSuccess(this)
-//                    onBackPressed()
-//                }
-//                State.FAILED -> {
-//                    viewModel.dialogFailed(this)
-//                }
-//                State.LOADING -> {
-//                    viewModel.dialogLoading(this)
-//                }
-//            }
-//        }
-//    }
-
     private fun uploadUser(){
-        val idUser = Pref.getUser()?.id
         val file = fileImage.toMultipartBody()
 
         viewModel.uploadUser(file).observe(this) {

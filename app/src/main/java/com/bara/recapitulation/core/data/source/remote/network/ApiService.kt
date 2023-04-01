@@ -34,8 +34,18 @@ interface ApiService {
     @GET("api/user/{id}")
     suspend fun getUserId(
         @Path("id") int: Int? = null,
-        @Part data: UserRequest
-    ) : Response<BaseSingleResponse<UserResponse>>
+    ) : Response<BaseSingleResponse<User>>
+    @GET("api/user-total-by-month/{id}/{id_pk}")
+    suspend fun getSelectedTotalJam(
+        @Path("id") id: Int? = null,
+        @Path("id_pk") id_pk: Int? = null
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
+
+    @GET("api/user-task-by-month/{id}/{id_pk}")
+    suspend fun getUserTaskByMonth(
+        @Path("id") id: Int? = null,
+        @Path("id_pk") id_pk: Int? = null
+    ) : Response<BaseListResponse<DetailPekerjaan>>
 
     @GET("api/search-user/nama")
     suspend fun searchUser(
@@ -46,6 +56,12 @@ interface ApiService {
     suspend fun updateUser(
         @Path("id") int: Int? = null,
         @Part data: UserRequest
+    ) : Response<BaseSingleResponse<UserResponse>>
+
+    @PUT("api/user/{id}")
+    suspend fun changePass(
+        @Path("id") int: Int? = null,
+        @Body data: UserRequest
     ) : Response<BaseSingleResponse<UserResponse>>
 
     @Multipart
@@ -67,6 +83,14 @@ interface ApiService {
 
     @GET("api/pekerjaan-current-month")
     suspend fun getPekerjaanMonth(): Response<BaseSingleResponse<Pekerjaan>>
+
+    @GET("api/selected-pekerjaan/{id}")
+    suspend fun getSelectedPekerjaan(
+        @Path("id") int: Int? = null,
+    ) : Response<BaseSingleResponse<Pekerjaan>>
+
+    @GET("api/count-karyawan")
+    suspend fun getCountKaryawan(): Response<BaseSingleResponse<Pekerjaan>>
 
     @GET("api/pekerjaan/{idUser}")
     suspend fun getPekerjaanUser(
@@ -104,7 +128,12 @@ interface ApiService {
     @GET("api/user-today-task/{id}")
     suspend fun getUserTodayTask(
         @Path("id") int: Int? = null
-    ) : Response<BaseSingleResponse<DetailPekerjaan>>
+    ) : Response<BaseListResponse<DetailPekerjaan>>
+
+    @GET("api/user-count-today-task/{id}")
+    suspend fun getUserCountTodayTask(
+        @Path("id") int: Int? = null
+    ) : Response<BaseSingleResponse<User>>
 
     @GET("api/pekerjaan/{id}")
     suspend fun getDetailPkUser(
@@ -118,10 +147,10 @@ interface ApiService {
         @Part data: DetailPkRequest
     ) : Response<BaseSingleResponse<DetailPkResponse>>
 
-    @POST("api/detailpk")
+    @POST("api/detailpk/{id}")
     suspend fun  createDetailPekerjaan(
-        @Body detail_pk : DetailPkRequest,
-        @Part bukti: MultipartBody.Part? = null
+        @Path("id") int: Int? = null,
+        @Body data : DetailPkRequest,
     ) : Response<BaseSingleResponse<DetailPkResponse>>
 
     @PUT("api/detailpk/{id}")

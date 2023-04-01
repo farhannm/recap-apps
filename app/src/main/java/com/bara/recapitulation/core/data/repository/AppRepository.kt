@@ -72,10 +72,100 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
+    fun getSingleUser() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getSingleUser().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
     fun getUserCurrentMonth() = flow {
         emit(Resource.loading(null))
         try {
             remote.getUserCurrentMonth().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getUserTaskByMonth(id_pk: Int?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getUserTaskByMonth(id_pk).let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getSelectedTotalJam(id_pk: Int? = null) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getSelectedTotalJam(id_pk).let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getCountKaryawan() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getCountKaryawan().let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getUserCountTodayTask() = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getUserCountTodayTask().let {
                 if (it.isSuccessful) {
                     val body = it.body()
                     val user = body?.data
@@ -153,6 +243,26 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
                 if (it.isSuccessful) {
                     val body = it.body()
                     val data = body?.data
+                    Pref.setPekerjaan(data)
+                    emit(Resource.success(data))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getSelectedPk(id: Int?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getSelectedPekerjaan(id).let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val data = body?.data
+                    Pref.setPekerjaan(data)
                     emit(Resource.success(data))
                     logs("Berhasil : " + body.toString())
                 } else {
@@ -182,10 +292,10 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun createDetailPk(data: DetailPkRequest, fileImage: MultipartBody.Part? = null) = flow {
+    fun createDetailPk(data: DetailPkRequest) = flow {
         emit(Resource.loading(null))
         try {
-            remote.createDetailPk(data, fileImage).let {
+            remote.createDetailPk(data).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
@@ -202,25 +312,26 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
-    fun updateUser(data: UserRequest) = flow {
-        emit(Resource.loading(null))
+    fun updateUser(data: UserRequest) = channelFlow {
+        send(Resource.loading(null))
         try {
-            remote.updateUser(data).let {
+            remote.changePass(data).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()
                     val user = body?.data
-                    Pref.setUser(user)
-                    emit(Resource.success(user))
+                    send(Resource.success(user))
                     logs("Berhasil : " + body.toString())
                 } else {
-                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                    send(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
                 }
             }
         } catch (e: Exception) {
-            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+            send(Resource.failed(e.message?: "Terjadi kesalahan!", null))
         }
     }
+
+
 
     fun uploadUser(fileImage: MultipartBody.Part? = null) = channelFlow {
         send(Resource.loading(null))

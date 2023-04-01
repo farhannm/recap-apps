@@ -10,5 +10,6 @@ data class PkResponse(
     val jam_toleransi: Int? = null,
     val start: String? = null,
     val total_jam: Int? = null,
-    val updated_at: Any? = null
+    val updated_at: Any? = null,
+    val jumlah_karyawan: String? = null
 )
