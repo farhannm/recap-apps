@@ -1,8 +1,9 @@
 package com.bara.recapitulation.core.data.source.remote.request
 
 data class DetailPkRequest(
+    val id: Int? = null,
     val id_user: Int? = null,
-    val id_pekerjaan: String?= null,
+    val id_pekerjaan: String? = null,
     val nama_pekerjaan: String? = null,
     val desc_pekerjaan: String? = null,
     val jam_kerja: String? = null,

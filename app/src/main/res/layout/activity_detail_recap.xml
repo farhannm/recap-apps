@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Recap.RecapAdmin.Recap.DetailRecapActivity">
+    tools:context=".ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -181,10 +181,34 @@
                 android:textSize="@dimen/_14ssp"
                 tools:ignore="TextSizeCheck" />
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/list_item_shimmer"/>
+                    <include layout="@layout/list_item_shimmer"/>
+                    <include layout="@layout/list_item_shimmer"/>
+                    <include layout="@layout/list_item_shimmer"/>
+                    <include layout="@layout/list_item_shimmer"/>
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <include
+                layout="@layout/empty_list_state"
+                android:visibility="gone"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRecapUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/list_karyawan"/>
         </LinearLayout>
     </LinearLayout>

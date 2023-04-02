@@ -50,7 +50,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/nexa_book"
-                android:text="Pengguna telah berhasil ditambahkan!"
+                android:text="Task telah ditambahkan!"
                 android:textAlignment="center"
                 android:textColor="@color/secondary_light_themes"
                 android:textSize="@dimen/_10sdp"

@@ -77,22 +77,6 @@
                             android:textColor="@color/secondary_light_themes"
                             android:textSize="@dimen/_10ssp"
                             tools:ignore="TextSizeCheck" />
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/txtAllKaryawan"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:fontFamily="@font/nexa_regular"
-                                android:text="Lihat karyawan"
-                                android:textColor="@color/bara_themes"
-                                android:textSize="@dimen/_10ssp"
-                                tools:ignore="TextSizeCheck" />
-                        </RelativeLayout>
                     </LinearLayout>
 
                     <TextView
@@ -111,18 +95,56 @@
                     android:layout_height="@dimen/_250sdp"
                     android:src="@drawable/ilustration_sailing"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCreateKaryawan"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
-                    android:backgroundTint="@color/main_color_secondary_blue"
-                    android:fontFamily="@font/nexa_bold"
-                    android:text="Tambah karyawan"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:cornerRadius="5dp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btnCreateKaryawan"
+                        android:layout_width="@dimen/_130sdp"
+                        android:layout_height="@dimen/_45sdp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="@dimen/_100sdp"
+                        android:backgroundTint="@color/main_color_secondary_blue"
+                        android:layout_marginTop="@dimen/_15sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Tambah karyawan"
+                            android:drawablePadding="5dp"
+                            android:textSize="@dimen/_10ssp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/nexa_bold"/>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btnGetKaryawan"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_height="@dimen/_45sdp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="@dimen/_100sdp"
+                            android:backgroundTint="@color/gray_700"
+                            android:layout_marginTop="@dimen/_15sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Karyawan"
+                                android:textSize="@dimen/_10ssp"
+                                android:textColor="@color/main_color_blue"
+                                android:fontFamily="@font/nexa_bold"/>
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

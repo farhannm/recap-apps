@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.databinding.ListDetailPekerjaanBinding
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserActivity
+import com.inyongtisto.myhelper.extension.intentActivity
 
 @SuppressLint("NotifyDataSetChanged")
 class DetailPekerjaanAdapter : RecyclerView.Adapter<DetailPekerjaanAdapter.ViewHolder>(){
@@ -19,6 +21,14 @@ class DetailPekerjaanAdapter : RecyclerView.Adapter<DetailPekerjaanAdapter.ViewH
                 txtJudulTask.text = item.nama_pekerjaan
                 txtTipePekerjaan.text = item.tipe
                 txtLamaJam.text = "${item.jam_kerja} jam"
+                txtIdDetailPk.text = item.id.toString()
+
+                val idDetailPk = item.id.toString()
+                println("id pekerjaan $idDetailPk")
+
+                layoutHolder.setOnClickListener {
+                    root.context.intentActivity(DetailRecapTaskUserActivity::class.java, item)
+                }
             }
         }
     }

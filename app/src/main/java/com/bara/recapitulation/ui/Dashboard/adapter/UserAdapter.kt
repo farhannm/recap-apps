@@ -12,6 +12,10 @@ import com.bara.recapitulation.R
 import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.databinding.ListKaryawanBinding
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.KaryawanActivity
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserActivity
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserViewModel
+import com.inyongtisto.myhelper.extension.intentActivity
 import com.squareup.picasso.Picasso
 import java.io.File
 
@@ -37,6 +41,10 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
                 txtKaryawanName.text = item.nama
                 txtJabatanKaryawan.text = item.jabatan
+
+                layoutHolder.setOnClickListener {
+                    root.context.intentActivity(DetailRecapTaskUserActivity::class.java, item)
+                }
             }
         }
     }

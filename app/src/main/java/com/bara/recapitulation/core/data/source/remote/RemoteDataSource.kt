@@ -16,7 +16,6 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun getUserCurrentMonth() = api.getUserCurrentMonth(getUserId())
     suspend fun getUserCountTodayTask() = api.getUserCountTodayTask(getUserId())
 
-
     suspend fun searchUser(nama: String?) = api.searchUser(nama)
     suspend fun updateUser(data: UserRequest) = api.updateUser(getUserId(), data)
     suspend fun changePass(data: UserRequest) = api.changePass(getUserId(), data)
@@ -26,5 +25,10 @@ class RemoteDataSource(private val api: ApiService) {
     suspend fun getPekerjaanMonth() = api.getPekerjaanMonth()
     suspend fun getSelectedPekerjaan(id_pk: Int? = null) = api.getSelectedPekerjaan(id_pk)
     suspend fun getUserTodayTask() = api.getUserTodayTask(getUserId())
+    suspend fun getDetailPk(id: Int? = null) = api.getDetailPekerjaan(id)
     suspend fun createDetailPk(data: DetailPkRequest) = api.createDetailPekerjaan(getUserId(), data)
+    suspend fun updateDetailPk(id: Int? = null, data: DetailPkRequest) = api.updateDetailPk(id, data)
+    suspend fun deleteDetailPk(id: Int? = null) = api.deleteDetailPk(id)
+
+
 }

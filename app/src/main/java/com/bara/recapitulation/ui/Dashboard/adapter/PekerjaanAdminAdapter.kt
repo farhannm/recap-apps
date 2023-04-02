@@ -6,6 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.databinding.ListPekerjaanBinding
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity
+import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailRecapUserActivity
+import com.inyongtisto.myhelper.extension.intentActivity
+
 @SuppressLint("NotifyDataSetChanged")
 class PekerjaanAdminAdapter : RecyclerView.Adapter<PekerjaanAdminAdapter.ViewHolder>(){
 
@@ -17,6 +21,13 @@ class PekerjaanAdminAdapter : RecyclerView.Adapter<PekerjaanAdminAdapter.ViewHol
                 txtBulan.text = item.bulan
                 txtStart.text = item.start
                 txtEnd.text = item.end
+
+                val idPk = item.id.toString()
+                println("id pekerjaan $idPk")
+
+                layoutHolder.setOnClickListener {
+                    root.context.intentActivity(DetailRecapAdminActivity::class.java, item)
+                }
             }
         }
     }

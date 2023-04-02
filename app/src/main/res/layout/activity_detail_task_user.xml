@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Dashboard.DashboardUser.Pekerjaan.CreatePekerjaanUserActivity">
+    tools:context=".ui.Recap.RecapUser.Recap.DetailTaskUser.DetailRecapTaskUserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_margin="30dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/dashboardDest"
+            android:id="@+id/recapDest"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             app:cardCornerRadius="8dp"
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Task Baru"
+            android:text="Detail Task"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nexa_book"
                 android:text="Tipe Pekerjaan"
                 android:textColor="@color/main_color_black"
@@ -87,29 +87,16 @@
                 android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/inputJudulTask"
                 android:layout_width="match_parent"
-                app:boxStrokeWidth="1.5dp"
-                app:boxBackgroundColor="@color/white"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxStrokeColor="@color/main_color_blue"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputJudulTask"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
-                    android:fontFamily="@font/nexa_regular"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="@color/main_color_black"
-                    android:textSize="@dimen/_12ssp"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -122,29 +109,16 @@
                 android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/inputJamKerja"
                 android:layout_width="match_parent"
-                app:boxStrokeWidth="1.5dp"
-                app:boxBackgroundColor="@color/white"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxStrokeColor="@color/main_color_blue"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputJamKerja"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
-                    android:fontFamily="@font/nexa_regular"
-                    android:inputType="number"
-                    android:padding="8dp"
-                    android:textColor="@color/main_color_black"
-                    android:textSize="@dimen/_12ssp"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,48 +178,60 @@
                 android:textSize="@dimen/_8ssp"
                 tools:ignore="TextSizeCheck" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/inputDeskripsiTask"
                 android:layout_width="match_parent"
-                app:boxStrokeWidth="1.5dp"
-                app:boxBackgroundColor="@color/white"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxStrokeColor="@color/main_color_blue"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputDeskripsiTask"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"
-                    android:fontFamily="@font/nexa_regular"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="@color/main_color_black"
-                    android:textSize="@dimen/_12ssp"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nexa_regular"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/main_color_black"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>
         </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCreateTask"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_45sdp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_alignParentBottom="true"
-                android:backgroundTint="@color/main_color_blue"
-                android:fontFamily="@font/nexa_regular"
-                android:text="Create new task"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:cornerRadius="10dp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:gravity="center_horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDeleteTask"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:backgroundTint="@color/card_light"
+                    android:fontFamily="@font/nexa_regular"
+                    android:text="Hapus"
+                    android:textAllCaps="false"
+                    android:textColor="@color/sweet_red"
+                    android:textSize="14sp"
+                    app:cornerRadius="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSaveTask"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:backgroundTint="@color/main_color_blue"
+                    android:fontFamily="@font/nexa_regular"
+                    android:text="Simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:cornerRadius="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 

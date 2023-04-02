@@ -87,7 +87,7 @@ class DashboardUserFragment : Fragment() {
 
                 }
                 SUCCESS -> {
-                    val value = it.data ?: isNull()
+                    val value = it.data
 
                     if (value.isNull()) {
                         loge("Data is empty")
@@ -111,10 +111,10 @@ class DashboardUserFragment : Fragment() {
                     binding.txtTotalJam.setText("0 jam")
                 }
                 SUCCESS -> {
-                    val value = it.data?: isNull()
+                    val value = it.data
 
                     if (value.isNull()) {
-                        binding.txtTotalJam.setText("0 jam")
+                        loge("Tidak ada data")
                     } else {
                         binding.txtTotalJam.text = "${it.data?.jam_kerja} jam"
                     }
@@ -129,10 +129,10 @@ class DashboardUserFragment : Fragment() {
             when(it.state) {
                 State.LOADING -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
                 State.SUCCESS -> {
-                    val data = it.data ?: isNull()
+                    val data = it.data
 
                     if (data.isNull()) {
-                        binding.txtTodayTask.setText("Tidak ada task hari ini")
+                        loge("Tidak ada data")
                     } else {
                         binding.txtTodayTask.text = "${it.data?.hari_ini} task hari ini"
                     }

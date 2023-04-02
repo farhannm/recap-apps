@@ -292,10 +292,69 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
+    fun getDetailPk(id: Int?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getDetailPk(id).let {
+                if (it.isSuccessful) {
+                    Pref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
     fun createDetailPk(data: DetailPkRequest) = flow {
         emit(Resource.loading(null))
         try {
             remote.createDetailPk(data).let {
+                if (it.isSuccessful) {
+                    Pref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    Pref.setUserDetailPk(user)
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun updateDetailPk(id: Int?, data: DetailPkRequest) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.updateDetailPk(id, data).let {
+                if (it.isSuccessful) {
+                    Pref.isLogin = true
+                    val body = it.body()
+                    val user = body?.data
+                    Pref.setUserDetailPk(user)
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun deleteDetailPk(id: Int?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.deleteDetailPk(id).let {
                 if (it.isSuccessful) {
                     Pref.isLogin = true
                     val body = it.body()

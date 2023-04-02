@@ -18,16 +18,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
         <activity
-            android:name=".ui.Dashboard.DashboardUser.TodayTask.TodayTaskActivity"
+            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity"
+            android:name=".ui.Dashboard.DashboardUser.TodayTask.TodayTaskActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Recap.RecapUser.Recap.DetailRecapUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapActivity"
+            android:name=".ui.Recap.RecapUser.Recap.DetailTaskUser.DetailTaskUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Recap.RecapAdmin.Recap.CreateRecapActivity"

@@ -6,10 +6,10 @@ import com.bara.recapitulation.R
 import com.bara.recapitulation.ui.Auth.AuthActivity
 import com.bara.recapitulation.util.Pref
 import com.inyongtisto.myhelper.extension.pushActivity
+import kotlinx.android.synthetic.main.dialog_confirm_delete_task.view.*
+import kotlinx.android.synthetic.main.dialog_confirm_delete_user.view.*
 import kotlinx.android.synthetic.main.dialog_logout.view.*
 import kotlinx.android.synthetic.main.dialog_logout.view.btnBatal
-import kotlinx.android.synthetic.main.dialog_validate_delete_task.view.*
-import kotlinx.android.synthetic.main.dialog_validate_delete_user.view.*
 
 class MyDialog(val mActivity: Activity) {
     private lateinit var dialog: AlertDialog
@@ -42,6 +42,18 @@ class MyDialog(val mActivity: Activity) {
     fun dialogSuccessCreateTask(){
         val inflater  = mActivity.layoutInflater
         val dialogView = inflater.inflate(R.layout.dialog_success_create_task, null)
+
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setView(dialogView)
+        builder.setCancelable(true)
+        dialog = builder.create()
+        dialog = builder.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
+
+    fun dialogSuccessDeleteTask(){
+        val inflater  = mActivity.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_success_delete_task, null)
 
         val builder = AlertDialog.Builder(mActivity)
         builder.setView(dialogView)
@@ -137,10 +149,22 @@ class MyDialog(val mActivity: Activity) {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
+    fun dialogSuccessDeleteUser(){
+        val inflater  = mActivity.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_success_delete_user, null)
+
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setView(dialogView)
+        builder.setCancelable(true)
+        dialog = builder.create()
+        dialog = builder.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
+
     //Delete
     fun dialogConfirmDeleteUser(){
         val inflater  = mActivity.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_validate_delete_user, null)
+        val dialogView = inflater.inflate(R.layout.dialog_confirm_delete_user, null)
 
         val builder = AlertDialog.Builder(mActivity)
         builder.setView(dialogView)
@@ -149,18 +173,18 @@ class MyDialog(val mActivity: Activity) {
         dialog = builder.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        dialogView.btnBatalDeleteUser.setOnClickListener(){
+        dialogView.btnBatalUser.setOnClickListener(){
             dialog.dismiss()
         }
 
-        dialogView.btnDeleteUser.setOnClickListener {
+        dialogView.btnHapusUser.setOnClickListener {
 
         }
     }
 
     fun dialogConfirmDeleteTask(){
         val inflater  = mActivity.layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_validate_delete_task, null)
+        val dialogView = inflater.inflate(R.layout.dialog_confirm_delete_task, null)
 
         val builder = AlertDialog.Builder(mActivity)
         builder.setView(dialogView)
@@ -169,11 +193,11 @@ class MyDialog(val mActivity: Activity) {
         dialog = builder.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        dialogView.btnBatalDeleteTask.setOnClickListener(){
+        dialogView.btnBatalTask.setOnClickListener(){
             dialog.dismiss()
         }
 
-        dialogView.btnDeleteTask.setOnClickListener {
+        dialogView.btnHapusTask.setOnClickListener {
 
         }
     }

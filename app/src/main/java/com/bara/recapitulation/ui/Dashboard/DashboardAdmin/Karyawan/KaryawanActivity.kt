@@ -33,20 +33,6 @@ class KaryawanActivity : AppCompatActivity() {
     private fun setData() {
         binding.rvUser.adapter = adapterUser
 
-        binding.searchKaryawan.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-                    viewModel.searchUser(query)
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-
-        })
-
 //        viewModel.listUser.observe(this, Observer{
 //            adapterUser.addItems(it)
 //        })

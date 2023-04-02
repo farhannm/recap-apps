@@ -1,6 +1,5 @@
 package com.bara.recapitulation.core.di
 
-import android.app.Activity
 import com.bara.recapitulation.ui.Auth.AuthViewModel
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.DashboardAdminViewModel
 import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.CreateKaryawanViewModel
@@ -9,8 +8,11 @@ import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserViewModel
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.Pekerjaan.CreatePekerjaanUserViewModel
 import com.bara.recapitulation.ui.Dashboard.DashboardUser.TodayTask.TodayTaskViewModel
 import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.CreatePekerjaanRecapViewModel
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapAdminViewModel
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserViewModel
 import com.bara.recapitulation.ui.Recap.RecapAdmin.RecapAdminViewModel
 import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailRecapUserViewModel
+import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailTaskUser.DetailTaskUserViewModel
 import com.bara.recapitulation.ui.Recap.RecapUser.RecapUserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -25,6 +27,9 @@ val viewModelModule = module {
     viewModel { RecapAdminViewModel(get()) }
     viewModel { RecapUserViewModel(get()) }
     viewModel { DetailRecapUserViewModel(get()) }
+    viewModel { DetailRecapAdminViewModel(get()) }
+    viewModel { DetailTaskUserViewModel(get()) }
+    viewModel { DetailRecapTaskUserViewModel(get()) }
     viewModel { KaryawanViewModel(get()) }
     viewModel { CreateKaryawanViewModel(get()) }
     viewModel { CreatePekerjaanUserViewModel(get()) }

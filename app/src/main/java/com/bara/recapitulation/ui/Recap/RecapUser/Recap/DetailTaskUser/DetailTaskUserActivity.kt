@@ -1,4 +1,4 @@
-package com.bara.recapitulation.ui.Dashboard.DashboardUser.Pekerjaan
+package com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailTaskUser
 
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
@@ -6,53 +6,66 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import com.bara.recapitulation.R
+import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.core.data.source.remote.request.DetailPkRequest
-import com.bara.recapitulation.databinding.ActivityCreatePekerjaanUserBinding
-import com.bara.recapitulation.util.getUserId
-import com.inyongtisto.myhelper.extension.isEmpty
-import com.inyongtisto.myhelper.extension.isNull
+import com.bara.recapitulation.databinding.ActivityDetailTaskUserBinding
+import com.bara.recapitulation.ui.Dashboard.adapter.DetailPekerjaanAdapter
+import com.inyongtisto.myhelper.extension.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreatePekerjaanUserActivity : AppCompatActivity() {
-    private val viewModel: CreatePekerjaanUserViewModel by viewModel()
-    lateinit var binding: ActivityCreatePekerjaanUserBinding
+class DetailTaskUserActivity : AppCompatActivity() {
+
+    private val viewModel: DetailTaskUserViewModel by viewModel()
+    lateinit var binding: ActivityDetailTaskUserBinding
+    private val detailPk by extra<DetailPekerjaan>()
+    private val adapterDetailPekerjaan = DetailPekerjaanAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCreatePekerjaanUserBinding.inflate(layoutInflater)
+        binding = ActivityDetailTaskUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         mainButton()
+        setData()
+        myDropdown()
     }
 
     override fun onResume() {
         super.onResume()
-        myDropdown()
-    }
-
-
-    private fun myDropdown() {
-        val tipe_kerja = resources.getStringArray(R.array.tipe)
-        val arrayAdapter = ArrayAdapter(applicationContext, R.layout.tipe_item_dropdown, tipe_kerja)
-
-        binding.inputAutoCompleteTipe.setAdapter(arrayAdapter)
+        setData()
     }
 
     private fun mainButton() {
-        binding.dashboardDest.setOnClickListener {
+        binding.recapDest.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        binding.btnCreateTask.setOnClickListener {
-            createPekerjaan()
+        binding.btnDeleteTask.setOnClickListener {
+            deleteTask()
+        }
+
+        binding.btnSaveTask.setOnClickListener {
+            updateTask()
         }
 
         myCalendar()
     }
 
+    private fun setData() {
+        viewModel.getDetailPk(detailPk?.id).observe(this){
+            println("ID BOSSS ${detailPk?.id}")
+            binding.apply {
+                inputAutoCompleteTipe.setText("${detailPk?.tipe}")
+                inputJudulTask.setText("${detailPk?.nama_pekerjaan}")
+                txtTanggal.setText("${detailPk?.tgl_kerja}")
+                inputJamKerja.setText("${detailPk?.jam_kerja}")
+                inputDeskripsiTask.setText("${detailPk?.desc_pekerjaan}")
+            }
+        }
+    }
 
     private fun myCalendar() {
         val myCalendar = Calendar.getInstance()
@@ -77,18 +90,47 @@ class CreatePekerjaanUserActivity : AppCompatActivity() {
         binding.txtTanggal.setText(myCalendar?.time?.let { sdf.format(it) })
     }
 
-    private fun createPekerjaan() {
-        if (binding.inputAutoCompleteTipe.text.toString().equals("Tipe")
+    private fun myDropdown() {
+        val tipe_kerja = resources.getStringArray(R.array.tipe)
+        val arrayAdapter = ArrayAdapter(applicationContext, R.layout.tipe_item_dropdown, tipe_kerja)
+
+        binding.inputAutoCompleteTipe.setAdapter(arrayAdapter)
+    }
+
+
+    private fun deleteTask() {
+        val idDetailPk = detailPk?.id
+        viewModel.deleteDetailPk(idDetailPk).observe(this){
+            when (it.state) {
+                State.SUCCESS -> {
+                    showToast("Berhasil menghapus!")
+                }
+                State.FAILED -> {
+                    viewModel.dialogSuccessDelete(this)
+                    val handler = android.os.Handler()
+                    handler.postDelayed(object : Runnable {
+                        override fun run() {
+                            onBackPressedDispatcher.onBackPressed()
+                        }
+                    }, 3000)
+                    showToast("Berhasil menghapus!")
+                }
+                State.LOADING -> {}
+            }
+        }
+    }
+
+    private fun updateTask() {
+        if (binding.inputAutoCompleteTipe.text.isEmpty()
             || binding.inputJudulTask.isEmpty()
             || binding.inputJamKerja.isEmpty()
             || binding.inputTanggal.isNull()
             || binding.inputDeskripsiTask.isEmpty()) return
 
-        val idPekerjaan = intent.getStringExtra("id_pekerjaan")
+        var idDetailPk = detailPk?.id
 
         val body = DetailPkRequest(
-            id_user = getUserId(),
-            id_pekerjaan = idPekerjaan,
+            id = idDetailPk,
             nama_pekerjaan = binding.inputJudulTask.text.toString(),
             desc_pekerjaan = binding.inputDeskripsiTask.text.toString(),
             jam_kerja = binding.inputJamKerja.text.toString(),
@@ -97,11 +139,11 @@ class CreatePekerjaanUserActivity : AppCompatActivity() {
         )
 
 
-        viewModel.createPekerjaanUser(body).observe(this) {
+        viewModel.updateDetailPk(idDetailPk, body).observe(this) {
 
             when (it.state) {
                 State.SUCCESS -> {
-                    viewModel.dialogSuccess(this)
+                    viewModel.dialogSuccessEdit(this)
                     val handler = android.os.Handler()
                     handler.postDelayed(object : Runnable {
                         override fun run() {

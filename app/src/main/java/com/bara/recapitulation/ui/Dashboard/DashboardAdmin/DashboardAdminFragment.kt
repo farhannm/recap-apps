@@ -55,7 +55,7 @@ class DashboardAdminFragment : Fragment() {
             startActivity(Intent(context, CreateKaryawanActivity::class.java))
         }
 
-        binding.txtAllKaryawan.setOnClickListener {
+        binding.btnGetKaryawan.setOnClickListener {
             startActivity(Intent(context, KaryawanActivity::class.java))
         }
     }

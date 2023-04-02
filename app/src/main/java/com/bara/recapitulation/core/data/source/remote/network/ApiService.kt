@@ -135,34 +135,26 @@ interface ApiService {
         @Path("id") int: Int? = null
     ) : Response<BaseSingleResponse<User>>
 
-    @GET("api/pekerjaan/{id}")
-    suspend fun getDetailPkUser(
+    @GET("api/detailpk-show/{id}")
+    suspend fun getDetailPekerjaan(
         @Path("id") int: Int? = null,
-        @Part data: DetailPkRequest
-    ) : Response<BaseSingleResponse<DetailPkResponse>>
+    ) : Response<BaseSingleResponse<DetailPekerjaan>>
 
-    @GET("api/search-detailpk/{namaPekerjaan}")
-    suspend fun searchDetailPekerjaan(
-        @Path("namaPekerjaan") title: String? = null,
-        @Part data: DetailPkRequest
-    ) : Response<BaseSingleResponse<DetailPkResponse>>
-
-    @POST("api/detailpk/{id}")
+    @POST("api/detailpk-create/{id}")
     suspend fun  createDetailPekerjaan(
         @Path("id") int: Int? = null,
         @Body data : DetailPkRequest,
     ) : Response<BaseSingleResponse<DetailPkResponse>>
 
-    @PUT("api/detailpk/{id}")
+    @PUT("api/detailpk-update/{id}")
     suspend fun updateDetailPk(
         @Path("id") int: Int? = null,
-        @Part data: DetailPkRequest
+        @Body data: DetailPkRequest
     ) : Response<BaseSingleResponse<DetailPkResponse>>
 
-    @DELETE("api/detailpk/{id}")
+    @DELETE("api/detailpk-delete/{id}")
     suspend fun deleteDetailPk(
         @Path("id") int: Int? = null,
-        @Part data: DetailPkRequest
     ) : Response<BaseSingleResponse<DetailPkResponse>>
 
 

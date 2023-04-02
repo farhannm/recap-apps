@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutHolder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -51,6 +52,17 @@
                     android:text="Bug Fixing"
                     android:textColor="@color/main_color_black"
                     android:textSize="@dimen/_13ssp"/>
+
+                <TextView
+                    android:id="@+id/txtIdDetailPk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_bold"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_1ssp"
+                    />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -1,5 +1,9 @@
 package com.bara.recapitulation.core.data.source.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class DetailPekerjaan(
     val bukti_pekerjaan: String? = null,
     val created_at: String? = null,
@@ -13,4 +17,4 @@ data class DetailPekerjaan(
     val tgl_kerja: String? = null,
     val tipe: String? = null,
     val updated_at: String? = null
-)
+) : Parcelable
