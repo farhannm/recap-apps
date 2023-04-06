@@ -26,7 +26,7 @@ class CreatePekerjaanUserViewModel(val repo: AppRepository): ViewModel(){
         }, 1000)
     }
 
-    fun dialogSuccess(myActivity: Activity){
+    fun dialogSuccessCreate(myActivity: Activity){
         val success = MyDialog(mActivity = myActivity)
         success.dialogSuccessCreateTask()
         val handler = android.os.Handler()

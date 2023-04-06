@@ -51,6 +51,30 @@ class MyDialog(val mActivity: Activity) {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
+    fun dialogSuccessCreateRecap(){
+        val inflater  = mActivity.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_success_create_recap, null)
+
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setView(dialogView)
+        builder.setCancelable(true)
+        dialog = builder.create()
+        dialog = builder.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
+
+    fun dialogSuccessCreatUser(){
+        val inflater  = mActivity.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_success_create_user, null)
+
+        val builder = AlertDialog.Builder(mActivity)
+        builder.setView(dialogView)
+        builder.setCancelable(true)
+        dialog = builder.create()
+        dialog = builder.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
+
     fun dialogSuccessDeleteTask(){
         val inflater  = mActivity.layoutInflater
         val dialogView = inflater.inflate(R.layout.dialog_success_delete_task, null)

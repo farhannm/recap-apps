@@ -43,9 +43,9 @@ class SettingsUserFragment : Fragment() {
             startActivity(Intent(activity, TentangActivity::class.java))
         }
 
-        binding.btnHelp.setOnClickListener {
-            startActivity(Intent(activity, BantuanActivity::class.java))
-        }
+//        binding.btnHelp.setOnClickListener {
+//            startActivity(Intent(activity, BantuanActivity::class.java))
+//        }
     }
 
     override fun onDestroyView() {

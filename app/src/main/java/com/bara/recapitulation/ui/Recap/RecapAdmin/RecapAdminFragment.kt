@@ -34,9 +34,13 @@ class RecapAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getData()
         setData()
         mainButton()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getData()
     }
 
     private fun setData() {

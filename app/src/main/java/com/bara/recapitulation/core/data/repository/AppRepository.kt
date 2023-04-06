@@ -72,6 +72,24 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
+    fun getUserByPekerjaan(id: Int? = null) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getUserByPekerjaan(id).let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
     fun getSingleUser() = flow {
         emit(Resource.loading(null))
         try {
@@ -126,10 +144,46 @@ class AppRepository(val local: LocalDataSource, val remote: RemoteDataSource) {
         }
     }
 
+    fun getTaskById(id: Int?, id_pk: Int?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getTaskById(id, id_pk).let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
     fun getSelectedTotalJam(id_pk: Int? = null) = flow {
         emit(Resource.loading(null))
         try {
             remote.getSelectedTotalJam(id_pk).let {
+                if (it.isSuccessful) {
+                    val body = it.body()
+                    val user = body?.data
+                    emit(Resource.success(user))
+                    logs("Berhasil : " + body.toString())
+                } else {
+                    emit(Resource.failed(it.getErrorBody()?.message ?: "Default error.", null))
+                }
+            }
+        } catch (e: Exception) {
+            emit(Resource.failed(e.message?: "Terjadi kesalahan!", null))
+        }
+    }
+
+    fun getTotalJamByUser(id: Int?, id_pk: Int?) = flow {
+        emit(Resource.loading(null))
+        try {
+            remote.getTotalJamByUser(id, id_pk).let {
                 if (it.isSuccessful) {
                     val body = it.body()
                     val user = body?.data

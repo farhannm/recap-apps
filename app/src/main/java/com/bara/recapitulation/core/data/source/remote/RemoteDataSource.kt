@@ -8,10 +8,14 @@ import okhttp3.MultipartBody
 class RemoteDataSource(private val api: ApiService) {
     suspend fun login(data: AuthRequest) = api.login(data)
     suspend fun register(data: RegisterRequest) = api.createUser(data)
+
     suspend fun getUser() = api.getUser()
+    suspend fun getUserByPekerjaan(id: Int? = null) = api.getUserByPekerjaan(id)
     suspend fun getSingleUser() = api.getUserId(getUserId())
     suspend fun getUserTaskByMonth(id_pk: Int? = null) = api.getUserTaskByMonth(getUserId(), id_pk)
+    suspend fun getTaskById(id: Int? = null, id_pk: Int? = null) = api.getTaskById(id, id_pk)
     suspend fun getSelectedTotalJam(id_pk: Int? = null) = api.getSelectedTotalJam(getUserId(), id_pk)
+    suspend fun getTotalJamByUser(id: Int? = null, id_pk: Int? = null) = api.getSelectedTotalJam(id, id_pk)
     suspend fun getCountKaryawan() = api.getCountKaryawan()
     suspend fun getUserCurrentMonth() = api.getUserCurrentMonth(getUserId())
     suspend fun getUserCountTodayTask() = api.getUserCountTodayTask(getUserId())

@@ -114,8 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nexa_regular"
-                android:inputType="text"
-                android:text=""
+                android:inputType="number"
                 android:textColor="@color/main_color_black"
                 android:textSize="@dimen/_12ssp"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"/>

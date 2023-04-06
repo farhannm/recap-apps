@@ -23,9 +23,13 @@ class TodayTaskActivity : AppCompatActivity() {
         binding = ActivityTodayTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getData()
         setData()
         mainButton()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getData()
     }
 
     private fun setData() {

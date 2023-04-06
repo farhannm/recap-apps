@@ -1,15 +1,14 @@
 package com.bara.recapitulation.ui.Recap.RecapAdmin.Recap
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
+import com.bara.recapitulation.core.data.source.model.User
 import com.bara.recapitulation.core.data.source.remote.network.State
 import com.bara.recapitulation.databinding.ActivityDetailRecapBinding
-import com.bara.recapitulation.databinding.ActivityDetailRecapUserBinding
-import com.bara.recapitulation.ui.Dashboard.adapter.DetailPekerjaanAdapter
-import com.bara.recapitulation.ui.Dashboard.adapter.UserAdapter
-import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailRecapUserViewModel
+import com.bara.recapitulation.ui.Dashboard.adapter.UserAdminAdapter
 import com.inyongtisto.myhelper.extension.*
 import kotlinx.android.synthetic.main.empty_list_state.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,7 +17,8 @@ class DetailRecapAdminActivity : AppCompatActivity() {
     private val viewModel: DetailRecapAdminViewModel by viewModel()
     lateinit var binding: ActivityDetailRecapBinding
     private val pekerjaan by extra<Pekerjaan>()
-    private val adapterUser = UserAdapter()
+    private val user by extra<User>()
+    private val adapterUser = UserAdminAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +32,13 @@ class DetailRecapAdminActivity : AppCompatActivity() {
 
     private fun setData() {
         binding.rvRecapUser.adapter = adapterUser
+    }
+
+    private fun mainButton() {
+
+        binding.recapDest.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -50,9 +57,10 @@ class DetailRecapAdminActivity : AppCompatActivity() {
                     } else {
                         binding.apply {
                             txtSelectedBulan.text = it.data?.bulan
-                            txtPeriode.text = "${it.data?.start} - ${it.data?.end}"
+                            txtPeriode.text = "${it.data?.mulai} - ${it.data?.berakhir}"
                             txtJamker.text = "${it.data?.total_jam} jam"
                             txtToleransi.text = "${it.data?.jam_toleransi} jam"
+                            txtIdPk.text = it.data?.id.toString()
                         }
                     }
                 }
@@ -62,12 +70,10 @@ class DetailRecapAdminActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.getUser().observe(this){
+        viewModel.getUser(idPk).observe(this){
             when(it.state){
                 State.LOADING -> {
-                    binding.rvRecapUser.toGone()
-                    binding.shimmerContainer.toVisible()
-                    binding.shimmerContainer.startShimmer()
+                    emptyStateLayout.toVisible()
                 }
                 State.SUCCESS -> {
                     emptyStateLayout.toGone()
@@ -76,6 +82,7 @@ class DetailRecapAdminActivity : AppCompatActivity() {
                     if (user.isEmpty()){
                         emptyStateLayout.toVisible()
                     } else {
+                        emptyStateLayout.toGone()
                         binding.shimmerContainer.stopShimmer()
                         binding.shimmerContainer.toGone()
                         binding.rvRecapUser.toVisible()
@@ -87,12 +94,6 @@ class DetailRecapAdminActivity : AppCompatActivity() {
                     emptyStateLayout.toVisible()
                 }
             }
-        }
-    }
-
-    private fun mainButton() {
-        binding.recapDest.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
         }
     }
 }

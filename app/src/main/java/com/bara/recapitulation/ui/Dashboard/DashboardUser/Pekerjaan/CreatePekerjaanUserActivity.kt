@@ -101,7 +101,7 @@ class CreatePekerjaanUserActivity : AppCompatActivity() {
 
             when (it.state) {
                 State.SUCCESS -> {
-                    viewModel.dialogSuccess(this)
+                    viewModel.dialogSuccessCreate(this)
                     val handler = android.os.Handler()
                     handler.postDelayed(object : Runnable {
                         override fun run() {

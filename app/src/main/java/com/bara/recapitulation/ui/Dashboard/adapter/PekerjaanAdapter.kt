@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bara.recapitulation.core.data.source.model.Pekerjaan
 import com.bara.recapitulation.databinding.ListPekerjaanBinding
+import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity
 import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailRecapUserActivity
 import com.inyongtisto.myhelper.extension.intentActivity
 
@@ -19,14 +20,15 @@ class PekerjaanAdapter : RecyclerView.Adapter<PekerjaanAdapter.ViewHolder>(){
             itemBinding.apply {
                 txtIdPk.text = item.id.toString()
                 txtBulan.text = item.bulan
-                txtStart.text = item.start
-                txtEnd.text = item.end
+                txtStart.text = item.mulai
+                txtEnd.text = item.berakhir
 
                 val idPk = item.id.toString()
                 println("id pekerjaan $idPk")
 
                 layoutHolder.setOnClickListener {
                     root.context.intentActivity(DetailRecapUserActivity::class.java, item)
+
                 }
             }
         }

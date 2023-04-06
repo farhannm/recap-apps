@@ -26,6 +26,12 @@ interface ApiService {
     @GET("api/user")
     suspend fun getUser(): Response<BaseListResponse<User>>
 
+    @GET("api/user-by-pekerjaan/{id}")
+    suspend fun getUserByPekerjaan(
+        @Path("id") id: Int? = null
+    ): Response<BaseListResponse<User>>
+
+
     @GET("api/user-current-month/{id}")
     suspend fun getUserCurrentMonth(
         @Path("id") id: Int? = null
@@ -35,6 +41,7 @@ interface ApiService {
     suspend fun getUserId(
         @Path("id") int: Int? = null,
     ) : Response<BaseSingleResponse<User>>
+
     @GET("api/user-total-by-month/{id}/{id_pk}")
     suspend fun getSelectedTotalJam(
         @Path("id") id: Int? = null,
@@ -43,6 +50,12 @@ interface ApiService {
 
     @GET("api/user-task-by-month/{id}/{id_pk}")
     suspend fun getUserTaskByMonth(
+        @Path("id") id: Int? = null,
+        @Path("id_pk") id_pk: Int? = null
+    ) : Response<BaseListResponse<DetailPekerjaan>>
+
+    @GET("api/user-task-by-id/{id}/{id_pk}")
+    suspend fun getTaskById(
         @Path("id") id: Int? = null,
         @Path("id_pk") id_pk: Int? = null
     ) : Response<BaseListResponse<DetailPekerjaan>>
@@ -79,7 +92,7 @@ interface ApiService {
 
     //Pekerjaan
     @GET("api/pekerjaan")
-    suspend fun getPekerjaan(): Response<BaseListResponse<Pekerjaan>>
+    suspend fun  getPekerjaan(): Response<BaseListResponse<Pekerjaan>>
 
     @GET("api/pekerjaan-current-month")
     suspend fun getPekerjaanMonth(): Response<BaseSingleResponse<Pekerjaan>>

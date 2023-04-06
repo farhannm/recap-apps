@@ -18,5 +18,6 @@ data class User(
     val token: String? = null,
     val telp: String? = null,
     val updated_at: String? = null,
-    val hari_ini: String? = null
+    val hari_ini: String? = null,
+    val id_pekerjaan: Int? = null
 ) : Parcelable

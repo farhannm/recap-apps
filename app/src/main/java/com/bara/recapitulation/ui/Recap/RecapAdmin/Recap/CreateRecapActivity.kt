@@ -106,7 +106,7 @@ class CreateRecapActivity : AppCompatActivity() {
 
         binding.btnDatePickerStart.setOnClickListener {
 
-            DatePickerDialog(this, R.style.DialogTheme,datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(
+            DatePickerDialog(this, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(
                 Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }

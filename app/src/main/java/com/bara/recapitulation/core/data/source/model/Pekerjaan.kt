@@ -15,5 +15,7 @@ data class Pekerjaan(
     val start: String? = null,
     val total_jam: String? = null,
     val updated_at: String? = null,
-    val jumlah_karyawan: String? = null
+    val jumlah_karyawan: String? = null,
+    val mulai: String? = null,
+    val berakhir: String? = null
 ) : Parcelable

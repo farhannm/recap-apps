@@ -68,6 +68,7 @@ class AuthActivity : AppCompatActivity() {
         viewModel.login(body).observe(this) {
             when (it.state) {
                 State.SUCCESS -> {
+                    dismisLoading()
                     showToast("Selamat datang " + it.data?.nama)
 
                     if (it.data?.id_role == 1){
@@ -85,11 +86,12 @@ class AuthActivity : AppCompatActivity() {
                     }
                 }
                 State.FAILED -> {
+                    dismisLoading()
                     binding.inputEmail.requestFocus()
                     viewModel.dialogFailed(this)
                 }
                 State.LOADING -> {
-                    viewModel.dialogLoading(this)
+                    showLoading()
                 }
             }
         }

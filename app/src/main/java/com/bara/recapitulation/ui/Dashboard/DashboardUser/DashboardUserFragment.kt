@@ -93,7 +93,7 @@ class DashboardUserFragment : Fragment() {
                         loge("Data is empty")
                     } else {
                         binding.apply {
-                            txtPeriode.text = "${it.data?.start} - ${it.data?.end}"
+                            txtPeriode.text = "${it.data?.mulai} - ${it.data?.berakhir}"
                             txtToleransi.text = "${it.data?.jam_toleransi} jam"
                             txtJamker.text = "${it.data?.total_jam} jam"
                             txtIdPekerjaan.text = it.data?.id.toString()
@@ -127,8 +127,8 @@ class DashboardUserFragment : Fragment() {
 
         viewModel.getUserCountTodayTask().observe(viewLifecycleOwner){
             when(it.state) {
-                State.LOADING -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
-                State.SUCCESS -> {
+                LOADING -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
+                SUCCESS -> {
                     val data = it.data
 
                     if (data.isNull()) {
@@ -137,7 +137,7 @@ class DashboardUserFragment : Fragment() {
                         binding.txtTodayTask.text = "${it.data?.hari_ini} task hari ini"
                     }
                 }
-                State.FAILED -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
+                FAILED -> { binding.txtTodayTask.setText("Tidak ada task hari ini") }
             }
         }
 

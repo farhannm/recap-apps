@@ -57,6 +57,17 @@
                     tools:ignore="TextSizeCheck" />
 
                 <TextView
+                    android:id="@+id/txtIdPk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nexa_regular"
+                    android:text=""
+                    android:visibility="gone"
+                    android:textColor="@color/main_color_black"
+                    android:textSize="@dimen/_8ssp"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
                     android:id="@+id/txtPeriode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +81,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@drawable/my_line"
+                android:background="@drawable/my_line_grey"
                 android:layout_marginVertical="@dimen/_6sdp"/>
 
             <LinearLayout

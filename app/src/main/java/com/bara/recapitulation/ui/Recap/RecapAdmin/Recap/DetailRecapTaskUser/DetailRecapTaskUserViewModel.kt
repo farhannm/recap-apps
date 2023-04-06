@@ -13,12 +13,8 @@ import java.util.*
 
 class DetailRecapTaskUserViewModel(val repo: AppRepository) : ViewModel() {
 
-    fun updateDetailPk(id: Int? = null, data: DetailPkRequest) = repo.updateDetailPk(id, data).asLiveData()
-    fun getDetailPk(id: Int? = null) = repo.getDetailPk(id).asLiveData()
-    fun deleteDetailPk(id: Int? = null) = repo.deleteDetailPk(id).asLiveData()
-
-    fun getUserTaskByMonth(id_pk: Int? = null) = repo.getUserTaskByMonth(id_pk).asLiveData()
-    fun getSelectedTotalJam(id_pk: Int? = null) = repo.getSelectedTotalJam(id_pk).asLiveData()
+    fun getTaskById(id: Int? = null, id_pk: Int? = null) = repo.getTaskById(id, id_pk).asLiveData()
+    fun getTotalJamByUser(id: Int? = null, id_pk: Int? = null) = repo.getTotalJamByUser(id, id_pk).asLiveData()
     fun getSelectedPk(id_pk: Int? = null) = repo.getSelectedPk(id_pk).asLiveData()
 
     fun dialogLoading(myActivity: Activity){

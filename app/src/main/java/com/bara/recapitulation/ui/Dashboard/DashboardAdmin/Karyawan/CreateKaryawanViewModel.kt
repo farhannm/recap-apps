@@ -24,7 +24,7 @@ class CreateKaryawanViewModel(val repo: AppRepository): ViewModel(){
 
     fun dialogSuccess(myActivity: Activity){
         val success = MyDialog(mActivity = myActivity)
-        success.dialogSuccessProfile()
+        success.dialogSuccessCreatUser()
         val handler = android.os.Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {

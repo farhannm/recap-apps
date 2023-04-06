@@ -227,7 +227,7 @@
                 tools:ignore="TextSizeCheck" />
 
             <include
-                layout="@layout/empty_list_state"
+                layout="@layout/empty_list_recap_admin"
                 android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"

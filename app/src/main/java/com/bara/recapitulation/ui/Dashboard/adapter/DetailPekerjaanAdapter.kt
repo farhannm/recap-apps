@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bara.recapitulation.core.data.source.model.DetailPekerjaan
 import com.bara.recapitulation.databinding.ListDetailPekerjaanBinding
 import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserActivity
+import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailTaskUser.DetailTaskUserActivity
 import com.inyongtisto.myhelper.extension.intentActivity
 
 @SuppressLint("NotifyDataSetChanged")
@@ -27,7 +28,7 @@ class DetailPekerjaanAdapter : RecyclerView.Adapter<DetailPekerjaanAdapter.ViewH
                 println("id pekerjaan $idDetailPk")
 
                 layoutHolder.setOnClickListener {
-                    root.context.intentActivity(DetailRecapTaskUserActivity::class.java, item)
+                    root.context.intentActivity(DetailTaskUserActivity::class.java, item)
                 }
             }
         }

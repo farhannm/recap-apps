@@ -4,31 +4,28 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.SearchView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.bara.recapitulation.R
 import com.bara.recapitulation.core.data.source.model.User
-import com.bara.recapitulation.databinding.ListKaryawanBinding
-import com.bara.recapitulation.ui.Dashboard.DashboardAdmin.Karyawan.KaryawanActivity
+import com.bara.recapitulation.databinding.ListUserBinding
 import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapAdminActivity
 import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserActivity
-import com.bara.recapitulation.ui.Recap.RecapAdmin.Recap.DetailRecapTaskUser.DetailRecapTaskUserViewModel
+import com.bara.recapitulation.ui.Recap.RecapUser.Recap.DetailRecapUserActivity
 import com.inyongtisto.myhelper.extension.intentActivity
-import com.squareup.picasso.Picasso
-import java.io.File
 
 @SuppressLint("NotifyDataSetChanged")
-class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdminAdapter : RecyclerView.Adapter<UserAdminAdapter.ViewHolder>(){
 
     private var data = ArrayList<User>()
 
-    inner class ViewHolder(private val itemBinding : ListKaryawanBinding) : RecyclerView.ViewHolder(itemBinding.root){
-
+    inner class ViewHolder(private val itemBinding : ListUserBinding) : RecyclerView.ViewHolder(itemBinding.root){
         fun bind(item : User, position: Int){
             itemBinding.apply {
                 val imageLink = item.image
+
+                txtKaryawanName.text = item.nama
+                txtJabatanKaryawan.text = item.jabatan
 
                 if (imageLink != null) {
                     userProfileImage.load(imageLink) {
@@ -36,15 +33,13 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
                         crossfade(1000)
                     }
                 } else {
-                    userProfileImage.load(R.drawable.icon_profile)
+                userProfileImage.load(R.drawable.icon_profile)
+            }
+
+                layoutUser.setOnClickListener {
+                    root.context.intentActivity(DetailRecapTaskUserActivity::class.java, item)
+                    println("ID pekerjaan adalah ${item.id_pekerjaan}")
                 }
-
-                txtKaryawanName.text = item.nama
-                txtJabatanKaryawan.text = item.jabatan
-
-//                layoutHolder.setOnClickListener {
-//                    root.context.intentActivity(DetailRecapTaskUserActivity::class.java, item)
-//                }
             }
         }
     }
@@ -56,7 +51,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return  ViewHolder(ListKaryawanBinding.inflate(
+        return  ViewHolder(ListUserBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false))
@@ -68,9 +63,6 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position], position)
-        holder.itemView.setOnClickListener {
-
-        }
     }
 
 }

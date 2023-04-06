@@ -11,6 +11,7 @@ import com.bara.recapitulation.ui.Dashboard.DashboardUser.DashboardUserViewModel
 import com.bara.recapitulation.ui.Dashboard.adapter.DetailPekerjaanAdapter
 import com.inyongtisto.myhelper.extension.*
 import kotlinx.android.synthetic.main.activity_detail_recap_user.*
+import kotlinx.android.synthetic.main.empty_list_recap_admin.*
 import kotlinx.android.synthetic.main.empty_list_state.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -58,7 +59,7 @@ class DetailRecapUserActivity : AppCompatActivity() {
                     } else {
                         binding.apply {
                             txtSelectedBulan.text = it.data?.bulan
-                            txtPeriode.text = "${it.data?.start} - ${it.data?.end}"
+                            txtPeriode.text = "${it.data?.mulai} - ${it.data?.berakhir}"
                             txtJamker.text = "${it.data?.total_jam} jam"
                         }
                     }
@@ -72,17 +73,18 @@ class DetailRecapUserActivity : AppCompatActivity() {
         viewModel.getSelectedTotalJam(idPk).observe(this){
             when(it.state) {
                 State.LOADING -> {
+                    binding.txtTotalJamker.setText("0 jam")
                 }
                 State.SUCCESS -> {
-                    val value = it.data?: isNull()
 
-                    if (value.isNull()) {
-                        showToast("Data is null")
+                    if (it.data?.jam_kerja.isNull()) {
+                        binding.txtTotalJamker.setText("0 jam")
                     } else {
                         binding.txtTotalJamker.text = it.data?.jam_kerja
                     }
                 }
                 State.FAILED -> {
+                    binding.txtTotalJamker.setText("0 jam")
                 }
             }
         }
@@ -90,21 +92,21 @@ class DetailRecapUserActivity : AppCompatActivity() {
         viewModel.getUserTaskByMonth(idPk).observe(this){
             when(it.state){
                 State.LOADING -> {
-                    emptyStateLayout.toVisible()
+                    emptyStateRecapAdminLayout.toVisible()
                 }
                 State.SUCCESS -> {
-                    emptyStateLayout.toGone()
+                    emptyStateRecapAdminLayout.toGone()
                     val user = it.data ?: emptyList()
 
                     if (user.isEmpty()){
-                        emptyStateLayout.toVisible()
+                        emptyStateRecapAdminLayout.toVisible()
                     } else {
-                        emptyStateLayout.toGone()
+                        emptyStateRecapAdminLayout.toGone()
                         adapterDetailPekerjaan.addItems(user)
                     }
                 }
                 State.FAILED -> {
-                    emptyStateLayout.toVisible()
+                    emptyStateRecapAdminLayout.toVisible()
                 }
             }
         }

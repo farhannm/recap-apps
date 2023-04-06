@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
-            android:text="Data pekerjaan"
+            android:text="Data Rekapan"
             android:textSize="@dimen/_20ssp"
             android:textColor="@color/main_color_black"
             android:fontFamily="@font/nexa_bold"/>
@@ -178,7 +178,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTotalJam"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_35sdp"
                 android:fontFamily="@font/nexa_regular"
                 android:padding="8dp"
                 android:inputType="number"
@@ -213,7 +213,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputToleransi"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_35sdp"
                 android:fontFamily="@font/nexa_regular"
                 android:padding="8dp"
                 android:inputType="number"
